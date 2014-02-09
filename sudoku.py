@@ -1,10 +1,11 @@
 from z3 import *
+import fileinput
 
 s = Solver()
-for i in range(1, 3):
-    split_row = []
-    boxes = []
-    row = raw_input("Please enter the " + str(i) + "th row of the sudoku puzzle. Empty spaces should be indicated by '.' " )
+boxes = []
+i = 0
+for row in fileinput.input():
+    i += 1
     split_row = row.split(" ")
     for j in split_row:
         print j
@@ -14,7 +15,20 @@ for i in range(1, 3):
             box = Int(box)
             s.add(box == j)
             print s
-            boxes.append(box)
+    
+## for i in range(1, 3):
+##     split_row = []
+##     boxes = []
+##     row = raw_input("Please enter the " + str(i) + "th row of the sudoku puzzle. Empty spaces should be indicated by '.' " )
+##     split_row = row.split(" ")
+##     for j in split_row:
+##         print j
+##         if j != ".":
+##             box = "x" + str(i) + str(split_row.index(j)+1)
+##             print box
+##             box = Int(box)
+##             s.add(box == j)
+##             print s
 
 
 box = ""
@@ -24,6 +38,7 @@ for i in range(1, 10):
         box = Int(box)
         s.add(And(box>=1, box<=9))
         boxes.append(box)
+print "Boxes!!!!", boxes
 position = 0
 
 def getRow(boxes, rownum):
@@ -88,22 +103,25 @@ def getBox(boxes, boxnum):
             if 6 < int(b[1]) and 10 > int(b[1]) and 6 < int(b[2]) and 10 > int(b[2]):
                 box.append(b)
     return box
-for i in range(1, 10):
-    box = getBox(boxes, i)
-    print box
-    position = 0
-    for box1 in box[position:]:
-        b1 = Int(box1)
-        for box2 in box[position+1:]:
-            b2 = Int(box2)
-            s.add(b1 != b2)
-        position += 1
+
 for i in range(1, 10):
     row = getRow(boxes, i)
+    print row
     position = 0
     for box1 in row[position:]:
         b1 = Int(box1)
         for box2 in row[position+1:]:
+            b2 = Int(box2)
+            s.add(b1 != b2)
+        position += 1
+        
+for i in range(1, 10):
+    box = getBox(boxes, i)
+    print "Boxes are: ", box
+    position = 0
+    for box1 in box[position:]:
+        b1 = Int(box1)
+        for box2 in box[position+1:]:
             b2 = Int(box2)
             s.add(b1 != b2)
         position += 1
@@ -120,8 +138,10 @@ for i in range(1, 10):
         position += 1
 
 
-print s
+for c in s.assertions():
+    print c
 s.check()
+print s.statistics()
 
 m = s.model()
 sort = []
