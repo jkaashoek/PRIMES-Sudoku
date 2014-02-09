@@ -15,21 +15,6 @@ for row in fileinput.input():
             box = Int(box)
             s.add(box == j)
             print s
-    
-## for i in range(1, 3):
-##     split_row = []
-##     boxes = []
-##     row = raw_input("Please enter the " + str(i) + "th row of the sudoku puzzle. Empty spaces should be indicated by '.' " )
-##     split_row = row.split(" ")
-##     for j in split_row:
-##         print j
-##         if j != ".":
-##             box = "x" + str(i) + str(split_row.index(j)+1)
-##             print box
-##             box = Int(box)
-##             s.add(box == j)
-##             print s
-
 
 box = ""
 for i in range(1, 10):
@@ -144,23 +129,17 @@ s.check()
 print s.statistics()
 
 m = s.model()
+sortedsol = {}
 sort = []
 for d in m.decls():
+    sortedsol[d.name()] = m[d]
     print "%s = %s" % (d.name(), m[d])
-  ##   sort.append(d)
-## isSorted = sortList(sort)
-## count = 1
-## for i in isSorted:
-##     if count % 10 == 0:
-##         print "\n"`
-##     print m[i]
-##     count += 1
-## def sortList(notSorted):
-##     isSorted = []
-##     for box in notSorted:
-##         for i in range(1, 10):
-##             for j in range(1, 10):
-##                 if str(box) == "x" + str(i) + str(j):
-##                     isSorted.append(box)
-##     return isSorted
+
+for i in range(1, 10):
+    for j in range(1,10):
+        name = "x" + str(i) + str(j)
+        print sortedsol[name],
+    print  
+        
+        
         
