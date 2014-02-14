@@ -29,10 +29,11 @@ def exactly_one_model(F):
 
 X = [[Int('x%d%d' % (i,j)) for i in range(9)] for j in range(9)]
 
-# every row should be disntinct
+
 
 valid_values = [And ( X[i][j] >= 1, X[i][j] <= 9) for i in range(9) for j in range(9)]
 
+# every row should be disntinct
 row_distinct = [Distinct(X[i]) for i in range(9)]
 
 cols_distinct = [Distinct([X[i][j] for i in range(9)]) for j in range(9)]
@@ -54,7 +55,7 @@ else:
     print "failed to solve"
 
 
-num_rand = 40 #number of unfilled cells in sudoku puzzle
+num_rand = 40 # number of unfilled cells in sudoku puzzle
 while (num_rand > 0): 
     i = random.randint(0, 8) #random row
     j = random.randint(0, 8) #random column
@@ -72,7 +73,7 @@ instance_c = [ If(r[i][j] == 0,
 
 F = valid_values + row_distinct + cols_distinct + three_by_three_distinct + instance_c
 
-a = get_models(F, 10) #get first ten solutions for the sudoku pizzle
+a = get_models(F, 10) # get first ten solutions for the sudoku puzzle
 
 for i in range(len(a)): #print all solutions
     m = a[i]
