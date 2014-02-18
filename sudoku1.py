@@ -6,7 +6,7 @@ def get_models(F, M):
     result = []
     s = Solver()
     s.add(F)
-    print "This is the solver", s
+    # print "This is the solver", s
     while True:
         if s.check() == sat:
             m = s.model()
@@ -53,18 +53,40 @@ else:
     print "failed to solve"
 
 
-def emptySquare(board, vals_tried):
+def emptySquare(board):
+    print "here"
+    vals_tried = []
     i = random.randint(0, 8) # random row
     j = random.randint(0, 8) # random column
-    if (board[i][j] != 0) and (board[i][j] not in vals_tried):
+    while (str(board[i][j]) == str(0)) or ((i,j) in vals_tried):
+        print "now im here"
+        print "i and j", i,j, "i j on board", board[i][j], "values tried", vals_tried
+        print board[i][j] == 0, (i,j) in vals_tried
+        i = random.randint(0, 8) # random row
+        j = random.randint(0, 8) # random column
+    val_now = board[i][j]
+    board[i][j] =  0 # set cell to 0
+    vals_tried.append((i,j))
+    F = createSudoku(board) # Make a new sudoku with our new constraints
+    while (not exactly_one_model(F)):
+        print "hello"
+         # We know the resulting sudoku is not unique
+        print "num not empty:", notEmpty(board), "len values tried", len(vals_tried)
+        if notEmpty(board) == len(vals_tried):
+            break
+        i = random.randint(0, 8) # random row
+        j = random.randint(0, 8) # random column
+        while (str(board[i][j]) == str(0)) or ((i,j) in vals_tried):
+            print "is it in values tried", (i,j) in vals_tried
+            print "values tried still adding toooo:::::", vals_tried
+            print "and now here"
+            i = random.randint(0, 8) # random row
+            j = random.randint(0, 8) # random column
         val_now = board[i][j]
         board[i][j] =  0 # set cell to 0
-        print_matrix(board)
-        F = createSudoku(board)
-        if (not exactly_one_model(F)):
-            # We know the resulting sudoku is not unique
-            board[i][j] = val_now
-            vals_tried.append(board[i][j])
+        vals_tried.append((i,j))
+        F = createSudoku(board) # Make a new sudoku with our new constraints
+    print "values tried", vals_tried
     return board, vals_tried
 
 def createSudoku(board):
@@ -81,8 +103,7 @@ def createSudoku(board):
         for j in range(9):
             if board[i][j] != 0:
                 already_set.append(X[i][j] == board[i][j])
-    print "values set", already_set
-    F = valid_values + row_distinct + cols_distinct + three_by_three_distinct + already_set
+                F = valid_values + row_distinct + cols_distinct + three_by_three_distinct + already_set
     return F
 
 def notEmpty(board):
@@ -94,25 +115,18 @@ def notEmpty(board):
                 num_empty += 1
     return num_empty
     
-num_rand = 5 # number of unfilled cells in sudoku puzzle
+num_rand = 80 # number of unfilled cells in sudoku puzzle
 vals_tried = [] # which box we have tried to change but they failed. A box value fails if we change it to empty and the resulting sudoku is not unique.
-while (num_rand > 0):
-    print "num loop:", num_rand
-    print "In while loop"
-    print_matrix(r)
-    board_before = r
-    print "before:", board_before
-    board_after, vals_tried = emptySquare(r, vals_tried)
-    print "before:", board_before
-    print "after: ", board_after
-    print "r:", r
-    if board_after != board_before:
-        vals_tried = []
-        num_rand -= 1
-    print notEmpty(r)
-    if notEmpty(r) == len(vals_tried):
-        break
+while (num_rand >= 0):
+    print "LOOP NUMBER:", num_rand
+    board_after, vals_tried = emptySquare(r)
+    print "vals tried in while loop: ", vals_tried
+    print "num not empty:", notEmpty(board_after)
+    if notEmpty(board_after) == len(vals_tried):
+            break
+    num_rand -= 1
     r = board_after
+    print_matrix(r)
     
         #print_matrix(r)
 
