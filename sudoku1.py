@@ -1,5 +1,6 @@
 from z3 import *
 import random
+import copy
 
 # Return the first "M" models of formula list of formulas F 
 def get_models(F, M):
@@ -24,6 +25,9 @@ def get_models(F, M):
 def exactly_one_model(F):
     return len(get_models(F, 2)) == 1
 
+def modelLength(F):
+    return len(get_models(F, 30))
+
 def genSudoku():
     # Generates a complete sudoku
     
@@ -45,7 +49,7 @@ def genSudoku():
         return r
     else:
         return "failed to solve"
-def emptySquareNotUsingRowandCol(board):
+def emptySquareNotUsingRowandCol(board, organizer):
     # Empties a square without using row and column restriction
     vals_tried = []
     i = random.randint(0, 8) # random row
@@ -57,6 +61,9 @@ def emptySquareNotUsingRowandCol(board):
     board[i][j] =  0 # set cell to 0
     vals_tried.append((i,j)) # Now that this value has been tried, it does not have to be tried again
     F = createSudoku(board) # Make a new sudoku with our new constraints
+    numSolutions = modelLength(F)
+    ## boardcopy = copy.deepcopy(board)
+    organizer = addResult(board, organizer, numSolutions)
     while (not exactly_one_model(F)):
         # After the square is emptied, the resulting sudoku must have a unique solution
         if notEmpty(board) == len(vals_tried):
@@ -71,9 +78,12 @@ def emptySquareNotUsingRowandCol(board):
         board[i][j] =  0 # set cell to 0
         vals_tried.append((i,j)) # Now that this value has been tried, it does not have to be tried again
         F = createSudoku(board) # Make a new sudoku with our new constraints
+        numSolutions = modelLength(F)
+        ## boardcopy = copy.deepcopy(board)
+        organizer = addResult(board, organizer, numSolutions)
     return board, vals_tried
 
-def emptySquareUsingRowandCol(board):
+def emptySquareUsingRowandCol(board, organizer):
     # Will empty a square using row and column restriction
     vals_tried = []
     i, j = chooseSquare(board, vals_tried) # Gets a square using row and column restriction
@@ -81,6 +91,9 @@ def emptySquareUsingRowandCol(board):
     board[i][j] =  0 # set cell to 0
     vals_tried.append((i,j)) # Now that this value has been tried, it does not have to be tried again
     F = createSudoku(board) # Make a new sudoku with our new constraints
+    numSolutions = modelLength(F)
+   ##  boardcopy = copy.deepcopy(board)
+    organizer = addResult(board, organizer, numSolutions)
     while (not exactly_one_model(F)):
         # After the square is emptied, the resulting sudoku must have a unique solution
         if notEmpty(board) == len(vals_tried):
@@ -91,7 +104,24 @@ def emptySquareUsingRowandCol(board):
         board[i][j] =  0 # set cell to 0
         vals_tried.append((i,j)) # Now that this value has been tried, it does not have to be tried again
         F = createSudoku(board) # Make a new sudoku with our new constraints
-    return board, vals_tried
+        numSolutions = modelLength(F)
+        ## boardcopy = copy.deepcopy(board)
+        organizer = addResult(board, organizer, numSolutions)
+    return board, vals_tried, organizer
+
+def addResult(board, organizer, numSolutions):
+    board_added = False
+    print "board being added:"
+    print_matrix(board)
+    for length in organizer.keys():
+        if numSolutions == length:
+            organizer[length].append((board, numSolutions))
+            board_added = True
+    if not board_added:
+        organizer[1].append((numSolutions, "Num solutions too large!"))
+    print "printing the organizer...."
+    printOrganizer(organizer)
+    return organizer
 
 def chooseSquare(board, vals_tried):
     # Chooses which square to empty
@@ -106,8 +136,7 @@ def chooseSquare(board, vals_tried):
             i = possible_i
             j = possible_j
             ijfound = True
-    while (str(board[i][j]) == str(0)) or ((i,j) in vals_tried):
-        # The box being emptied must not be 0 and should not have been tried already
+    while (str(board[i][j]) == str(0)) or ((i,j) in vals_tried): # The box being emptied must not be 0 and should not have been tried already
         possible_i = random.randint(0, 8) # random row
         possible_j = random.randint(0, 8) # random column
         prob = random.random()
@@ -164,31 +193,70 @@ def notEmpty(board):
             if (board[i][j] != 0):
                 num_empty += 1
     return num_empty
+
+def createOrganizer():
+    organizer = {}
+    for i in range(1, 16):
+        organizer[i] = []
+    return organizer
+def emptySquareNoUnique(board, useRowandCol):
+    if useRowandCol:
+        i,j = chooseSquare(board, [])
+    else:
+        i = random.randint(0, 8)
+        j = random.randint(0, 8)
+    board[i][j] = 0
+    return board
     
-def emptySquares(numsquares, useRowandCol):
+def emptySquares(numsquares, useRowandCol, unique):
     vals_tried = [] # which box we have tried to change but they failed. A box value fails if we change it to empty and the resulting sudoku is not unique.
+    organizer = createOrganizer()
     r = genSudoku()
     if r != "failed to solve":
         while (numsquares >= 0):
-            if useRowandCol:
-                board_after, vals_tried = emptySquareUsingRowandCol(r)
-            if not useRowandCol:
-                board_after, vals_tried = emptySquareNotUsingRowandCol(r)
-            if notEmpty(board_after) == len(vals_tried):
-                break
-            numsquares -= 1
-            r = board_after
-        print_matrix(r)
+            if unique:
+                if useRowandCol:
+                    board_after, vals_tried, organizer = emptySquareUsingRowandCol(r, organizer)
+                if not useRowandCol:
+                    board_after, vals_tried, organizer = emptySquareNotUsingRowandCol(r, organizer)
+                if notEmpty(board_after) == len(vals_tried):
+                    break
+                numsquares -= 1
+                r = board_after
+            else:
+                if useRowandCol:
+                    board_after = emptySquareNoUnique(r, True)
+                if not useRowandCol:
+                    board_after = emptySquareNoUnique(r, False)
+                numsquares -= 1
+                r = board_after
+                print_matrix(r)
+                print modelLength(createSudoku(r))
+        print printOrganizer(organizer)
     else:
         print r
-    
+
+def printOrganizer(organizer):
+    for length in range(1,16):
+        print "All models that have", length, "solution(s):"
+        for board in organizer[length]:
+            print "NEW BOARD PRINTING..."
+            print_matrix(board)
+            
 def getInput():
+    unique = raw_input("Would you like to restrict the number of solutions? (y or n) ")
     numsquares = raw_input("How many squares would you like to empty? 1-10 = easy, 11-30 = medium, 31-40 = hard. Please do not choose over 40 squares. ")
     useRowandCol = raw_input("Would you like to restrict how the squares are emptied? (y or n) ")
-    if useRowandCol == "y":
-        emptySquares(int(numsquares), True)
-    if useRowandCol == "n":
-        emptySquares(int(numsquares), False)
+    if useRowandCol == "y" and unique=="y":
+        ## for i in range(10):
+        emptySquares(int(numsquares), True, True)
+        ## print "-----------------------------NEW TRIAL-----------------------------\n"
+    if useRowandCol =="y" and unique=="n":
+        emptySquares(int(numsquares), True, False)
+    if useRowandCol =="n" and unique=="y":
+        emptySquares(int(numsquares), False, True)
+    if useRowandCol == "n" and unique == "n":
+        emptySquares(int(numsquares), False, False)
 
 getInput()
 
@@ -196,20 +264,3 @@ getInput()
 
 
 
-## instance_c = [ If(r[i][j] == 0, 
-##                   True, 
-##                   X[i][j] == r[i][j]) 
-##                for i in range(9) for j in range(9) ]
-
-## F = valid_values + row_distinct + cols_distinct + three_by_three_distinct + instance_c
-
-## a = get_models(F, 10) # get first ten solutions for the sudoku puzzle
-
-## for i in range(len(a)): #print all solutions
-##     m = a[i]
-##     p = [ [ m.evaluate(X[i][j]) for j in range(9) ] 
-##           for i in range(9) ]
-##     print_matrix(p)
-    
-
-## print exactly_one_model(F)
