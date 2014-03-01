@@ -1,80 +1,130 @@
-from z3 import *
-import random
+def switchCols(board):
+    temp = copy.deepcopy(board)
+    bandNum = random.randint(0, 2) #random vertical bands
+    colOrder = [0, 1, 2]
+    random.shuffle(colOrder) #mix the order of the columns in that band
 
-def get_models(F, M):
-    result = []
-    s = Solver()
-    s.add(F)
-    while True:
-        if s.check() == sat:
-            m = s.model()
-            result.append(m)
-            # Create a new constraint the blocks the current model
-            block = []
-            for d in m:
-                c = d() # convert z3 key into z3 variable
-                block.append(c != m[d])
-            s.add(Or(block))
-        else:
-            return result
+    #go through each column in the band to change cell
+    for r in range(9):
+        for c in range(3*bandNum, 3*bandNum + 3):
+            #cell value in column gets assigned according to colOrder
+            board[r][c] = temp[r][colOrder[c%3] + 3*bandNum]           
+    return board
+    
 
-# Return True if F has exactly one model.
-def exactly_one_model(F):
-    return len(get_models(F, 2)) == 1
+'''Mixes up the rows in a random 3x9 horizontal stack'''
+def switchRows(board):
+    temp = copy.deepcopy(board)
+    stackNum = random.randint(0, 2) #random horizontal stack
+    rowOrder = [0, 1, 2]
+    random.shuffle(rowOrder) #mix the order of the rows in that stack
+
+    #go through each row in stack
+    for r in range(3*stackNum, 3*stackNum + 3):
+        #change order of rows according to rowOrder
+        board[r] = temp[stackNum*3 + rowOrder[r%3]]
+    return board
+    
+
+'''Reflects the board horizontally, over the middle vertical line'''
+def horizontalReflect(board):
+    temp = copy.deepcopy(board)
+    for r in range(9):
+        for c in range(9):
+            board[r][c] = temp[r][8-c]
+    return board
+
+'''Reflects the board vertically, over the middle horizontal line'''
+def verticalReflect(board):
+    temp = copy.deepcopy(board)
+    for i in range(9):
+        board[i] = temp[8 - i]
+    return board
+    
+'''randomly mixes the order of the 3x9 horizontal stacks'''
+def switchStacks(board):
+    order = [0, 1, 2]
+    random.shuffle(order)
+    temp = board[:]
+    for i in range(9):
+        board[i] = temp[3*order[(i//3)] + i%3]
+    return board
+
+'''randomly mixes the order of the 9x3 vertical bands'''
+def switchBands(board):
+    order = [0, 1, 2]
+    random.shuffle(order)
+    temp = copy.deepcopy(board)
+    for i in range(9):
+        for j in range(9):
+            board[i][j] = temp[i][3*order[(j//3)] + j%3]
+    return board
+    
+'''randomly switches the placement of the digits'''
+def permutateDigits(board):
+    digits = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+    shuffled = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+    random.shuffle(shuffled)
+    letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i']
+    numToLetters = dict()
+    for i in range(1, 10):
+        numToLetters[i] = letters[i-1]
+    lettersToNum = dict()
+    for i in range(1, 10):
+        lettersToNum[letters[i-1]] = shuffled[i-1]
+    for a in range(9):
+        for b in range(9):
+            board[a][b] = numToLetters[board[a][b]]
+    for c in range(9):
+        for d in range(9):
+            board[c][d] = lettersToNum[board[c][d]]
+    return board
+
+'''rotates the board 90 degrees to the left'''
+def rotate(board):
+    horizontalReflect(board)
+    temp = copy.deepcopy(board)
+    for i in range(9):
+        for j in range(9):
+            board[i][j] = temp[j][i]
+    return board
+
+    
+'''complete shuffle of the board with symmetry changes'''
+def shuffle(board):
+    for i in range(1000):
+        a = random.randint(0, 7)
+        if (a == 0):
+            horizontalReflect(board)
+        elif (a == 1):
+            verticalReflect(board)
+        elif (a == 2):
+            switchStacks(board)
+        elif (a == 3):
+            switchBands(board)
+        elif (a == 4):
+            permutateDigits(board)
+        elif (a == 5):
+            switchRows(board)
+        elif (a==6):
+            switchCols(board)
+        elif (a==7):
+            rotate(board)
+    return board
+        
+
+def generate():
+    board = [[1, 3, 5, 4, 6, 8, 9, 7, 2],
+[7, 9, 6, 3, 5, 2, 4, 1, 8],
+[2, 4, 8, 9, 1, 7, 5, 6, 3],
+[5, 6, 9, 7, 2, 1, 3, 8, 4],
+[4, 2, 7, 8, 9, 3, 6, 5, 1],
+[3, 8, 1, 6, 4, 5, 2, 9, 7],
+[6, 1, 3, 5, 8, 4, 7, 2, 9],
+[8, 5, 4, 2, 7, 9, 1, 3, 6],
+[9, 7, 2, 1, 3, 6, 8, 4, 5]]
+    shuffle(board)
+    return board
 
 
-X = [[Int('x%d%d' % (i,j)) for i in range(9)] for j in range(9)]
-board = [[0 for i in range(9)] for j in range(9)]
-
-indices = [str(i) + str(j) for i in range(9) for j in range(9)]
-
-#place random values
-n = 0
-while True:
-    index = random.randint(0, len(indices) - 1)
-    row_num = int(indices[index][0])
-    col_num = int(indices[index][1])
-    digit = random.randint(1, 9)
-    print('Row: ' + row_num)
-    print('Col: ' + col_num)
-    print('Digit: ' + digit)
-
-    row_check = (digit not in [board[row_num][c] for c in range(9)])
-    col_check = (digit not in [board[r][col_num] for r in range(9)])
-    three_check = (digit not in [board[r][c] for r in range(3*(i//3), 3*(row_num//3)+3)
-                                         for c in range(3*(j//3), 3*(col_num//3) + 3)])
-    if (row_check and col_check and three_check):                   
-        temp = [[board[r][c] for r in range(9)] for c in range(9)]
-        temp[row_num][col_num] = digit
-
-        #valid_values = [And ( X[i][j] >= 1, X[i][j] <= 9) for i in range(9) for j in range(9)]
-        valid_values = [And ( X[i][j] >= 1, X[i][j] <= 9) for i in range(9) for j in range(9)]
-        row_distinct = [Distinct(X[i]) for i in range(9)]
-        cols_distinct = [Distinct([X[i][j] for i in range(9)]) for j in range(9)]
-        three_by_three_distinct = [ Distinct([X[3*k + i][3*l + j] for i in range(3) for j in range(3)]) for k in range(3) for l in range(3)]
-        instance_c = [ If(temp[i][j] == 0, 
-                          True, 
-                          X[i][j] == temp[i][j]) 
-                       for i in range(9) for j in range(9) ]
-        F = row_distinct + cols_distinct + three_by_three_distinct + instance_c + valid_values
-        s = Solver()
-        s.add(F)
-        if (n > 10):
-            if (s.check() == sat):
-                board[row_num][col_num] = digit #set cell to a
-                indices.remove(indices[index])
-                print('\n' + 'Iteration '+ str(n) + '\n')
-                print_matrix(board)
-                n += 1
-                #if (exactly_one_model(F)):
-                    #break
-        else:
-            board[row_num][col_num] = digit
-            indices.remove(indices[index])
-            print('\n' + 'Iteration ' + str(n) + '\n')
-            print_matrix(board)
-            n += 1
-
-  
-
-print_matrix(board)
+print_matrix(generate())
