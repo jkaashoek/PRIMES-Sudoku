@@ -4,6 +4,21 @@ import random
 import copy
 from z3 import *
 
+'''
+Mixes up the columns in a random 9x3 vertical band
+'''
+def switchCols(board):
+    temp = copy.deepcopy(board)
+    bandNum = random.randint(0, 2) #random vertical bands
+    colOrder = [0, 1, 2]
+    random.shuffle(colOrder) #mix the order of the columns in that band
+
+    #go through each column in the band to change cell
+    for r in range(9):
+        for c in range(3*bandNum, 3*bandNum + 3):
+            #cell value in column gets assigned according to colOrder
+            board[r][c] = temp[r][colOrder[c%3] + 3*bandNum]           
+    return board
 
 '''Mixes up the rows in a random 3x9 horizontal stack'''
 def switchRows(board):
