@@ -81,7 +81,7 @@ def emptySquareNotUsingRowandCol(board, organizer):
         numSolutions = modelLength(F)
         ## boardcopy = copy.deepcopy(board)
         organizer = addResult(board, organizer, numSolutions)
-    return board, vals_tried
+    return board, vals_tried, organizer
 
 def emptySquareUsingRowandCol(board, organizer):
     # Will empty a square using row and column restriction
