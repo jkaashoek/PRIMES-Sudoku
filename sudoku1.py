@@ -65,6 +65,7 @@ def emptySquareNotUsingRowandCol(board, organizer):
     ## boardcopy = copy.deepcopy(board)
     organizer = addResult(board, organizer, numSolutions)
     while (not exactly_one_model(F)):
+        board[i][j] = val_now
         # After the square is emptied, the resulting sudoku must have a unique solution
         if notEmpty(board) == len(vals_tried):
             # If every value on the board has been emptied and all of them have not worked, no squares can be emptied and we can stop looking
