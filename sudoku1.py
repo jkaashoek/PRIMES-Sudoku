@@ -2,6 +2,142 @@ from z3 import *
 import random
 import copy
 
+#Generates about 3x10^6 different sudoku boards
+
+import random
+import copy
+from z3 import *
+
+'''
+Mixes up the columns in a random 9x3 vertical band
+'''
+def switchCols(board):
+    temp = copy.deepcopy(board)
+    bandNum = random.randint(0, 2) #random vertical bands
+    colOrder = [0, 1, 2]
+    random.shuffle(colOrder) #mix the order of the columns in that band
+
+    #go through each column in the band to change cell
+    for r in range(9):
+        for c in range(3*bandNum, 3*bandNum + 3):
+            #cell value in column gets assigned according to colOrder
+            board[r][c] = temp[r][colOrder[c%3] + 3*bandNum]           
+    return board
+
+'''Mixes up the rows in a random 3x9 horizontal stack'''
+def switchRows(board):
+    temp = copy.deepcopy(board)
+    stackNum = random.randint(0, 2) #random horizontal stack
+    rowOrder = [0, 1, 2]
+    random.shuffle(rowOrder) #mix the order of the rows in that stack
+
+    #go through each row in stack
+    for r in range(3*stackNum, 3*stackNum + 3):
+        #change order of rows according to rowOrder
+        board[r] = temp[stackNum*3 + rowOrder[r%3]]
+    return board
+    
+
+'''Reflects the board horizontally, over the middle vertical line'''
+def horizontalReflect(board):
+    temp = copy.deepcopy(board)
+    for r in range(9):
+        for c in range(9):
+            board[r][c] = temp[r][8-c]
+    return board
+
+'''Reflects the board vertically, over the middle horizontal line'''
+def verticalReflect(board):
+    temp = copy.deepcopy(board)
+    for i in range(9):
+        board[i] = temp[8 - i]
+    return board
+    
+'''randomly mixes the order of the 3x9 horizontal stacks'''
+def switchStacks(board):
+    order = [0, 1, 2]
+    random.shuffle(order)
+    temp = board[:]
+    for i in range(9):
+        board[i] = temp[3*order[(i//3)] + i%3]
+    return board
+
+'''randomly mixes the order of the 9x3 vertical bands'''
+def switchBands(board):
+    order = [0, 1, 2]
+    random.shuffle(order)
+    temp = copy.deepcopy(board)
+    for i in range(9):
+        for j in range(9):
+            board[i][j] = temp[i][3*order[(j//3)] + j%3]
+    return board
+    
+'''randomly switches the placement of the digits'''
+def permutateDigits(board):
+    digits = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+    shuffled = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+    random.shuffle(shuffled)
+    letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i']
+    numToLetters = dict()
+    for i in range(1, 10):
+        numToLetters[i] = letters[i-1]
+    lettersToNum = dict()
+    for i in range(1, 10):
+        lettersToNum[letters[i-1]] = shuffled[i-1]
+    for a in range(9):
+        for b in range(9):
+            board[a][b] = numToLetters[board[a][b]]
+    for c in range(9):
+        for d in range(9):
+            board[c][d] = lettersToNum[board[c][d]]
+    return board
+
+'''rotates the board 90 degrees to the left'''
+def rotate(board):
+    horizontalReflect(board)
+    temp = copy.deepcopy(board)
+    for i in range(9):
+        for j in range(9):
+            board[i][j] = temp[j][i]
+    return board
+
+    
+'''complete shuffle of the board with symmetry changes'''
+def shuffle(board):
+    for i in range(1000):
+        a = random.randint(0, 7)
+        if (a == 0):
+            horizontalReflect(board)
+        elif (a == 1):
+            verticalReflect(board)
+        elif (a == 2):
+            switchStacks(board)
+        elif (a == 3):
+            switchBands(board)
+        elif (a == 4):
+            permutateDigits(board)
+        elif (a == 5):
+            switchRows(board)
+        elif (a==6):
+            switchCols(board)
+        elif (a==7):
+            rotate(board)
+    return board
+        
+
+def generate():
+    board = [[1, 3, 5, 4, 6, 8, 9, 7, 2],
+[7, 9, 6, 3, 5, 2, 4, 1, 8],
+[2, 4, 8, 9, 1, 7, 5, 6, 3],
+[5, 6, 9, 7, 2, 1, 3, 8, 4],
+[4, 2, 7, 8, 9, 3, 6, 5, 1],
+[3, 8, 1, 6, 4, 5, 2, 9, 7],
+[6, 1, 3, 5, 8, 4, 7, 2, 9],
+[8, 5, 4, 2, 7, 9, 1, 3, 6],
+[9, 7, 2, 1, 3, 6, 8, 4, 5]]
+    shuffle(board)
+    return board
+
 # Return the first "M" models of formula list of formulas F 
 def get_models(F, M):
     result = []
@@ -22,8 +158,8 @@ def get_models(F, M):
             return result
 
 # Return True if F has exactly one model.
-def exactly_one_model(F):
-    return len(get_models(F, 2)) == 1
+def restrict_solutions(F):
+    return len(get_models(F, 3)) != 3
 
 def modelLength(F):
     return len(get_models(F, 30))
@@ -44,11 +180,26 @@ def genSudoku():
     s.add(valid_values + row_distinct + cols_distinct + three_by_three_distinct)
     if s.check() == sat:
         m = s.model()
-        r = [ [ m.evaluate(X[i][j]) for j in range(9) ] 
-              for i in range(9) ]
-        return r
+        res = []
+        for i in range(9):
+            res1 = []
+            for j in range(9):
+                res1.append(m.evaluate(X[i][j]))
+            res.append(res1)
+    
+        return res
     else:
         return "failed to solve"
+
+def copyListOfLists(lists):
+    res = []
+    for i in range(len(lists)):
+        res1 = []
+        for j in range(len(lists[i])):
+            res1.append(lists[i][j])
+        res.append(res1)
+    return res
+
 def emptySquareNotUsingRowandCol(board, organizer):
     # Empties a square without using row and column restriction
     vals_tried = []
@@ -62,9 +213,9 @@ def emptySquareNotUsingRowandCol(board, organizer):
     vals_tried.append((i,j)) # Now that this value has been tried, it does not have to be tried again
     F = createSudoku(board) # Make a new sudoku with our new constraints
     numSolutions = modelLength(F)
-    ## boardcopy = copy.deepcopy(board)
-    organizer = addResult(board, organizer, numSolutions)
-    while (not exactly_one_model(F)):
+    boardcopy = copyListOfLists(board)
+    organizer = addResult(boardcopy, organizer, numSolutions)
+    while (not restrict_solutions(F)):
         board[i][j] = val_now
         # After the square is emptied, the resulting sudoku must have a unique solution
         if notEmpty(board) == len(vals_tried):
@@ -80,8 +231,8 @@ def emptySquareNotUsingRowandCol(board, organizer):
         vals_tried.append((i,j)) # Now that this value has been tried, it does not have to be tried again
         F = createSudoku(board) # Make a new sudoku with our new constraints
         numSolutions = modelLength(F)
-        ## boardcopy = copy.deepcopy(board)
-        organizer = addResult(board, organizer, numSolutions)
+        boardcopy = copyListOfLists(board)
+        organizer = addResult(boardcopy, organizer, numSolutions)
     return board, vals_tried, organizer
 
 def emptySquareUsingRowandCol(board, organizer):
@@ -93,9 +244,9 @@ def emptySquareUsingRowandCol(board, organizer):
     vals_tried.append((i,j)) # Now that this value has been tried, it does not have to be tried again
     F = createSudoku(board) # Make a new sudoku with our new constraints
     numSolutions = modelLength(F)
-   ##  boardcopy = copy.deepcopy(board)
-    organizer = addResult(board, organizer, numSolutions)
-    while (not exactly_one_model(F)):
+    boardcopy = copyListOfLists(board)
+    organizer = addResult(boardcopy, organizer, numSolutions)
+    while (not restrict_solutions(F)):
         # After the square is emptied, the resulting sudoku must have a unique solution
         if notEmpty(board) == len(vals_tried):
             # If every value on the board has been emptied and all of them have not worked, no squares can be emptied and we can stop looking
@@ -106,22 +257,18 @@ def emptySquareUsingRowandCol(board, organizer):
         vals_tried.append((i,j)) # Now that this value has been tried, it does not have to be tried again
         F = createSudoku(board) # Make a new sudoku with our new constraints
         numSolutions = modelLength(F)
-        ## boardcopy = copy.deepcopy(board)
-        organizer = addResult(board, organizer, numSolutions)
+        boardcopy = copyListOfLists(board)
+        organizer = addResult(boardcopy, organizer, numSolutions)
     return board, vals_tried, organizer
 
 def addResult(board, organizer, numSolutions):
     board_added = False
-    print "board being added:"
-    print_matrix(board)
     for length in organizer.keys():
         if numSolutions == length:
             organizer[length].append((board, numSolutions))
             board_added = True
     if not board_added:
         organizer[1].append((numSolutions, "Num solutions too large!"))
-    print "printing the organizer...."
-    printOrganizer(organizer)
     return organizer
 
 def chooseSquare(board, vals_tried):
@@ -197,22 +344,25 @@ def notEmpty(board):
 
 def createOrganizer():
     organizer = {}
-    for i in range(1, 16):
+    for i in range(1, 50):
         organizer[i] = []
     return organizer
-def emptySquareNoUnique(board, useRowandCol):
+def emptySquareNoUnique(board, useRowandCol, organizer):
     if useRowandCol:
         i,j = chooseSquare(board, [])
     else:
         i = random.randint(0, 8)
         j = random.randint(0, 8)
     board[i][j] = 0
-    return board
+    F = createSudoku(board)
+    numSolutions = len(get_models(F, 50))
+    addResult(board, organizer, numSolutions)
+    return board, organizer
     
 def emptySquares(numsquares, useRowandCol, unique):
     vals_tried = [] # which box we have tried to change but they failed. A box value fails if we change it to empty and the resulting sudoku is not unique.
     organizer = createOrganizer()
-    r = genSudoku()
+    r = generate()
     if r != "failed to solve":
         while (numsquares >= 0):
             if unique:
@@ -226,19 +376,18 @@ def emptySquares(numsquares, useRowandCol, unique):
                 r = board_after
             else:
                 if useRowandCol:
-                    board_after = emptySquareNoUnique(r, True)
+                    board_after, organizer = emptySquareNoUnique(r, True, organizer)
                 if not useRowandCol:
-                    board_after = emptySquareNoUnique(r, False)
+                    board_after, organizer = emptySquareNoUnique(r, False, organizer)
                 numsquares -= 1
                 r = board_after
-                print_matrix(r)
-                print modelLength(createSudoku(r))
-        print printOrganizer(organizer)
+        print_matrix(r)
+        return organizer
     else:
         print r
 
 def printOrganizer(organizer):
-    for length in range(1,16):
+    for length in range(1,50):
         print "All models that have", length, "solution(s):"
         for board in organizer[length]:
             print "NEW BOARD PRINTING..."
@@ -250,14 +399,17 @@ def getInput():
     useRowandCol = raw_input("Would you like to restrict how the squares are emptied? (y or n) ")
     if useRowandCol == "y" and unique=="y":
         ## for i in range(10):
-        emptySquares(int(numsquares), True, True)
+        organizer = emptySquares(int(numsquares), True, True)
         ## print "-----------------------------NEW TRIAL-----------------------------\n"
     if useRowandCol =="y" and unique=="n":
-        emptySquares(int(numsquares), True, False)
+        organizer = emptySquares(int(numsquares), True, False)
     if useRowandCol =="n" and unique=="y":
-        emptySquares(int(numsquares), False, True)
+        organizer = emptySquares(int(numsquares), False, True)
     if useRowandCol == "n" and unique == "n":
-        emptySquares(int(numsquares), False, False)
+        organizer= emptySquares(int(numsquares), False, False)
+    like_to_print = raw_input("Would you like to print the organizer? ")
+    if like_to_print == "y":
+        printOrganizer(organizer)
 
 getInput()
 
