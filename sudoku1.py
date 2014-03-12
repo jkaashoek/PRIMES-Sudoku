@@ -86,6 +86,7 @@ def permutateDigits(board):
         lettersToNum[letters[i-1]] = shuffled[i-1]
     for a in range(9):
         for b in range(9):
+            # print "DEBUG:", board[a][b], a, b
             board[a][b] = numToLetters[board[a][b]]
     for c in range(9):
         for d in range(9):
@@ -125,16 +126,7 @@ def shuffle(board):
     return board
         
 
-def generate():
-    board = [[1, 3, 5, 4, 6, 8, 9, 7, 2],
-[7, 9, 6, 3, 5, 2, 4, 1, 8],
-[2, 4, 8, 9, 1, 7, 5, 6, 3],
-[5, 6, 9, 7, 2, 1, 3, 8, 4],
-[4, 2, 7, 8, 9, 3, 6, 5, 1],
-[3, 8, 1, 6, 4, 5, 2, 9, 7],
-[6, 1, 3, 5, 8, 4, 7, 2, 9],
-[8, 5, 4, 2, 7, 9, 1, 3, 6],
-[9, 7, 2, 1, 3, 6, 8, 4, 5]]
+def generate(board):
     shuffle(board)
     return board
 
@@ -200,7 +192,7 @@ def copyListOfLists(lists):
         res.append(res1)
     return res
 
-def emptySquareNotUsingRowandCol(board, organizer):
+def emptySquareNotUsingRowandCol(board, organizer, useOrganizer):
     # Empties a square without using row and column restriction
     vals_tried = []
     i = random.randint(0, 8) # random row
@@ -212,9 +204,12 @@ def emptySquareNotUsingRowandCol(board, organizer):
     board[i][j] =  0 # set cell to 0
     vals_tried.append((i,j)) # Now that this value has been tried, it does not have to be tried again
     F = createSudoku(board) # Make a new sudoku with our new constraints
-    numSolutions = modelLength(F)
-    boardcopy = copyListOfLists(board)
-    organizer = addResult(boardcopy, organizer, numSolutions)
+    if useOrganizer:
+        numSolutions = modelLength(F)
+        boardcopy = copyListOfLists(board)
+        organizer = addResult(boardcopy, organizer, numSolutions)
+    else:
+        organizer = addResult([], organizer, 1)
     while (not restrict_solutions(F)):
         board[i][j] = val_now
         # After the square is emptied, the resulting sudoku must have a unique solution
@@ -230,12 +225,15 @@ def emptySquareNotUsingRowandCol(board, organizer):
         board[i][j] =  0 # set cell to 0
         vals_tried.append((i,j)) # Now that this value has been tried, it does not have to be tried again
         F = createSudoku(board) # Make a new sudoku with our new constraints
-        numSolutions = modelLength(F)
-        boardcopy = copyListOfLists(board)
-        organizer = addResult(boardcopy, organizer, numSolutions)
+        if useOrganizer:
+            numSolutions = modelLength(F)
+            boardcopy = copyListOfLists(board)
+            organizer = addResult(boardcopy, organizer, numSolutions)
+        else:
+            organizer = addResult([], organizer, 1)
     return board, vals_tried, organizer
 
-def emptySquareUsingRowandCol(board, organizer):
+def emptySquareUsingRowandCol(board, organizer, useOrganizer):
     # Will empty a square using row and column restriction
     vals_tried = []
     i, j = chooseSquare(board, vals_tried) # Gets a square using row and column restriction
@@ -243,9 +241,12 @@ def emptySquareUsingRowandCol(board, organizer):
     board[i][j] =  0 # set cell to 0
     vals_tried.append((i,j)) # Now that this value has been tried, it does not have to be tried again
     F = createSudoku(board) # Make a new sudoku with our new constraints
-    numSolutions = modelLength(F)
-    boardcopy = copyListOfLists(board)
-    organizer = addResult(boardcopy, organizer, numSolutions)
+    if useOrganizer:
+        numSolutions = modelLength(F)
+        boardcopy = copyListOfLists(board)
+        organizer = addResult(boardcopy, organizer, numSolutions)
+    else:
+        organizer = addResult([], organizer, 1)
     while (not restrict_solutions(F)):
         # After the square is emptied, the resulting sudoku must have a unique solution
         if notEmpty(board) == len(vals_tried):
@@ -256,9 +257,12 @@ def emptySquareUsingRowandCol(board, organizer):
         board[i][j] =  0 # set cell to 0
         vals_tried.append((i,j)) # Now that this value has been tried, it does not have to be tried again
         F = createSudoku(board) # Make a new sudoku with our new constraints
-        numSolutions = modelLength(F)
-        boardcopy = copyListOfLists(board)
-        organizer = addResult(boardcopy, organizer, numSolutions)
+        if useOrganizer:
+            numSolutions = modelLength(F)
+            boardcopy = copyListOfLists(board)
+            organizer = addResult(boardcopy, organizer, numSolutions)
+        else:
+            organizer = addResult([], organizer, 1)
     return board, vals_tried, organizer
 
 def addResult(board, organizer, numSolutions):
@@ -347,42 +351,44 @@ def createOrganizer():
     for i in range(1, 50):
         organizer[i] = []
     return organizer
-def emptySquareNoUnique(board, useRowandCol, organizer):
+
+def emptySquareNoUnique(board, useRowandCol, organizer, useOrganizer):
     if useRowandCol:
         i,j = chooseSquare(board, [])
     else:
         i = random.randint(0, 8)
         j = random.randint(0, 8)
     board[i][j] = 0
-    F = createSudoku(board)
-    numSolutions = len(get_models(F, 50))
-    addResult(board, organizer, numSolutions)
+    if useOrganizer:
+        F = createSudoku(board)
+        numSolutions = len(get_models(F, 50))
+        addResult(board, organizer, numSolutions)
+    else:
+        addResult([], organizer, 1)
     return board, organizer
     
-def emptySquares(numsquares, useRowandCol, unique):
+def emptySquares(numsquares, useRowandCol, unique, useOrganizer, r):
     vals_tried = [] # which box we have tried to change but they failed. A box value fails if we change it to empty and the resulting sudoku is not unique.
     organizer = createOrganizer()
-    r = generate()
     if r != "failed to solve":
         while (numsquares >= 0):
             if unique:
                 if useRowandCol:
-                    board_after, vals_tried, organizer = emptySquareUsingRowandCol(r, organizer)
+                    board_after, vals_tried, organizer = emptySquareUsingRowandCol(r, organizer, useOrganizer)
                 if not useRowandCol:
-                    board_after, vals_tried, organizer = emptySquareNotUsingRowandCol(r, organizer)
+                    board_after, vals_tried, organizer = emptySquareNotUsingRowandCol(r, organizer, useOrganizer)
                 if notEmpty(board_after) == len(vals_tried):
                     break
                 numsquares -= 1
                 r = board_after
             else:
                 if useRowandCol:
-                    board_after, organizer = emptySquareNoUnique(r, True, organizer)
+                    board_after, organizer = emptySquareNoUnique(r, True, organizer, useOrganizer)
                 if not useRowandCol:
-                    board_after, organizer = emptySquareNoUnique(r, False, organizer)
+                    board_after, organizer = emptySquareNoUnique(r, False, organizer, useOrganizer)
                 numsquares -= 1
                 r = board_after
-        print_matrix(r)
-        return organizer
+        return organizer, r
     else:
         print r
 
@@ -394,26 +400,61 @@ def printOrganizer(organizer):
             print_matrix(board)
             
 def getInput():
+    board = [[1, 3, 5, 4, 6, 8, 9, 7, 2],
+    [7, 9, 6, 3, 5, 2, 4, 1, 8],
+    [2, 4, 8, 9, 1, 7, 5, 6, 3],
+    [5, 6, 9, 7, 2, 1, 3, 8, 4],
+    [4, 2, 7, 8, 9, 3, 6, 5, 1],
+    [3, 8, 1, 6, 4, 5, 2, 9, 7],
+    [6, 1, 3, 5, 8, 4, 7, 2, 9],
+    [8, 5, 4, 2, 7, 9, 1, 3, 6],
+    [9, 7, 2, 1, 3, 6, 8, 4, 5]]
+    r = generate(board)
+    board_copy = copyListOfLists(r)
     unique = raw_input("Would you like to restrict the number of solutions? (y or n) ")
     numsquares = raw_input("How many squares would you like to empty? 1-10 = easy, 11-30 = medium, 31-40 = hard. Please do not choose over 40 squares. ")
     useRowandCol = raw_input("Would you like to restrict how the squares are emptied? (y or n) ")
-    if useRowandCol == "y" and unique=="y":
-        ## for i in range(10):
-        organizer = emptySquares(int(numsquares), True, True)
-        ## print "-----------------------------NEW TRIAL-----------------------------\n"
-    if useRowandCol =="y" and unique=="n":
-        organizer = emptySquares(int(numsquares), True, False)
-    if useRowandCol =="n" and unique=="y":
-        organizer = emptySquares(int(numsquares), False, True)
-    if useRowandCol == "n" and unique == "n":
-        organizer= emptySquares(int(numsquares), False, False)
-    like_to_print = raw_input("Would you like to print the organizer? ")
-    if like_to_print == "y":
-        printOrganizer(organizer)
+    useOrganizer = raw_input("Would you like to use the organizer? (y or n) ")
+    if useOrganizer == "y":
+        useOrganizer = True
+    else:
+        useOrganizer = False
+    if useRowandCol == "y":
+        useRowandCol = True
+    else:
+        useRowandCol = False
+    if unique == "y":
+        unique = True
+    else:
+        unique = False
+    organizer, r = emptySquares(int(numsquares), useRowandCol, unique, useOrganizer, r)
+    print "INITIAL BOARD FOUND:"
+    print_matrix(r)
+    solutions = []
+    solutions.append(r)
+    for i in range(100):
+        nboard = copyListOfLists(board_copy)
+        board = createMoreSudoku(nboard, r)
+        solutions.append(board)
+    for sudoku in solutions:
+        print "BOARD FOUND AFTER SHUFFLE:"
+        print_matrix(sudoku)
+        
+def createMoreSudoku(starting_board, emptied_board):
+    empty_squares = rememberEmptySquares(emptied_board)
+    starting_board = shuffle(starting_board)
+    board = putBack(empty_squares, starting_board)
+    return board
+def putBack(empty_squares, board):
+    for pair in empty_squares:
+        board[pair[0]][pair[1]] = 0
+    return board
+def rememberEmptySquares(board):
+    empty_squares = []
+    for i in range(9):
+        for j in range(9):
+            if board[i][j] == 0:
+                empty_squares.append((i,j))
+    return empty_squares
 
 getInput()
-
-
-
-
-
