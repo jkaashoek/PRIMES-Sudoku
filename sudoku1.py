@@ -178,7 +178,6 @@ def genSudoku():
             for j in range(9):
                 res1.append(m.evaluate(X[i][j]))
             res.append(res1)
-    
         return res
     else:
         return "failed to solve"
@@ -199,7 +198,7 @@ def emptySquareNotUsingRowandCol(board, organizer, useOrganizer, vals_tried):
     while (not restrict_solutions(F)):
         board[i][j] = val_now
         # After the square is emptied, the resulting sudoku must have a unique solution
-        if notEmpty(board) == len(vals_tried):
+        if isDone(board, vals_tried):
             # If every value on the board has been emptied and all of them have not worked, no squares can be emptied and we can stop looking
             break
         i, j = getRandomIJ(board, vals_tried)
@@ -220,7 +219,7 @@ def emptySquareUsingRowandCol(board, organizer, useOrganizer, vals_tried):
     organizer, vals_tried, board, F =  trySquare(i, j, board, organizer, useOrganizer, vals_tried)
     while (not restrict_solutions(F)):
         # After the square is emptied, the resulting sudoku must have a unique solution
-        if notEmpty(board) == len(vals_tried): # If every value on the board has been emptied and all of them have not worked, no squares can be emptied and we can stop looking
+        if isDone(board, vals_tried): # If every value on the board has been emptied and all of them have not worked, no squares can be emptied and we can stop looking
             break
         i, j = chooseSquare(board, vals_tried)
         val_now = board[i][j] # value before the box changes to 0
@@ -313,14 +312,17 @@ def createSudoku(board):
                 F = valid_values + row_distinct + cols_distinct + three_by_three_distinct + already_set
     return F
 
-def notEmpty(board):
+def isDone(board, vals_tried):
     # Finds the number of sudoku squares that are empty
-    num_empty = 0
+    not_empty = []
     for i in range(9):
         for j in range(9):
             if (board[i][j] != 0):
-                num_empty += 1
-    return num_empty
+                not_empty.append((i,j))
+    for ij in not_empty:
+        if ij not in vals_tried:
+            return False
+    return True
 
 def createOrganizer():
     organizer = {}
@@ -351,11 +353,9 @@ def emptySquares(numsquares, useRowandCol, unique, useOrganizer, r):
             if unique:
                 if useRowandCol:
                     board_after, vals_tried, organizer = emptySquareUsingRowandCol(r, organizer, useOrganizer, vals_tried)
-                    print "Values tried:", vals_tried
                 if not useRowandCol:
                     board_after, vals_tried, organizer = emptySquareNotUsingRowandCol(r, organizer, useOrganizer, vals_tried)
-                print "Checking...:", notEmpty(board_after), len(vals_tried)
-                if notEmpty(board_after) == len(vals_tried):
+                if isDone(board_after, vals_tried):
                     break
                 numsquares -= 1
                 r = board_after
