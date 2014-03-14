@@ -1,7 +1,6 @@
 import random
 
 
-
 def makeList(listlength, l1, l2):
     # This is a simple program that randomly chooses a segment from l1 and l2 and appends them.
     # I am not sure if this is what this program is supposed to do...
@@ -16,12 +15,28 @@ def makeList(listlength, l1, l2):
     x += y
     return x
 
+def removePlaces(l, num_places):
+    location = len(l)
+    while num_places > 0:
+        while location >= len(l) or l[location] == "_":
+            location = random.randint(0, len(l)-1)
+        l[location] = "_"
+        num_places -= 1
+    return l
+
+def printList(l):
+    for i in range(len(l)):
+        print l[i],
+
 def getInput():
     listlength = raw_input("How long would you like the list to be? ")
+    num_places = raw_input("How many places would you like to remove? ")
+    num_places = int(num_places)
     listlength = int(listlength)
     l1 = [0, 4, 6, 7, 3, 9, 2, 4]
     l2 = [3, 43, 22, 0, -1, -7, 8, 83]
     myList = makeList(listlength, l1, l2)
-    print myList
+    myList = removePlaces(myList, num_places)
+    printList(myList)
 
 getInput()
