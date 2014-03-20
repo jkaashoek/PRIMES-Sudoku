@@ -1,0 +1,41 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html> <head>
+<title>Sudoku Website</title>
+</head>
+
+<body>
+<h1>Welcome to Sudoku!</h1>
+
+<form action="addPuzzles/" method="post" id="addPuzzles" name="addPuzzles" enctype="multipart/form-data"> {% csrf_token %}
+Click to add puzzles to database: <input type="submit" id="submit" name="submit" value="Add">
+</form>
+
+<br><br>
+
+<form action="genSudoku/" method="post" id="genSudoku" name="genSudoku" enctype="multipart/form-data"> {% csrf_token %}
+How many squares would you like to be emptied? <input type="number" name="numSquares" id="numSquares"><br>
+How many solutions would you like the puzzle to have? <input type="number" name="numSolutions" id="numSolutions"><br>
+<input type="submit" id="submit" name="submit" value="Generate">
+</form>
+
+<br><br>
+<table align="center">
+{% for row in board %}
+  <tr>
+{% for element in row %}
+    {% if element == 0 %}
+    <td><input type="text" width="5px"></td>
+    {% endif %}
+    {% if element != 0 %}
+    <td>{{element}}</td>
+    {% endif %}
+{% endfor %}
+</tr>
+{% endfor %}
+</table>
+<br>
+<p>Don't know how to play? Click <a href="howtoplay/">here</a>
+
+
+<address></address>
+</body> </html>
