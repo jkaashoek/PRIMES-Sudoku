@@ -1,0 +1,54 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html> <head>
+<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
+<link rel="stylesheet" href="../../../static/css/style.css">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+<title>Sudoku Website</title>
+</head>
+
+<body>
+<div>
+<form role="form" action="" method="post" id="genSudoku" name="genSudoku" enctype="multipart/form-data"> {% csrf_token %}
+<table align="center" class="sudokutable">
+{% for row in board %}
+  {% if forloop.counter|divisibleby:3 %}
+  <tr class="rowline">
+  {% else %}
+    <tr class="normal">
+    {% endif %}  
+      {% for val, col, row, wrong in row %}
+      {% if col and wrong %}
+	<td class="warning colline">
+	  <input class="tinput" type="text" name="{{forloop.parentloop.counter}}{{forloop.counter}}" placeholder="{{val}}">
+	  </td>
+	  {% elif not col and wrong %}
+	<td class="warning normal">
+	  <input class="tinput" type="text" name="{{forloop.parentloop.counter}}{{forloop.counter}}" placeholder="{{val}}">
+	  </td>
+	  {% elif not col and not wrong %}
+	<td class="normal">
+	  {% elif col and not wrong %}
+	  <td class="colline">
+	  {% endif %}
+	 
+      {% if val == 0 %}
+      <input class="tinput" type="text" name="{{forloop.parentloop.counter}}{{forloop.counter}}">
+      {% elif val != 0 and not wrong%}
+      <b>{{val}}</b>
+      {% endif %}
+      </td>
+      {% endfor %}
+    </tr>
+{% endfor %}
+</table>
+<br><br>
+<p align="center">Incorrect squares are shown as placeholders</p> <br>
+<input class="btn btn-block btn-success" type="submit" id="check" name="check" value="Check answers">
+</form>
+
+</div>
+
+
+
+</body> </html>

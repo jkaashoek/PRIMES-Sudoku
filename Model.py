@@ -50,6 +50,5 @@ def createSudoku(board):
         for j in range(9):
             if board[i][j] != 0:
                 already_set.append(X[i][j] == board[i][j])
-
     F = valid_values + row_distinct + cols_distinct + three_by_three_distinct + already_set
     return F

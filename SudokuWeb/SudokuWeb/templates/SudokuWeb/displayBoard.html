@@ -1,0 +1,46 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html> <head>
+<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
+<link rel="stylesheet" href="../../static/css/style.css">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+<title></title>
+</head>
+
+<body>
+<h1></h1>
+<div>
+<form role="form" action="checkSudoku/" method="post" id="genSudoku" name="genSudoku" enctype="multipart/form-data"> {% csrf_token %}
+<table align="center" class="sudokutable">
+{% for row in board %}
+    {% if forloop.counter|divisibleby:3 %}
+  <tr class="rowline">
+    {% else %}
+    <tr class="normal">
+    {% endif %}  
+      {% for element in row %}
+      {% if forloop.counter|divisibleby:3 %}
+      <td class="colline">
+	{% else %}
+	<td class="normal">
+	  {% endif %}
+      {% if element == 0 %}
+      <input class="tinput" type="text" name="{{forloop.parentloop.counter}}{{forloop.counter}}">
+      {% endif %}
+      {% if element != 0 %}
+      <b>{{element}}</b>
+      {% endif %}
+      </td>
+      {% endfor %}
+    </tr>
+{% endfor %}
+</table>
+<br><br>
+<input class="btn btn-block btn-success" type="submit" id="check" name="check" value="Check answers">
+</form>
+</div>
+
+<p>Want to try a different puzzle? Click <a href="/">here</a> </p>
+
+<address></address>
+</body> </html>
