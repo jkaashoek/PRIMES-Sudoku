@@ -41,6 +41,7 @@ def checkSudoku(request, board_id):
             user_board[location1][location2] = int(uin[0])
     print "BOARD:", user_board
     final = []
+    print user_board, board
     need_fixing = checkCorrect(board, user_board)
     print "NEED FIXING:", need_fixing
     for i in range(9):
@@ -114,7 +115,8 @@ def checkCorrect(board, user_board):
     correct_board = createSudoku(board)
     for i in range(9):
         for j in range(9):
-            if board[i][j] != user_board[i][j]:
+            correct_board[i][j] = correct_board[i][j].as_string()
+            if user_board[i][j] != 0 and correct_board[i][j] != '0' and str(correct_board[i][j]) != str(user_board[i][j]):
                 need_fixing.append((i,j))
     return need_fixing
 
