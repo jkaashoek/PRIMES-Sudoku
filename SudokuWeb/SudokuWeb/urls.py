@@ -16,6 +16,7 @@ urlpatterns = patterns('',
     url(r'^displayBoard/(\d+)/checkSudoku/$', views.checkSudoku, name='checkSudoku'),
     url(r'^displayBoard/(\d+)/displayBoard/$', views.displayBoard, name='checkSudoku'),
     url(r'^displayBoard/(\d+)/checkSudoku/displayBoard', views.displayBoard, name='displayBoard'),
+    url(r'^displayBoard/(\d+)/checkSudoku/rating', views.rating, name='rating'),
 
     # Uncomment the admin/doc line below to enable admin documentation:
     # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),

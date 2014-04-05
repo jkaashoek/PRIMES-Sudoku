@@ -9,3 +9,9 @@ class Puzzle(models.Model):
     boards = models.TextField(max_length=100000000, null=True)
     def _unicode_(self):
         return (self.board)
+
+class Rating(models.Model):
+    board = models.TextField(max_length=100000000, null=True)
+    rating = models.IntegerField(max_length=1)
+    def _unicode_(self):
+        return (self.rating)

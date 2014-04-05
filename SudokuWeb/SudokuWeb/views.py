@@ -9,7 +9,6 @@ import random
 import os
 
 def index(request):
-    print type(Puzzle.objects.all())
     if str(Puzzle.objects.all()) == str([]):
         show_form = False
     else:
@@ -22,9 +21,19 @@ def howtoplay(request):
 def checkedBoard(request, user_board, need_fixing):
     return render(request, 'SudokuWeb/checkedBoard.html', {'user_board':user_board, 'need_fixing':need_fixing})
 
+def rating(request, board_id):
+    board = Puzzle.objects.get(id=board_id).boards
+    rating = request.POST['optionsRadios']
+    rating = int(rating[-1])
+    rateob = Rating(
+        rating = rating,
+        board = board
+    )
+    rateob.save()
+    return HttpResponseRedirect(reverse('index'))
+
 def checkSudoku(request, board_id):
     board = Puzzle.objects.get(id=board_id).boards
-    print board
     board = makeList(board)
     user_board = copyListOfLists(board)
     user_inputs = []
@@ -39,18 +48,14 @@ def checkSudoku(request, board_id):
             location1 = uin[1][0]
             location2 = uin[1][1]
             user_board[location1][location2] = int(uin[0])
-    print "BOARD:", user_board
     final = []
-    print user_board, board
-    need_fixing = checkCorrect(board, user_board)
-    print "NEED FIXING:", need_fixing
+    need_fixing, correct = checkCorrect(board, user_board)
     for i in range(9):
         row = []
         for j in range(9):
                 row.append((user_board[i][j], atCol(i,j), atRow(i,j), (i,j) in need_fixing))
         final.append(row)
-    print final
-    return render(request, 'SudokuWeb/checkedBoard.html', {'board':final})
+    return render(request, 'SudokuWeb/checkedBoard.html', {'board':final, 'correct':correct})
    # return HttpResponseRedirect('SudokuWeb/displayBoard' + str(user_board) + str(need_fixing))
     #return redirect('displayBoard', user_board='user_board', need_fixing='need_fixing')
 
@@ -112,13 +117,15 @@ def addPuzzles(request):
 
 def checkCorrect(board, user_board):
     need_fixing = []
+    correct = True
     correct_board = createSudoku(board)
     for i in range(9):
         for j in range(9):
             correct_board[i][j] = correct_board[i][j].as_string()
             if user_board[i][j] != 0 and correct_board[i][j] != '0' and str(correct_board[i][j]) != str(user_board[i][j]):
+                correct = False
                 need_fixing.append((i,j))
-    return need_fixing
+    return need_fixing, correct
 
 def createSudoku(board):
     X = [[Int('x%d%d' % (i,j)) for i in range(9)] for j in range(9)]
