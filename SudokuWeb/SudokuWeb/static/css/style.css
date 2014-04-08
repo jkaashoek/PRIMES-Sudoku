@@ -26,3 +26,8 @@ tr{
 .warning {
     background: #A00000  ;
 }
+.jumbotron{
+    background: #202020  ;
+    font-color: white;
+}
+h1 {color:black;}

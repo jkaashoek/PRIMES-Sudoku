@@ -8,8 +8,10 @@
 </head>
 
 <body>
-<h1 align="center">Welcome to Sudoku!</h1>
+<br>
 
+<h1 align="center" class="heading">Welcome to Sudoku!</h1><br>
+ <div class="jumbotron">
 <div>
   {% if not show_form %}
   <p align="center"> Please add the puzzles to the database before continuing</p><br><br>
@@ -21,27 +23,41 @@ Click to add puzzles to database: <input class="btn btn-xs btn-primary"type="sub
   
 <br><br>
 <div>
+
+  
   {% if show_form %}
-<form class="form-horizontal" role="form" action="genSudoku/" method="post" id="genSudoku" name="genSudoku" enctype="multipart/form-data"> {% csrf_token %}
-  <div class="form-group">
-    <label for="numSquares" class="col-sm-4 control-label">Number of squares you would like to empty</label>
-    <div class="col-sm-1">
-      <input type="number" class="form-control" id="numSquares" name="numSquares">
+
+  <div class="row">
+    <form class="form-horizontal" role="form" action="genSudoku/" method="post" id="genSudoku" name="genSudoku" enctype="multipart/form-data"> {% csrf_token %}
+  <div class="col-sm-6 col-md-6">
+    <div class="thumbnail">
+      <div class="caption">
+        <h3 align="center">Choose a puzzle</h3>
+         Number of squares you would like to empty: <input type="number" class="form-control" id="numSquares" name="numSquares">
+	 Number of solutions you would like puzzle to have: <input
+    type="number" class="form-control" id="numSolutions"
+    name="numSolutions"> <br>
+        <p> <button type="submit" class="btn btn-default">Generate</button></p>
+      </div>
     </div>
   </div>
-  <div class="form-group">
-    <label for="numSolutions" class="col-sm-4 control-label">Number of solutions you would like puzzle to have</label>
-    <div class="col-sm-1">
-      <input type="number" class="form-control" id="numSolutions" name="numSolutions">
+  </form>
+  <form class="form-horizontal" role="form" action="genRandSudoku/" method="post" id="genRandSudoku" name="genRandSudoku" enctype="multipart/form-data"> {% csrf_token %}
+  <div class="col-sm-6 col-md-6">
+    <div class="thumbnail">
+      <div class="caption">
+        <h3 align="center">Or Generate a random puzzle</h3>
+	<br><br>
+        <p><button type="submit" class="btn btn-default">Generate</button></p>
+	<br><br><br>
+      </div>
     </div>
   </div>
-  <div class="form-group">
-    <div class="col-sm-offset-2 col-sm-10">
-      <button type="submit" class="btn btn-default">Generate</button>
-    </div>
-  </div>
-</form>
+  </form>
 </div>
+</div>
+</div>
+
 {% endif %}
 <br><br>
   <p algin="center">Don't know how to play? Click <a href="howtoplay/">here</a></p>

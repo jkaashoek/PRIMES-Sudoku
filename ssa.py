@@ -56,9 +56,10 @@ def countVar(variables, var):
 
 function =  """
 def series(t, d, n):
-   sum = 2 * t
-   sum = sum + d*(n-1)
-   final = sum * n/2
+   s = s
+   s = s
+   s = s
+   s = s
 """
 
 toSSA(function)

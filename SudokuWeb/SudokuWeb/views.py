@@ -21,6 +21,13 @@ def howtoplay(request):
 def checkedBoard(request, user_board, need_fixing):
     return render(request, 'SudokuWeb/checkedBoard.html', {'user_board':user_board, 'need_fixing':need_fixing})
 
+def genRandSudoku(request):
+    possible_objects = Puzzle.objects.all()
+    final_puzzle = random.choice(possible_objects)
+    board_id = final_puzzle.id
+    print "DEBUG:", final_puzzle, board_id
+    return redirect('displayBoard', board_id=board_id)
+
 def rating(request, board_id):
     board = Puzzle.objects.get(id=board_id).boards
     rating = request.POST['optionsRadios']
