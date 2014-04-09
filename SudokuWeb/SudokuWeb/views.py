@@ -5,6 +5,7 @@ from django.core.urlresolvers import reverse
 from models import *
 from django import forms
 from z3 import *
+import time
 import random
 import os
 
@@ -25,7 +26,7 @@ def genRandSudoku(request):
     possible_objects = Puzzle.objects.all()
     final_puzzle = random.choice(possible_objects)
     board_id = final_puzzle.id
-    print "DEBUG:", final_puzzle, board_id
+    request.session['start_time'] = time.time()
     return redirect('displayBoard', board_id=board_id)
 
 def rating(request, board_id):
@@ -33,8 +34,10 @@ def rating(request, board_id):
     rating = request.POST['optionsRadios']
     rating = int(rating[-1])
     rateob = Rating(
+        board_id = board_id,
         rating = rating,
-        board = board
+        board = board,
+        time_took = request.session['time_took']
     )
     rateob.save()
     return HttpResponseRedirect(reverse('index'))
@@ -57,6 +60,8 @@ def checkSudoku(request, board_id):
             user_board[location1][location2] = int(uin[0])
     final = []
     need_fixing, correct = checkCorrect(board, user_board)
+    if need_fixing == []:
+        request.session['time_took'] = time.time() - request.session['start_time']
     for i in range(9):
         row = []
         for j in range(9):
@@ -77,10 +82,10 @@ def atRow(x, y):
     return False
 
 def displayBoard(request, board_id):
-    print "first"
     puzzle = Puzzle.objects.get(id=board_id)
     final_board = puzzle.boards
     board = makeList(final_board)
+    request.session['start_time'] = time.time()
     return render(request, 'SudokuWeb/displayBoard.html', {'board':board})
 
 def genSudoku(request):
