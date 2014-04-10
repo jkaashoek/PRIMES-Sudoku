@@ -45,7 +45,9 @@
 </table>
 {% if not correct %}
 <p align="center">Incorrect squares are shown as placeholders</p>
-<input class="btn btn-block btn-success" type="submit" id="check"  name="check" value="Check answers">
+<input class="btn btn-block btn-success" type="submit" id="check" name="check" value="Check answers">
+Time since last check: <span id="timer"></span> <br>
+Total time before last check: {{ timesofar }} seconds
 {% endif %}
 
 </form>
@@ -90,7 +92,7 @@ On a scale of 1-5, how hard did you find this puzzle?
 <input class="btn btn-xs btn-default" type="submit" id="submit" name="submit" value="Submit">
 </form>
 {% endif %}
-<span id="timer"></span>
+
 <p>Want to try another puzzle? Click <a href="/">here</a> </p>
 
 </div>

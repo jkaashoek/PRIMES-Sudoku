@@ -10,6 +10,7 @@ import random
 import os
 
 def index(request):
+    request.session["num_click"] = 0
     if str(Puzzle.objects.all()) == str([]):
         show_form = False
     else:
@@ -37,37 +38,51 @@ def rating(request, board_id):
         board_id = board_id,
         rating = rating,
         board = board,
-        time_took = request.session['time_took']
+        time_took = request.session['time_took'],
+        num_clicks = request.session['num_click'],
     )
     rateob.save()
     return HttpResponseRedirect(reverse('index'))
 
 def checkSudoku(request, board_id):
+    request.session["num_click"] += 1
     board = Puzzle.objects.get(id=board_id).boards
     board = makeList(board)
     user_board = copyListOfLists(board)
-    user_inputs = []
+    oboard = request.session['old_board']
     for i in range(1,10):
         for j in range(1,10):
             string = str(i) + str(j)
             if string in request.POST.keys():
                 square = request.POST[string]
-                user_inputs.append((square, (i-1,j-1)))
-    for uin in user_inputs:
-        if uin[0] != '':
-            location1 = uin[1][0]
-            location2 = uin[1][1]
-            user_board[location1][location2] = int(uin[0])
+                if square != '':
+                    oboard[i-1][j-1] = int(square)
+    user_board = copyListOfLists(oboard)
+    ## except:
+    ##     user_inputs = []
+    ##     for i in range(1,10):
+    ##         for j in range(1,10):
+    ##             string = str(i) + str(j)
+    ##             if string in request.POST.keys():
+    ##                 square = request.POST[string]
+    ##                 user_inputs.append((square, (i-1,j-1)))
+    ##     for uin in user_inputs:
+    ##         if uin[0] != '':
+    ##             location1 = uin[1][0]
+    ##             location2 = uin[1][1]
+    ##             user_board[location1][location2] = int(uin[0])
+    request.session['old_board'] = user_board
     final = []
     need_fixing, correct = checkCorrect(board, user_board)
+    time_so_far = time.time() - request.session['start_time']
     if need_fixing == []:
-        request.session['time_took'] = time.time() - request.session['start_time']
+        request.session['time_took'] = time_so_far
     for i in range(9):
         row = []
         for j in range(9):
                 row.append((user_board[i][j], atCol(i,j), atRow(i,j), (i,j) in need_fixing))
         final.append(row)
-    return render(request, 'SudokuWeb/checkedBoard.html', {'board':final, 'correct':correct})
+    return render(request, 'SudokuWeb/checkedBoard.html', {'board':final, 'correct':correct, 'timesofar':int(time_so_far)})
    # return HttpResponseRedirect('SudokuWeb/displayBoard' + str(user_board) + str(need_fixing))
     #return redirect('displayBoard', user_board='user_board', need_fixing='need_fixing')
 
@@ -86,6 +101,7 @@ def displayBoard(request, board_id):
     final_board = puzzle.boards
     board = makeList(final_board)
     request.session['start_time'] = time.time()
+    request.session['old_board'] = board
     return render(request, 'SudokuWeb/displayBoard.html', {'board':board})
 
 def genSudoku(request):
@@ -94,7 +110,6 @@ def genSudoku(request):
     possible_objects = Puzzle.objects.filter(numEmpty=numEmpty, numSolutions=numSolutions)
     final_puzzle = random.choice(possible_objects)
     board_id = final_puzzle.id
-    print "DEBUG:", final_puzzle, board_id
     return redirect('displayBoard', board_id=board_id)
 
 def addPuzzles(request):
@@ -135,8 +150,13 @@ def checkCorrect(board, user_board):
         for j in range(9):
             correct_board[i][j] = correct_board[i][j].as_string()
             if user_board[i][j] != 0 and correct_board[i][j] != '0' and str(correct_board[i][j]) != str(user_board[i][j]):
-                correct = False
                 need_fixing.append((i,j))
+    for i in range(9):
+        for j in range(9):
+            if user_board[i][j] == 0:
+                correct = False
+    if need_fixing != []:
+        correct = False
     return need_fixing, correct
 
 def createSudoku(board):
