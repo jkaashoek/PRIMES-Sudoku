@@ -16,16 +16,39 @@ def toSSA(function):
                 locations.append(i)
             except ValueError:
                 continue
-    variables = changeVars(variables) 
-    for l in locations:
-        for var in variables:  
-            if len(var) > 2 and var[2] <= l:
-                if lines[l].index(" = ") > lines[l].index(var[0]):
-                    lines[l] = lines[l].replace(var[0], var[1], 1)
-                else:
-                    lines[l] = lines[l].replace(var[0], var[1])
+    lines = changessa(lines, variables)
     for line in lines:
         print line
+        print "\n"
+
+def changessa(lines, variables):
+    oldtonew = {}
+    for line in lines:
+        try:
+            equalloc = line.index("=")
+            for var in variables:
+                if var in line[equalloc:]:
+                    if var in oldtonew.keys():
+                        line[equalloc:].replace(var, oldtonew[var])
+                if var in line[0:equalloc]:
+                    isin, loc, var = varinline(variables, line)
+                    count = countBefore(loc, variables, var)
+                    if count > 0:
+                        oldtonew[var] = var + str(count)
+        except:
+            for var in variables:
+                if var in line and var in oldtonew.keys():
+                    line[equalloc:].replace(var, oldtonew[var])
+        return lines
+            
+            
+            
+
+def varinline(variables, line):
+    for i in range(len(variables)):
+        if variables[i] in line:
+            return True, i, variables[i]
+    return False
 
 def changeVars(variables):
     for i in range(len(variables)):
@@ -47,10 +70,10 @@ def removeSpace(variable):
     return variable
             
 
-def countVar(variables, var):
+def countBefore(loc, variables, var):
     count = 0
-    for i in variables:
-        if i[0] == var:
+    for i in range(loc):
+        if variables[i] == var:
             count += 1
     return count
 
@@ -72,4 +95,8 @@ toSSA(function)
 ##     Int(final) = sum1 * n / 2
 ##     s = Solver()
 ##     s.add(summ, sum1, final)
-    
+
+
+We have: all variables and lines
+Go through each line. If a variable that has shown up before is set equal to something, this variable will become the var + the # of time that var appears before that.
+We will add to a dict the old value of the variable, mapping to the new one. Ev=

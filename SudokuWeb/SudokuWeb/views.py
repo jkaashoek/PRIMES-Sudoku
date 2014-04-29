@@ -24,8 +24,9 @@ def checkedBoard(request, user_board, need_fixing):
     return render(request, 'SudokuWeb/checkedBoard.html', {'user_board':user_board, 'need_fixing':need_fixing})
 
 def genRandSudoku(request):
-    possible_objects = Puzzle.objects.all()
-    final_puzzle = random.choice(possible_objects)
+    num_rows = Puzzle.objects.all().count()
+    rand_id = random.randint(0, num_rows) 
+    final_puzzle = Puzzle.objects.get(id = rand_id)
     board_id = final_puzzle.id
     request.session['start_time'] = time.time()
     return redirect('displayBoard', board_id=board_id)
@@ -58,22 +59,9 @@ def checkSudoku(request, board_id):
                 if square != '':
                     oboard[i-1][j-1] = int(square)
     user_board = copyListOfLists(oboard)
-    ## except:
-    ##     user_inputs = []
-    ##     for i in range(1,10):
-    ##         for j in range(1,10):
-    ##             string = str(i) + str(j)
-    ##             if string in request.POST.keys():
-    ##                 square = request.POST[string]
-    ##                 user_inputs.append((square, (i-1,j-1)))
-    ##     for uin in user_inputs:
-    ##         if uin[0] != '':
-    ##             location1 = uin[1][0]
-    ##             location2 = uin[1][1]
-    ##             user_board[location1][location2] = int(uin[0])
     request.session['old_board'] = user_board
     final = []
-    need_fixing, correct = checkCorrect(board, user_board)
+    need_fixing, correct = checkCorrect(board_id, user_board)
     time_so_far = time.time() - request.session['start_time']
     if need_fixing == []:
         request.session['time_took'] = time_so_far
@@ -85,6 +73,58 @@ def checkSudoku(request, board_id):
     return render(request, 'SudokuWeb/checkedBoard.html', {'board':final, 'correct':correct, 'timesofar':int(time_so_far)})
    # return HttpResponseRedirect('SudokuWeb/displayBoard' + str(user_board) + str(need_fixing))
     #return redirect('displayBoard', user_board='user_board', need_fixing='need_fixing')
+
+def checkCorrect(board_id, user_board):
+    need_fixing = []
+    correct = True
+    correct_board = findClosest(board_id, user_board)
+    print "SOLUTION FOUND:", correct_board
+    for i in range(9):
+        for j in range(9):
+            if user_board[i][j] != 0 and correct_board[i][j] != '0' and str(correct_board[i][j]) != str(user_board[i][j]):
+                need_fixing.append((i,j))
+    for i in range(9):
+        for j in range(9):
+            if user_board[i][j] == 0:
+                correct = False
+    if need_fixing != []:
+        correct = False
+    return need_fixing, correct
+
+def findClosest(board_id, board):
+    solutions = getSolutions(board_id)
+    solution_goingfor = []
+    greatestequal = 0
+    for solution in solutions:
+        print "NUM EQUAL:", findNumEqual(board, solution), greatestequal
+        if findNumEqual(board, solution) >= greatestequal:
+            greatestequal = findNumEqual(board, solution)
+            if solution_goingfor == []:
+                solution_goingfor.append(solution)
+            else:
+                solution_goingfor.remove(solution_goingfor[0])
+                solution_goingfor.append(solution)
+    return solution_goingfor[0]
+
+def findNumEqual(board, solution):
+    numequal = 0
+    for i in range(9):
+        for j in range(9):
+            if int(board[i][j]) == int(solution[i][j]):
+                numequal += 1
+    return numequal
+                
+def getSolutions(board_id):
+    puzzle = Puzzle.objects.get(id=board_id)
+    solutions = []
+    for i in range(1,30):
+        try_solution = "solution" + str(i)
+        trying = getattr(puzzle, try_solution)
+        if trying != None:
+            solution = makeList(trying)
+            solutions.append(solution)
+    print "ALL SOLS FOR BOARD:", solutions
+    return solutions
 
 def atCol(x, y):
     if (y+1)%3==0:
@@ -114,50 +154,43 @@ def genSudoku(request):
 
 def addPuzzles(request):
     file_names = []
-    for path, subdirs, files in os.walk('Puzzles'):
-        #print "HERE"
+    for path, subdirs, files in os.walk('puzzles_sols'):
         for filename in files:
             f = os.path.join(filename)
             if f != ".DS_Store":
-                location = f.index("-")
-                num_solutions = f[0:location]
-                numEmpty = f[location+1:location+3]
-                print num_solutions, numEmpty
-                #if numEmpty >41 and num_solutions != 1:
-                    #print "NUMBERS:",  num_solutions, numEmpty
-                with open("Puzzles/" + f, "r") as myfile:
-                    puzzles = myfile.readlines()
-                    # print puzzles
-                    list_puzzles =[]
-                    for puzzle in puzzles:
+                location1 = f.index("-")
+                location2 = f.index(".")
+                num_solutions = int(f[0:location1])
+                numEmpty = f[location1+1:location2]
+                i = 0
+                with open("puzzles_sols/" + f, "r") as myfile:
+                    boards = myfile.readlines()
+                    while i < len(boards):
+                        solutions = []
+                        puzzle = boards[i]
                         puzzle.replace('\n', '')
-                        strs = puzzle.replace('[','').split('],')
-                        board = [map(int, s.replace(']','').split(',')) for s in strs]
-                        #print board
-                        puzzle = Puzzle(
-                        numSolutions=num_solutions,
-                        numEmpty=numEmpty,
-                        boards = board
-                        )
-                        puzzle.save()
+                        board = makeList(puzzle)
+                        sol = 1
+                        while sol <= num_solutions:
+                            j = i + sol
+                            try:
+                                solution = boards[j]
+                                solution.replace('\n', '')
+                                solutions.append(makeList(solution))
+                                sol += 1
+                            except:
+                                sol += 1
+                        dbpuz = Puzzle()
+                        dbpuz.numSolutions=num_solutions
+                        dbpuz.numEmpty=numEmpty
+                        dbpuz.boards = board
+                        for k in range(len(solutions)):
+                            solname = "solution" + str(k+1)
+                            setattr(dbpuz, solname, solutions[k])
+                        dbpuz.save()
+                        addon = num_solutions + 1
+                        i += addon
     return HttpResponseRedirect(reverse('index'))
-
-def checkCorrect(board, user_board):
-    need_fixing = []
-    correct = True
-    correct_board = createSudoku(board)
-    for i in range(9):
-        for j in range(9):
-            correct_board[i][j] = correct_board[i][j].as_string()
-            if user_board[i][j] != 0 and correct_board[i][j] != '0' and str(correct_board[i][j]) != str(user_board[i][j]):
-                need_fixing.append((i,j))
-    for i in range(9):
-        for j in range(9):
-            if user_board[i][j] == 0:
-                correct = False
-    if need_fixing != []:
-        correct = False
-    return need_fixing, correct
 
 def createSudoku(board):
     X = [[Int('x%d%d' % (i,j)) for i in range(9)] for j in range(9)]
@@ -194,4 +227,6 @@ def copyListOfLists(lists):
             res1.append(lists[i][j])
         res.append(res1)
     return res
+
+
 ## Through form, get the values user inputs. We know the id of the board, so use that to find the board in the database. Fill in the board with the user's inputs. FIll in the board with z3 (there will only be one solutsion for now) Find where they differ (be sure those places are not places the user inputted a 0. Return a list of all of the locations that were different. In HTML, use for loops to recreate the user's board. While filling in the board, go through locations that were incorrect and if the user is incorrect, highlight the square red.
