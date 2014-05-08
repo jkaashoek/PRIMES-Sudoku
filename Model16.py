@@ -59,9 +59,9 @@ def createSudoku(board):
         r = [ [ m.evaluate(X[i][j]) for j in range(16) ] for i in range(16) ]
     return r
 
-time = time.time()
+timeInit = time.time()
 board = createSudoku([])
-timelater = time.time()
+timeLater = time.time()
 print board
-print "time to run:", time-timelater
+print "time to run:", timeLater-timeInit
 
