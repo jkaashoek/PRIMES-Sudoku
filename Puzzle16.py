@@ -1,6 +1,6 @@
 import random
-from Generator import *
-from Model import *
+from Generator16 import *
+from Model16 import *
 
 class Puzzle:
 
@@ -24,7 +24,7 @@ class Puzzle:
             for j in range(16):
                 if (((i, j) not in self.__emptiedSquares) and ((i, j) not in self.__valsTried)):
                     ls.append((i, j))
-        if (len(self.__emptiedSquares) + len(self.__valsTried) == 216):
+        if (len(self.__emptiedSquares) + len(self.__valsTried) == 256):
             return -1, -1
         else:
             i, j = random.choice(ls)
@@ -61,6 +61,8 @@ class Puzzle:
         tempBoard[i][j] =  0 # set cell to 0
         F = createSudoku(tempBoard)
         self.__currNumSolutions = len(get_models(F, self.__nSolutions + 1))
+        print "currNumSols = ", self.__currNumSolutions
+        print "nSolutions = ", self.__nSolutions
         return (self.__currNumSolutions <= self.__nSolutions and self.__currNumSolutions > 0)
 
     def getPuzzle(self):
@@ -76,4 +78,7 @@ class Puzzle:
     def puzzleID(self):
         return self.__currNumSolutions, len(self.__emptiedSquares)
 
-
+ap = Puzzle(1, 256)
+ap.printPuzzle()
+ap.empty()
+ap.printPuzzle()
