@@ -55,15 +55,14 @@ def createSudoku(board):
         s.add(valid_values + row_distinct + cols_distinct + three_by_three_distinct + already_set)
         if s.check() == sat:
             m = s.model()
-            r = [ [ m.evaluate(X[i][j]) for j in range(16) ] for i in range(16) ]
+            r = [ [ m.evaluate(X[i][j]) for j in range(25) ] for i in range(25) ]
         return r
-    else:
-        for i in range(25):
-            for j in range(25):
-                if board[i][j] != 0:
-                    already_set.append(X[i][j] == board[i][j])
-        F = valid_values + row_distinct + cols_distinct + three_by_three_distinct + already_set
-        return F
+    ## for i in range(25):
+    ##     for j in range(25):
+    ##         if board[i][j] != 0:
+    ##             already_set.append(X[i][j] == board[i][j])
+    ## F = valid_values + row_distinct + cols_distinct + three_by_three_distinct + already_set
+    ## return F
 
 timeInit = time.time()
 board = createSudoku([])

@@ -2,6 +2,8 @@ import random
 from Generator25 import *
 from Model25 import *
 
+print "In the file"
+
 class Puzzle:
 
     def __init__(self, nSolutions, nEmpty):
@@ -78,7 +80,9 @@ class Puzzle:
     def puzzleID(self):
         return self.__currNumSolutions, len(self.__emptiedSquares)
 
-ap = Puzzle(1, 256)
+print "Got here"
+ap = Puzzle(1, 30)
+print "Gen puzzle"
 ap.printPuzzle()
 ap.empty()
 ap.printPuzzle()
