@@ -2,7 +2,7 @@ import random
 from Generator16 import *
 from Model16 import *
 
-class Puzzle:
+class Puzzle16:
 
     def __init__(self, nSolutions, nEmpty):
         self.__fullBoard = new() #create new sudoku board from generator
@@ -78,7 +78,7 @@ class Puzzle:
     def puzzleID(self):
         return self.__currNumSolutions, len(self.__emptiedSquares)
 
-ap = Puzzle(1, 256)
-ap.printPuzzle()
-ap.empty()
-ap.printPuzzle()
+## ap = Puzzle16(1, 256)
+## ap.printPuzzle()
+## ap.empty()
+## ap.printPuzzle()

@@ -50,23 +50,23 @@ def createSudoku(board):
     three_by_three_distinct = [ Distinct([X[5*k + i][5*l + j] for i in range(5) for j in range(5)]) for k in range(5) for l in range(5)]
     # There are values already set in the board, which we need to take into account
     already_set = []
-    if board == []:
-        s = Solver()
-        s.add(valid_values + row_distinct + cols_distinct + three_by_three_distinct + already_set)
-        if s.check() == sat:
-            m = s.model()
-            r = [ [ m.evaluate(X[i][j]) for j in range(25) ] for i in range(25) ]
-        return r
-    ## for i in range(25):
-    ##     for j in range(25):
-    ##         if board[i][j] != 0:
-    ##             already_set.append(X[i][j] == board[i][j])
-    ## F = valid_values + row_distinct + cols_distinct + three_by_three_distinct + already_set
-    ## return F
+    ## if board == []:
+    ##     s = Solver()
+    ##     s.add(valid_values + row_distinct + cols_distinct + three_by_three_distinct + already_set)
+    ##     if s.check() == sat:
+    ##         m = s.model()
+    ##         r = [ [ m.evaluate(X[i][j]) for j in range(25) ] for i in range(25) ]
+    ##     return r
+    for i in range(25):
+        for j in range(25):
+            if board[i][j] != 0:
+                already_set.append(X[i][j] == board[i][j])
+    F = valid_values + row_distinct + cols_distinct + three_by_three_distinct + already_set
+    return F
 
-timeInit = time.time()
-board = createSudoku([])
-timeLater = time.time()
-print board
-print "time to run:", timeLater-timeInit
+## timeInit = time.time()
+## board = createSudoku([])
+## timeLater = time.time()
+## print board
+## print "time to run:", timeLater-timeInit
 

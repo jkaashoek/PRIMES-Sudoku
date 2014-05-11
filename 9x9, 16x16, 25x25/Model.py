@@ -62,8 +62,8 @@ def createSudoku(board):
         F = valid_values + row_distinct + cols_distinct + three_by_three_distinct + already_set
         return F
     
-timeInit = time.time()
-board = createSudoku([])
-timeLater = time.time()
-print board
-print "time to run:", timeLater-timeInit
+## timeInit = time.time()
+## board = createSudoku([])
+## timeLater = time.time()
+## print board
+## print "time to run:", timeLater-timeInit

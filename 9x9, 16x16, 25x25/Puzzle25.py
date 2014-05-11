@@ -2,9 +2,8 @@ import random
 from Generator25 import *
 from Model25 import *
 
-print "In the file"
 
-class Puzzle:
+class Puzzle25:
 
     def __init__(self, nSolutions, nEmpty):
         self.__fullBoard = new() #create new sudoku board from generator
@@ -80,9 +79,7 @@ class Puzzle:
     def puzzleID(self):
         return self.__currNumSolutions, len(self.__emptiedSquares)
 
-print "Got here"
-ap = Puzzle(1, 30)
-print "Gen puzzle"
-ap.printPuzzle()
-ap.empty()
-ap.printPuzzle()
+## ap = Puzzle25(1, 30)
+## ap.printPuzzle()
+## ap.empty()
+## ap.printPuzzle()
