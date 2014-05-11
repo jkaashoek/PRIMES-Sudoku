@@ -1,4 +1,5 @@
 from z3 import *
+import time
     
 def get_models(F, M):
     result = []
@@ -46,9 +47,23 @@ def createSudoku(board):
     three_by_three_distinct = [ Distinct([X[3*k + i][3*l + j] for i in range(3) for j in range(3)]) for k in range(3) for l in range(3)]
     # There are values already set in the board, which we need to take into account
     already_set = []
-    for i in range(9):
-        for j in range(9):
-            if board[i][j] != 0:
-                already_set.append(X[i][j] == board[i][j])
-    F = valid_values + row_distinct + cols_distinct + three_by_three_distinct + already_set
-    return F
+    if board == []:
+        s = Solver()
+        s.add(valid_values + row_distinct + cols_distinct + three_by_three_distinct + already_set)
+        if s.check() == sat:
+            m = s.model()
+            r = [ [ m.evaluate(X[i][j]) for j in range(9) ] for i in range(9) ]
+        return r
+    else:
+        for i in range(9):
+            for j in range(9):
+                if board[i][j] != 0:
+                    already_set.append(X[i][j] == board[i][j])
+        F = valid_values + row_distinct + cols_distinct + three_by_three_distinct + already_set
+        return F
+    
+timeInit = time.time()
+board = createSudoku([])
+timeLater = time.time()
+print board
+print "time to run:", timeLater-timeInit
