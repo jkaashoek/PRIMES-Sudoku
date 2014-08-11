@@ -51,7 +51,7 @@ class Puzzle16:
         if ((i, j) != (-1, -1)):
             self.__emptiedBoard[i][j] = 0
             self.__emptiedSquares.append((i, j))
-            self.reset()
+            #self.reset()
         else:
             self.__continue = False
 
