@@ -49,14 +49,16 @@ def createSudoku(board):
     # Every 3 x 3 square should be disntinct
     three_by_three_distinct = [ Distinct([X[5*k + i][5*l + j] for i in range(5) for j in range(5)]) for k in range(5) for l in range(5)]
     # There are values already set in the board, which we need to take into account
-    already_set = []
-    ## if board == []:
-    ##     s = Solver()
-    ##     s.add(valid_values + row_distinct + cols_distinct + three_by_three_distinct + already_set)
-    ##     if s.check() == sat:
-    ##         m = s.model()
-    ##         r = [ [ m.evaluate(X[i][j]) for j in range(25) ] for i in range(25) ]
-    ##     return r
+    if board == []:
+        s = Solver()
+        s.add(valid_values + row_distinct + cols_distinct + three_by_three_distinct)
+        if s.check() == sat:
+            m = s.model()
+            r = [ [ m.evaluate(X[i][j]) for j in range(25) ] for i in range(25) ]
+        return r
+
+    
+     already_set = []
     for i in range(25):
         for j in range(25):
             if board[i][j] != 0:

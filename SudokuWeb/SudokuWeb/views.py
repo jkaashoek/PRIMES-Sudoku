@@ -17,6 +17,9 @@ def index(request):
         show_form = True
     return render(request, 'SudokuWeb/index.html', {'board':[], 'show_form':show_form})
 
+def about(request):
+    return render(request, 'SudokuWeb/about.html', {})
+
 def howtoplay(request):
 	return render(request, 'SudokuWeb/howtoplay.html', {})
 

@@ -10,6 +10,7 @@ urlpatterns = patterns('',
     # url(r'^SudokuWeb/', include('SudokuWeb.foo.urls')),
     url(r'^$', views.index, name='index'),
     url(r'^howtoplay/$', views.howtoplay, name='howtoplay'),
+    url(r'^about/$', views.about, name='about'),
     url(r'^genSudoku/$', views.genSudoku, name='generate'),
     url(r'^genRandSudoku/$', views.genRandSudoku, name='genRandSudoku'),
     url(r'^addPuzzles/$', views.addPuzzles, name='addPuzzles'),
@@ -18,6 +19,7 @@ urlpatterns = patterns('',
     url(r'^displayBoard/(\d+)/displayBoard/$', views.displayBoard, name='checkSudoku'),
     url(r'^displayBoard/(\d+)/checkSudoku/displayBoard', views.displayBoard, name='displayBoard'),
     url(r'^displayBoard/(\d+)/checkSudoku/rating', views.rating, name='rating'),
+    
 
     # Uncomment the admin/doc line below to enable admin documentation:
     # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
