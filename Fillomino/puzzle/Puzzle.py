@@ -78,10 +78,3 @@ class Puzzle:
     def puzzleID(self):
         return self.__currNumSolutions, len(self.__emptiedSquares)
 
-N = 5
-
-p = Puzzle(1, N*N, N)
-p.empty()
-p.getOriginalBoard()
-p.printPuzzle()
-
