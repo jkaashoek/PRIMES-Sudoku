@@ -52,6 +52,7 @@ class Puzzle:
 
         if ((i, j) != (-1, -1)):
             self.__emptiedBoard[i][j] = 0
+            self.__currNumSolutions = self.__solutionsAfterEmptying
             self.__emptiedSquares.append((i, j))
         else:
             self.__continue = False
@@ -61,9 +62,9 @@ class Puzzle:
         tempBoard = copyListOfLists(self.__emptiedBoard)
         tempBoard[i][j] =  0 # set cell to 0
         F = createFillomino(tempBoard, self.__N)
-        self.__currNumSolutions = len(get_models(F, self.__nSolutions + 1, self.__N))
-        print("solutions: " + str(self.__currNumSolutions));
-        return (self.__currNumSolutions <= self.__nSolutions and self.__currNumSolutions > 0)
+        self.__solutionsAfterEmptying = len(get_models(F, self.__nSolutions + 1, self.__N))
+        print("solutions: " + str(self.__solutionsAfterEmptying));
+        return (self.__solutionsAfterEmptying <= self.__nSolutions and self.__solutionsAfterEmptying > 0)
 
     def getPuzzle(self):
         return self.__emptiedBoard
@@ -77,4 +78,12 @@ class Puzzle:
 
     def puzzleID(self):
         return self.__currNumSolutions, len(self.__emptiedSquares)
+
+'''
+N = 5
+
+p = Puzzle(1, N*N, N)
+p.empty()
+p.getOriginalBoard()
+p.printPuzzle()'''
 
