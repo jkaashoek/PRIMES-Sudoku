@@ -208,12 +208,20 @@ def createFillominoNew(board, N, origBoard):
     #init_constraints=[cells[0][0]==3, cells[0][1]==4]
     #init_constraints=[And(cells[0][0]==1)]
 
+    init_constraints_a = [ Implies(board[i][j] != 0,
+                      cells[i][j] == board[i][j])
+                  for i in range(N) for j in range(N) ]
+    init_constraints_b = [Or([And([board[i][j] == 0,
+                             Not(cells[i][j] == origBoard[i][j])])
+                  for i in range(N) for j in range(N) ])]
+
+    
     init_constraints = [ If(board[i][j] == 0,
                       Not(cells[i][j] == origBoard[i][j]),
                       cells[i][j] == board[i][j])
                   for i in range(N) for j in range(N) ]
 
-    F = valid_cells + edge_val_constraints + in_cell_constraints + same_value_constraint + size_region_constraint + init_constraints
+    F = valid_cells + edge_val_constraints + in_cell_constraints + same_value_constraint + size_region_constraint + init_constraints_a + init_constraints_b
     return F
 
 
