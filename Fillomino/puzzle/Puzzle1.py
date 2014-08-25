@@ -1,6 +1,6 @@
 import random
 from genBoard import *
-from Model import *
+from Model1 import *
 
 class Puzzle:
 
