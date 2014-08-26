@@ -3,7 +3,7 @@ from django.contrib import admin
 from django.contrib.auth.models import User, Group, Permission
 
 
-class Puzzle(models.Model):
+class Sudoku(models.Model):
     numSolutions = models.IntegerField(max_length=4)
     numEmpty = models.IntegerField(max_length=2)
     boards = models.TextField(max_length=100000000, null=True)
@@ -43,7 +43,14 @@ class Puzzle(models.Model):
     def _unicode_(self):
         return (self.board)
 
-class Rating(models.Model):
+class Fillomino(models.Model):
+    # numSolutions = models.IntegerField(max_length=4)
+    numEmpty = models.IntegerField(max_length=2)
+    boards = models.TextField(max_length=100000000, null=True)
+    size = models.IntegerField(max_length=2)
+    solution = models.TextField(max_length=100000000, null=True)
+
+class FillominoRating(models.Model):
     board = models.TextField(max_length=100000000, null=True)
     board_id = models.IntegerField(max_length=30)
     time_took = models.IntegerField(max_length=50)
@@ -52,4 +59,12 @@ class Rating(models.Model):
     def _unicode_(self):
         return (self.rating)
 
-## all in one col or one col for each board?
+class SudokuRating(models.Model):
+    board = models.TextField(max_length=100000000, null=True)
+    board_id = models.IntegerField(max_length=30)
+    time_took = models.IntegerField(max_length=50)
+    num_clicks = models.IntegerField(max_length=50)
+    rating = models.IntegerField(max_length=1)
+    def _unicode_(self):
+        return (self.rating)
+

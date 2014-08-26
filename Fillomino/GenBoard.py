@@ -1,6 +1,5 @@
 import random
 
-N = 31
 
 def genEmptyBoard():
     board = []
@@ -127,8 +126,11 @@ def filler():
         seq_length = selectLength(len(squares_available))
         add_squares = getPossSquares(start, board, seq_length, seq_length, [])
         board = addSquares(board, add_squares)
-    showBoard(board)
+    return board
 
-filler()
+for i in range(5, 20):
+    for j in range(10):
+        N = i
+        print filler()
 
        

@@ -10,35 +10,81 @@ import random
 import os
 
 def index(request):
-    request.session["num_click"] = 0
-    if str(Puzzle.objects.all()) == str([]):
+    if str(Sudoku.objects.all()) == str([]):
         show_form = False
     else:
         show_form = True
-    return render(request, 'SudokuWeb/index.html', {'board':[], 'show_form':show_form})
+    return render(request, 'SudokuWeb/index.html',  {'show_form':show_form})
+
+def addPuzzles(request):
+    addFillomino()
+    addSudokus()
+    return HttpResponseRedirect(reverse('index'))
+
+## ---------------------- FILLOMINO PUZZLE CODE ----------------------
+def Fillomino_Home(request):
+    sizes = []
+    fillos = Fillomino.objects.all()
+    for puzzle in fillos:
+        if puzzle.size not in sizes:
+            sizes.append(puzzle.size)
+    print sizes
+    return render(request, 'SudokuWeb/FillominoHome.html', {'sizes':sizes})
+
+def addFillomino():
+    with open("boards.txt") as myfile:
+        boards = myfile.readlines()
+        for board in boards:
+            board = makeList(board)
+            fillo = Fillomino()
+            fillo.solution = board
+            fillo.numEmpty = 0
+            fillo.size = len(board)
+            fillo.save()
+    return
+
+def displayFillomino(request, size):
+    poss_vals = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+    boards = Fillomino.objects.filter(size=size)
+    selected = random.choice(boards)
+    board = selected.solution
+    board = makeList(board)
+    return render(request, 'SudokuWeb/displayFillomino.html', {'board':board})
+
+def genRandFillomino(request):
+    num_rows = Fillomino.objects.all().count()
+    rand_id = random.randint(0, num_rows) 
+    final_puzzle = makeList(Fillomino.objects.get(id = rand_id).solution)
+    return render(request, 'SudokuWeb/displayFillomino.html', {'board':final_puzzle})
+
+## ---------------------- SUDOKU PUZZLE CODE ----------------------
+
+def Sudoku_Home(request):
+    request.session["num_click"] = 0
+    return render(request, 'SudokuWeb/SudokuHome.html', {'board':[]})
 
 def about(request):
     return render(request, 'SudokuWeb/about.html', {})
 
-def howtoplay(request):
-	return render(request, 'SudokuWeb/howtoplay.html', {})
+def howtoplaySudoku(request):
+	return render(request, 'SudokuWeb/howtoplaySudoku.html', {})
 
 def checkedBoard(request, user_board, need_fixing):
-    return render(request, 'SudokuWeb/checkedBoard.html', {'user_board':user_board, 'need_fixing':need_fixing})
+    return render(request, 'SudokuWeb/checkedSudoku.html', {'user_board':user_board, 'need_fixing':need_fixing})
 
 def genRandSudoku(request):
-    num_rows = Puzzle.objects.all().count()
+    num_rows = Sudoku.objects.all().count()
     rand_id = random.randint(0, num_rows) 
-    final_puzzle = Puzzle.objects.get(id = rand_id)
+    final_puzzle = Sudoku.objects.get(id = rand_id)
     board_id = final_puzzle.id
     request.session['start_time'] = time.time()
-    return redirect('displayBoard', board_id=board_id)
+    return redirect('displaySudoku', board_id=board_id)
 
-def rating(request, board_id):
-    board = Puzzle.objects.get(id=board_id).boards
+def ratingSudoku(request, board_id):
+    board = Sudoku.objects.get(id=board_id).boards
     rating = request.POST['optionsRadios']
     rating = int(rating[-1])
-    rateob = Rating(
+    rateob = SudokuRating(
         board_id = board_id,
         rating = rating,
         board = board,
@@ -50,7 +96,7 @@ def rating(request, board_id):
 
 def checkSudoku(request, board_id):
     request.session["num_click"] += 1
-    board = Puzzle.objects.get(id=board_id).boards
+    board = Sudoku.objects.get(id=board_id).boards
     board = makeList(board)
     user_board = copyListOfLists(board)
     oboard = request.session['old_board']
@@ -73,15 +119,12 @@ def checkSudoku(request, board_id):
         for j in range(9):
                 row.append((user_board[i][j], atCol(i,j), atRow(i,j), (i,j) in need_fixing))
         final.append(row)
-    return render(request, 'SudokuWeb/checkedBoard.html', {'board':final, 'correct':correct, 'timesofar':int(time_so_far)})
-   # return HttpResponseRedirect('SudokuWeb/displayBoard' + str(user_board) + str(need_fixing))
-    #return redirect('displayBoard', user_board='user_board', need_fixing='need_fixing')
+    return render(request, 'SudokuWeb/checkedSudoku.html', {'board':final, 'correct':correct, 'timesofar':int(time_so_far)})
 
 def checkCorrect(board_id, user_board):
     need_fixing = []
     correct = True
     correct_board = findClosest(board_id, user_board)
-    print "SOLUTION FOUND:", correct_board
     for i in range(9):
         for j in range(9):
             if user_board[i][j] != 0 and correct_board[i][j] != '0' and str(correct_board[i][j]) != str(user_board[i][j]):
@@ -99,7 +142,6 @@ def findClosest(board_id, board):
     solution_goingfor = []
     greatestequal = 0
     for solution in solutions:
-        print "NUM EQUAL:", findNumEqual(board, solution), greatestequal
         if findNumEqual(board, solution) >= greatestequal:
             greatestequal = findNumEqual(board, solution)
             if solution_goingfor == []:
@@ -118,7 +160,7 @@ def findNumEqual(board, solution):
     return numequal
                 
 def getSolutions(board_id):
-    puzzle = Puzzle.objects.get(id=board_id)
+    puzzle = Sudoku.objects.get(id=board_id)
     solutions = []
     for i in range(1,30):
         try_solution = "solution" + str(i)
@@ -126,7 +168,6 @@ def getSolutions(board_id):
         if trying != None:
             solution = makeList(trying)
             solutions.append(solution)
-    print "ALL SOLS FOR BOARD:", solutions
     return solutions
 
 def atCol(x, y):
@@ -139,23 +180,23 @@ def atRow(x, y):
         return True
     return False
 
-def displayBoard(request, board_id):
-    puzzle = Puzzle.objects.get(id=board_id)
+def displaySudoku(request, board_id):
+    puzzle = Sudoku.objects.get(id=board_id)
     final_board = puzzle.boards
     board = makeList(final_board)
     request.session['start_time'] = time.time()
     request.session['old_board'] = board
-    return render(request, 'SudokuWeb/displayBoard.html', {'board':board})
+    return render(request, 'SudokuWeb/displaySudoku.html', {'board':board})
 
 def genSudoku(request):
     numEmpty = int(request.POST["numSquares"])
     numSolutions = int(request.POST["numSolutions"])
-    possible_objects = Puzzle.objects.filter(numEmpty=numEmpty, numSolutions=numSolutions)
+    possible_objects = Sudoku.objects.filter(numEmpty=numEmpty, numSolutions=numSolutions)
     final_puzzle = random.choice(possible_objects)
     board_id = final_puzzle.id
-    return redirect('displayBoard', board_id=board_id)
+    return redirect('displaySudoku', board_id=board_id)
 
-def addPuzzles(request):
+def addSudokus():
     file_names = []
     for path, subdirs, files in os.walk('puzzles_sols'):
         for filename in files:
@@ -183,7 +224,7 @@ def addPuzzles(request):
                                 sol += 1
                             except:
                                 sol += 1
-                        dbpuz = Puzzle()
+                        dbpuz = Sudoku()
                         dbpuz.numSolutions=num_solutions
                         dbpuz.numEmpty=numEmpty
                         dbpuz.boards = board
@@ -193,7 +234,7 @@ def addPuzzles(request):
                         dbpuz.save()
                         addon = num_solutions + 1
                         i += addon
-    return HttpResponseRedirect(reverse('index'))
+    return 
 
 def createSudoku(board):
     X = [[Int('x%d%d' % (i,j)) for i in range(9)] for j in range(9)]
@@ -217,6 +258,8 @@ def createSudoku(board):
         r = [ [ m.evaluate(X[i][j]) for j in range(9) ] for i in range(9) ]
     return r
 
+## GENERAL CODE
+
 def makeList(string):
     strs = string.replace('[','').split('],')
     board = [map(int, s.replace(']','').split(',')) for s in strs]
@@ -231,5 +274,3 @@ def copyListOfLists(lists):
         res.append(res1)
     return res
 
-
-## Through form, get the values user inputs. We know the id of the board, so use that to find the board in the database. Fill in the board with the user's inputs. FIll in the board with z3 (there will only be one solutsion for now) Find where they differ (be sure those places are not places the user inputted a 0. Return a list of all of the locations that were different. In HTML, use for loops to recreate the user's board. While filling in the board, go through locations that were incorrect and if the user is incorrect, highlight the square red.

@@ -1,0 +1,30 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html> <head>
+<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
+<link rel="stylesheet" href="../../static/css/style.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+<title>Sudoku Website</title>
+</head>
+
+<body>
+<a href="/">Home</a>
+<h1 align="center">Welcome to Fillomino!</h1>
+
+<div class="btn-group">
+  <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+    Choose Puzzle Size
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu">
+    {% for size in sizes %}
+    <li>
+    <a href="{% url 'displayFillomino' size %}">{{size}} x {{size}}</a>
+    </li>
+    {% endfor %}
+  </ul>
+</div>
+or: <a href="genRandFillomino/" type = "button">Generate Random Puzzle</a>
+
+</body> </html>

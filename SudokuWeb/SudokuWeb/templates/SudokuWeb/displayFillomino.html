@@ -1,0 +1,51 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html> <head>
+<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
+<link rel="stylesheet" href="../../static/css/style.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<script type="text/javascript" src="../../static/Javascripts/timer.js"></script>
+</head>
+
+<body>
+ <a href="/">Home</a><break>
+<h1></h1>
+<table align="center" class="filloboard">
+{% for row in board %}
+  <tr>
+  {% for cell in row %}
+    {% if cell == 1 %}
+    <td class = "one">{{ cell }}
+      
+    {% elif cell == 2 %}
+    <td class = "two">{{ cell }}
+      
+      {% elif cell == 3 %}
+    <td class = "three">{{ cell }}
+      
+      {% elif cell == 4 %}
+    <td class = "four">{{ cell }}
+      
+      {% elif cell == 5 %}
+    <td class = "five">{{ cell }}
+      
+      {% elif cell == 6 %}
+    <td class = "six">{{ cell }}
+      
+      {% elif cell == 7 %}
+    <td class = "seven">{{ cell }}
+      
+      {% elif cell == 8 %}
+    <td class = "eight">{{ cell }}
+      
+      {% else %}
+    <td class = "nine">{{ cell }}
+      {% endif %}
+  {% endfor %}
+  </tr>
+{% endfor %}
+</table>
+
+ <a href="/FillominoHome/">Choose Another Fillomino</a><break>
+
+</body> </html>
