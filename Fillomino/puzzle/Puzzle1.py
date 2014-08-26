@@ -58,9 +58,17 @@ class Puzzle:
         else:
             self.__continue = False
 
+    def haveNeighborInSameRegion(self, i, j, tempBoard):
+        t1 = i-1>=0 and tempBoard[i][j] == tempBoard[i-1][j]
+        t2 = i+1<N and tempBoard[i][j] == tempBoard[i+1][j]
+        t3 = j-1>=0 and tempBoard[i][j] == tempBoard[i][j-1]
+        t4 = j+1<N and tempBoard[i][j] == tempBoard[i][j+1]
+        return t1 or t2 or t3 or t4
+
     def validSquare(self, i, j):
         #val_now = board[i][j] # value before the box changes to 0
         tempBoard = copyListOfLists(self.__emptiedBoard)
+        if (not self.haveNeighborInSameRegion(i,j,tempBoard)) : return False
         tempBoard[i][j] =  0 # set cell to 0
         F = createFillominoNew(tempBoard, self.__N, self.__fullBoard)
         return get_models_new(F)
@@ -84,7 +92,7 @@ class Puzzle:
         return self.__currNumSolutions, len(self.__emptiedSquares)
 
 
-N = 5
+N = 6
 
 p = Puzzle(1, N*N, N)
 p.empty()
