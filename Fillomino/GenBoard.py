@@ -10,7 +10,7 @@ def genEmptyBoard():
             board[i].append(0)
     return board
 
-def selectLength(avail_squares):
+def selectLength(avail_squares, start, board):
     poss_lengths = []
     length = 0
     if avail_squares < 9:
@@ -19,8 +19,19 @@ def selectLength(avail_squares):
     else:
         for i in range(8):
             poss_lengths.append(i+1)
+    poss_lengths = removeLengths(start, poss_lengths, board)
     length = random.choice(poss_lengths)
     return length
+
+def removeLengths(start, poss_lengths, board):
+    adj = getAdj(start[0], start[1], False)
+    copy = poss_lengths[0:]
+    for length in poss_lengths:
+        for i in adj:
+            if board[i[0]][i[1]] == length and length != 1:
+                copy.remove(length)
+                break
+    return copy
 
 def randomDirection(start, board):
     directions = [(0,1), (0,-1), (1, 0), (-1, 0)]
@@ -118,19 +129,32 @@ def addSquares(board, squares):
                 board[i][j] = len(squares)
     return board
 
+def checkSelected(board, selected, length):
+    for square in selected:
+        adj = getAdj(square[0], square[1], False)
+        for s in adj:
+            if s not in selected and board[s[0]][s[1]] == length and length != 1:
+                return False
+    return True
+
+def runFill(board):
+    start = findStart(board)
+    squares_available = countPossSquares(start, board, [])
+    seq_length = selectLength(len(squares_available), start, board)
+    add_squares = getPossSquares(start, board, seq_length, seq_length, [])
+    return add_squares, seq_length
+    
 def filler():
     board = genEmptyBoard()
     while not isFull(board):
-        start = findStart(board)
-        squares_available = countPossSquares(start, board, [])
-        seq_length = selectLength(len(squares_available))
-        add_squares = getPossSquares(start, board, seq_length, seq_length, [])
+        add_squares, seq_length = runFill(board)
+        while not checkSelected(board, add_squares, seq_length):
+            add_squares, seq_length = runFill(board)
         board = addSquares(board, add_squares)
     return board
 
-for i in range(5, 20):
-    for j in range(10):
-        N = i
-        print filler()
+
+N = 20
+showBoard(filler())
 
        

@@ -28,7 +28,6 @@ def Fillomino_Home(request):
     for puzzle in fillos:
         if puzzle.size not in sizes:
             sizes.append(puzzle.size)
-    print sizes
     return render(request, 'SudokuWeb/FillominoHome.html', {'sizes':sizes})
 
 def addFillomino():
