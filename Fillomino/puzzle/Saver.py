@@ -1,7 +1,7 @@
 import json
-from Puzzle import Puzzle
+from Puzzle1 import Puzzle
 from genBoard import*
-from Model import*
+from Model1 import*
 import random
 
 def main():
@@ -16,9 +16,31 @@ def main():
         p.empty()
         filNam = str(N) + "-" + str(p.puzzleID()[0]) + "-" + str(p.puzzleID()[1]) + ".txt"
         out = open(filNam, 'a')
-        json.dump(p.getPuzzle(), out)
-        out.write('\n')
-        out.close()
         
+        emptyBoard = p.getPuzzle()
+        fullBoard = p.getOriginalBoard()
+        addTransformations(emptyBoard, fullBoard, out)
+        out.close()
+
+def addTransformations(emptyBoard, fullBoard, out):
+    for i in range(4):
+        json.dump(emptyBoard, out)
+        out.write('\n')
+        json.dump(fullBoard, out)
+        out.write('\n')
+        rotate(emptyBoard)
+        rotate(fullBoard)
+    
+    verticalReflect(emptyBoard)
+    verticalReflect(fullBoard)
+
+    for i in range(4):
+        json.dump(emptyBoard, out)
+        out.write('\n')
+        json.dump(fullBoard, out)
+        out.write('\n')
+        rotate(emptyBoard)
+        rotate(fullBoard)
+
 
 main()

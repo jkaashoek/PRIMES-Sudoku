@@ -98,7 +98,7 @@ def lessThan(i,j,k,l):
 
 def createFillomino(board, N):
     cells = [[Int("x%d%d" % (i,j)) for i in range(1,N+1)] for j in range(1,N+1)]
-    valid_cells = [And(cells[i][j] <= N, cells[i][j] >=1) for i in range(N) for j in range(N)]
+    valid_cells = [And(cells[i][j] <= 8, cells[i][j] >=1) for i in range(N) for j in range(N)]
 
     edge_var={}
 
@@ -136,7 +136,7 @@ def createFillomino(board, N):
 
     size_region_constraint=[]
     size_cell = [[ Int("size%d%d" % (i,j)) for i in range(N)] for j in range(N)]
-    size_region_constraint=[And(size_cell[i][j] >=1, size_cell[i][j]<=N) for i in range(N) for j in range(N)]
+    size_region_constraint=[And(size_cell[i][j] >=1, size_cell[i][j]<=8) for i in range(N) for j in range(N)]
 
     for i in range(N):
         for j in range(N):
