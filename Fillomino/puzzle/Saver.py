@@ -9,6 +9,8 @@ def main():
     nSolutions = int(input("How many solutions should the puzzle have? "))
     nEmpty = N*N
     count = int(input("how many puzzles this session? "))
+        
+    runTimes = open("runTimes" + str(N) + "x" + str(N) + ".txt", 'a') #comment out for no run times
 
     for i in range(count):
         print("Generating puzzle " + str(i))
@@ -21,6 +23,14 @@ def main():
         fullBoard = p.getOriginalBoard()
         addTransformations(emptyBoard, fullBoard, out)
         out.close()
+
+        #comment out for no run times
+        runTimes.write(str(p.runTime()))
+        runTimes.write('\n')
+        runTimes.write(str(p.puzzleID()[1]))
+        runTimes.write('\n')
+
+    runTimes.close() #comment out for no run times
 
 def addTransformations(emptyBoard, fullBoard, out):
     for i in range(4):
