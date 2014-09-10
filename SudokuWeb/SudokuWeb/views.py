@@ -23,38 +23,119 @@ def addPuzzles(request):
 
 ## ---------------------- FILLOMINO PUZZLE CODE ----------------------
 def Fillomino_Home(request):
+    request.session["num_fillo_clicks"] = 0
     sizes = []
     fillos = Fillomino.objects.all()
     for puzzle in fillos:
         if puzzle.size not in sizes:
             sizes.append(puzzle.size)
+    sizes.sort()
     return render(request, 'SudokuWeb/FillominoHome.html', {'sizes':sizes})
 
 def addFillomino():
-    with open("boards.txt") as myfile:
-        boards = myfile.readlines()
-        for board in boards:
-            board = makeList(board)
-            fillo = Fillomino()
-            fillo.solution = board
-            fillo.numEmpty = 0
-            fillo.size = len(board)
-            fillo.save()
+    for path, subdirs, files in os.walk('fillomino_puzzles'):
+        for filename in files:
+            f = os.path.join(filename)
+            if f != ".DS_Store":
+                location1 = f.index("-")
+                location2 = f.rfind("-")
+                location3 = f.index(".")
+                size = int(f[0:location1])
+                numSolutions = int(f[location1+1:location2])
+                numEmpty = int(f[location2+1:location3])
+                with open("fillomino_puzzles/" + f, "r") as myfile:
+                    count = 0
+                    boards = myfile.readlines()
+                    for board in boards:
+                        if count % 2 == 0:
+                            fillo = Fillomino()
+                            fillo.boards = boards[count]
+                            fillo.solution = boards[count+1]
+                            fillo.numEmpty = numEmpty
+                            fillo.size = size
+                            fillo.save()
+                        count += 1
     return
 
-def displayFillomino(request, size):
+def genFillomino(request, size):
     poss_vals = [1, 2, 3, 4, 5, 6, 7, 8, 9]
     boards = Fillomino.objects.filter(size=size)
     selected = random.choice(boards)
-    board = selected.solution
-    board = makeList(board)
-    return render(request, 'SudokuWeb/displayFillomino.html', {'board':board})
+    board_id = selected.id
+    return redirect('displayFillomino', board_id=board_id)
+
+def displayFillomino(request, board_id):
+    puzzle = Fillomino.objects.get(id=board_id)
+    board = makeList(puzzle.boards)
+    request.session['start_fillo'] = time.time()
+    request.session['old_fillo'] =board
+    return render(request, 'SudokuWeb/displayFillomino.html', {'board':board}) 
 
 def genRandFillomino(request):
     num_rows = Fillomino.objects.all().count()
     rand_id = random.randint(0, num_rows) 
-    final_puzzle = makeList(Fillomino.objects.get(id = rand_id).solution)
-    return render(request, 'SudokuWeb/displayFillomino.html', {'board':final_puzzle})
+    final_puzzle_id = makeList(Fillomino.objects.get(id = rand_id).id)
+    return redirect('displayFillomino', board_id=final_puzzle_id)
+
+def checkFillomino(request, board_id):
+    request.session["num_fillo_clicks"] += 1
+    answers = request.POST
+    print answers
+    incorrect = []
+    puzzle = Fillomino.objects.get(id=board_id)
+    solution = makeList(puzzle.solution)
+    board = makeList(puzzle.boards)
+    user_board = copyListOfLists(board)
+    old_board = request.session['old_fillo']
+    for i in range(puzzle.size):
+        for j in range(puzzle.size):
+            square = str(i+1) + str(j+1)
+            if square in answers.keys() and answers[square] != '':
+                old_board[int(square[0])-1][int(square[1])-1] = int(answers[square])
+    user_board = copyListOfLists(old_board)
+    request.session['old_fillo'] = user_board
+    fillo_time_so_far = time.time() - request.session['start_fillo']
+    for i in range(len(solution)):
+        for j in range(len(solution)):
+            if user_board[i][j] != 0 and user_board[i][j] != solution[i][j]:
+                incorrect.append((i,j))
+    final = []
+    for i in range(len(solution)):
+        row = []
+        for j in range(len(solution)):
+            if (i,j) in incorrect:
+                row.append((user_board[i][j], 0))
+            else:
+                row.append((user_board[i][j], 1))
+        final.append(row)
+    if incorrect == [] and isFull(user_board):
+        request.session['fillo_time'] = fillo_time_so_far
+        correct = True
+    else:
+        correct = False
+    print "DEBUG", fillo_time_so_far
+    return render(request, 'SudokuWeb/checkedFillomino.html', {'board':final, 'correct':correct, 'time_so_far':int(fillo_time_so_far)})
+
+def isFull(board):
+    for i in range(len(board)):
+        for j in range(len(board)):
+            if board[i][j] == 0:
+                return False
+    return True
+
+def ratingFillomino(request, board_id):
+    board = Fillomino.objects.get(id=board_id).boards
+    rating = request.POST['optionsRadios']
+    rating = int(rating[-1])
+    rateob = FillominoRating(
+        board_id = board_id,
+        rating = rating,
+        board = board,
+        time_took = request.session['fillo_time'],
+        num_clicks = request.session['num_fillo_clicks'],
+    )
+    rateob.save()
+    return HttpResponseRedirect(reverse('index'))
 
 ## ---------------------- SUDOKU PUZZLE CODE ----------------------
 

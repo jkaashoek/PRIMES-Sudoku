@@ -10,6 +10,7 @@
 <body>
  <a href="/">Home</a><break>
 <h1></h1>
+<form role="form" action="checkFillomino/" method="post" id="genSudoku" name="genSudoku" enctype="multipart/form-data"> {% csrf_token %}
 <table align="center" class="filloboard">
 {% for row in board %}
   <tr>
@@ -38,14 +39,21 @@
       {% elif cell == 8 %}
     <td class = "eight">{{ cell }}
       
-      {% else %}
+      {% elif cell == 9 %}
     <td class = "nine">{{ cell }}
+
+      {% elif cell == 0 %}
+      <td><input class="finput" type="text" name="{{forloop.parentloop.counter}}{{forloop.counter}}">
+      
       {% endif %}
   {% endfor %}
   </tr>
 {% endfor %}
 </table>
-
+<br>
+<input class="btn btn-block btn-success" type="submit" id="check" name="check" value="Check answers">
+</form>
+Time since started: <span id="timer"></span>
  <a href="/FillominoHome/">Choose Another Fillomino</a><break>
 
 </body> </html>

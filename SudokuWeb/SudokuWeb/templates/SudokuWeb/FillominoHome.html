@@ -20,7 +20,7 @@
   <ul class="dropdown-menu">
     {% for size in sizes %}
     <li>
-    <a href="{% url 'displayFillomino' size %}">{{size}} x {{size}}</a>
+    <a href="{% url 'genFillomino' size %}">{{size}} x {{size}}</a>
     </li>
     {% endfor %}
   </ul>

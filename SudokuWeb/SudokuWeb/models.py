@@ -45,7 +45,8 @@ class Sudoku(models.Model):
 
 class Fillomino(models.Model):
     # numSolutions = models.IntegerField(max_length=4)
-    numEmpty = models.IntegerField(max_length=2)
+    numEmpty = models.IntegerField(max_length=3)
+    numSolutions = models.IntegerField(max_length=2, null=True)
     boards = models.TextField(max_length=100000000, null=True)
     size = models.IntegerField(max_length=2)
     solution = models.TextField(max_length=100000000, null=True)

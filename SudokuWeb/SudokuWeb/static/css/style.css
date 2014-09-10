@@ -44,3 +44,9 @@ h1 {color:black;}
 .seven {background: #CC3399;}
 .eight {background: #66CCCC;}
 .nine {background: #663300;}
+
+.finput {
+    width: 60px;
+    height: 60px;
+    text-align: center;
+}
