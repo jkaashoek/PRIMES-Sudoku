@@ -1,0 +1,73 @@
+\title{Automatically Generating Puzzles of Different Complexity}
+\author{}
+\date{\today}
+
+\documentclass[12pt]{article}
+
+\usepackage{amsfonts}
+\usepackage{amsthm}
+
+\begin{document}
+\maketitle
+
+\input{macros}
+
+\section{General Approach}
+
+\begin{definition}
+We define a puzzle board $\puzzleboard$ to be a two dimensional $n
+\times m$ board. Let $\puzzleval$ denote a function that assigns
+values to the squares on the puzzle board such that the value of the
+square $(i,j)$ is defined by $\puzzleval(i,j)$, where $1 \leq i \leq
+n$, $1 \leq j \leq m$, $V: \natnumbers \times \natnumbers \rightarrow
+\puzzledomain$, and $\puzzledomain$ denotes the set of all possible
+values the puzzle squares can take.
+\end{definition}
+
+The main components of our technique are:
+\begin{itemize}
+\item{A declarative definition of puzzle $\puzzledecl$}
+\item{A Complexity Function : $\puzzlecomplexity$}
+\item{A set of Transformation Functions : $\puzzletransformset$}
+\end{itemize}
+
+\begin{definition}
+A declarative definition of puzzle $\puzzledecl$ defines constraints over the set of valid values $\puzzleval(i,j)$ that puzzle squares can take.
+\end{definition}
+
+\begin{definition}
+The complexity function $\puzzlecomplexity : \puzzleboard \rightarrow
+\complexityrange$ takes a puzzle board $puzzleboard$ as input and maps
+it to a finite class of hardness levels denoted by $\complexityrange$.
+\end{definition}
+
+\begin{definition}
+A transformation function $\puzzletransform : \puzzleboard \rightarrow \puzzleboard$ takes a puzzle board as input and transforms it another puzzle board such that the new puzzle board also satisfies the puzzle constraints. The set of all transformation functions are denoted by $\puzzletransformset$.
+\end{definition}
+
+\begin{verbatim}
+The General Puzzle Creation Algorithm
+P_I = GetRandomPuzzle(P_D)
+
+While isRemoveValid(P_c,i,j):
+  P_c = P_c - {i,j}
+  For T \in T_P:
+    R = R U T(P_c)
+
+For P \in R:
+  D[F_c(P)] = P
+\end{verbatim}
+
+The algorithm first uses an off-the-shelf constraint solver to solve
+the puzzle constraints $P_D$ to get an initial random board
+configuration. It then starts removing the value at a square (i,j)
+until there are no more square values remaining to be removed. The
+algorithm uses the isValidSquare function to check if certain puzzle
+constraints hold after removing the square value (i,j). An example
+isRemoveOK function is that the Number of solutions to the puzzle
+after removing the square value is only $1$. Let $P_c$ denote the puzzle
+obtained after removing a valid square. We then apply a set of
+transformation functions $T_P$ to get a set of new puzzles.
+
+
+\end{document}
