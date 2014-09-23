@@ -1,12 +1,12 @@
-from Model import *
-from Generator import *
-from Puzzle import *
-from Model16 import *
-from Generator16 import *
-from Puzzle16 import *
-from Model25 import *
-from Generator25 import *
-from Puzzle25 import *
+#from Model import *
+#from Generator import *
+#from Puzzle import *
+#from Model16 import *
+#from Generator16 import *
+#from Puzzle16 import *
+#from Model25 import *
+#from Generator25 import *
+#from Puzzle25 import *
 import pylab
 import numpy
 from scipy import *
