@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012/MacPorts 2012_10) (format=pdflatex 2013.8.31)  25 SEP 2014 22:00
+=======
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2014.5.25)  25 SEP 2014 21:56
+>>>>>>> 4835d29e31030ebc3634808e77aa0c5384a3a0fd
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -44,6 +48,7 @@ Package: amsthm 2009/07/02 v2.20.1
 \thm@headsep=\skip45
 \dth@everypar=\toks20
 )
+<<<<<<< HEAD
 (/opt/local/share/texmf-texlive-dist/tex/latex/graphics/graphicx.sty
 Package: graphicx 1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
 
@@ -52,6 +57,44 @@ Package: keyval 1999/03/16 v1.13 key=value parser (DPC)
 \KV@toks@=\toks21
 )
 (/opt/local/share/texmf-texlive-dist/tex/latex/graphics/graphics.sty
+=======
+(/usr/local/texlive/2014/texmf-dist/tex/latex/algorithms/algorithm.sty
+Package: algorithm 2009/08/24 v0.1 Document Style `algorithm' - floating enviro
+nment
+
+(/usr/local/texlive/2014/texmf-dist/tex/latex/float/float.sty
+Package: float 2001/11/08 v1.3d Float enhancements (AL)
+\c@float@type=\count87
+\float@exts=\toks21
+\float@box=\box26
+\@float@everytoks=\toks22
+\@floatcapt=\box27
+)
+(/usr/local/texlive/2014/texmf-dist/tex/latex/base/ifthen.sty
+Package: ifthen 2001/05/26 v1.1c Standard LaTeX ifthen package (DPC)
+)
+\@float@every@algorithm=\toks23
+\c@algorithm=\count88
+)
+(/usr/local/texlive/2014/texmf-dist/tex/latex/algorithms/algorithmic.sty
+Package: algorithmic 2009/08/24 v0.1 Document Style `algorithmic'
+
+(/usr/local/texlive/2014/texmf-dist/tex/latex/graphics/keyval.sty
+Package: keyval 2014/05/08 v1.15 key=value parser (DPC)
+\KV@toks@=\toks24
+)
+\c@ALC@unique=\count89
+\c@ALC@line=\count90
+\c@ALC@rem=\count91
+\c@ALC@depth=\count92
+\ALC@tlm=\skip46
+\algorithmicindent=\skip47
+)
+(/usr/local/texlive/2014/texmf-dist/tex/latex/graphics/graphicx.sty
+Package: graphicx 2014/04/25 v1.0g Enhanced LaTeX Graphics (DPC,SPQR)
+
+(/usr/local/texlive/2014/texmf-dist/tex/latex/graphics/graphics.sty
+>>>>>>> 4835d29e31030ebc3634808e77aa0c5384a3a0fd
 Package: graphics 2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
 
 (/opt/local/share/texmf-texlive-dist/tex/latex/graphics/trig.sty
@@ -71,7 +114,7 @@ Package: infwarerr 2010/04/08 v1.3 Providing info/warning/error messages (HO)
 (/opt/local/share/texmf-texlive-dist/tex/generic/oberdiek/ltxcmds.sty
 Package: ltxcmds 2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
 )
-\Gread@gobject=\count87
+\Gread@gobject=\count93
 ))
 \Gin@req@height=\dimen103
 \Gin@req@width=\dimen104
@@ -104,6 +147,7 @@ Package: listings 2007/02/22 1.4 (Carsten Heinz)
 (./main.aux)
 \openout1 = `main.aux'.
 
+<<<<<<< HEAD
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 8.
 LaTeX Font Info:    ... okay on input line 8.
 LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 8.
@@ -131,6 +175,34 @@ LaTeX Font Info:    ... okay on input line 8.
 \makeMPintoPDFobject=\count101
 \everyMPtoPDFconversion=\toks24
 ) (/opt/local/share/texmf-texlive-dist/tex/generic/oberdiek/pdftexcmds.sty
+=======
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 10.
+LaTeX Font Info:    ... okay on input line 10.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 10.
+LaTeX Font Info:    ... okay on input line 10.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 10.
+LaTeX Font Info:    ... okay on input line 10.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 10.
+LaTeX Font Info:    ... okay on input line 10.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 10.
+LaTeX Font Info:    ... okay on input line 10.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 10.
+LaTeX Font Info:    ... okay on input line 10.
+ (/usr/local/texlive/2014/texmf-dist/tex/context/base/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count94
+\scratchdimen=\dimen105
+\scratchbox=\box28
+\nofMPsegments=\count95
+\nofMParguments=\count96
+\everyMPshowfont=\toks25
+\MPscratchCnt=\count97
+\MPscratchDim=\dimen106
+\MPnumerator=\count98
+\makeMPintoPDFobject=\count99
+\everyMPtoPDFconversion=\toks26
+) (/usr/local/texlive/2014/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
+>>>>>>> 4835d29e31030ebc3634808e77aa0c5384a3a0fd
 Package: pdftexcmds 2011/11/29 v0.20 Utility functions of pdfTeX for LuaTeX (HO
 )
 
@@ -178,25 +250,44 @@ G,.JBIG2,.JB2,.eps]
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
+<<<<<<< HEAD
 \c@lstlisting=\count102
 LaTeX Font Info:    Try loading font information for U+msa on input line 14.
+=======
+LaTeX Font Info:    Try loading font information for U+msa on input line 16.
+>>>>>>> 4835d29e31030ebc3634808e77aa0c5384a3a0fd
 
 (/opt/local/share/texmf-texlive-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2009/06/22 v3.00 AMS symbols A
 )
+<<<<<<< HEAD
 LaTeX Font Info:    Try loading font information for U+msb on input line 14.
+=======
+LaTeX Font Info:    Try loading font information for U+msb on input line 16.
+>>>>>>> 4835d29e31030ebc3634808e77aa0c5384a3a0fd
 
 (/opt/local/share/texmf-texlive-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2009/06/22 v3.00 AMS symbols B
 ) (./macros.tex
+<<<<<<< HEAD
 \c@definition=\count103
 ) (./introduction.tex) (./general.tex
 LaTeX Font Info:    Try loading font information for OMS+cmr on input line 16.
+=======
+\c@definition=\count100
+)
+(./introduction.tex) (./general.tex [1
+
+{/usr/local/texlive/2014/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [2]) (.
+/casestudy.tex
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 7.
+>>>>>>> 4835d29e31030ebc3634808e77aa0c5384a3a0fd
 
 (/opt/local/share/texmf-texlive-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
+<<<<<<< HEAD
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 16.
  [1
 
@@ -351,25 +442,41 @@ Overfull \hbox (82.34918pt too wide) in paragraph at lines 281--282
 
 [8]) (./experiments.tex [9]
 <SudokuDifficulty.png, id=40, 579.6054pt x 362.3136pt>
+=======
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 7.
+ [3])
+(./experiments.tex <SudokuDifficulty.png, id=23, 579.6054pt x 362.3136pt>
+>>>>>>> 4835d29e31030ebc3634808e77aa0c5384a3a0fd
 File: SudokuDifficulty.png Graphic file (type png)
 
 <use SudokuDifficulty.png>
 Package pdftex.def Info: SudokuDifficulty.png used on input line 13.
 (pdftex.def)             Requested size: 318.6159pt x 199.16928pt.
+<<<<<<< HEAD
 
 <FillominoDifficulty.png, id=42, 579.6054pt x 362.7954pt>
+=======
+ [4]
+<FillominoDifficulty.png, id=28, 579.6054pt x 362.7954pt>
+>>>>>>> 4835d29e31030ebc3634808e77aa0c5384a3a0fd
 File: FillominoDifficulty.png Graphic file (type png)
 
 <use FillominoDifficulty.png>
 Package pdftex.def Info: FillominoDifficulty.png used on input line 17.
 (pdftex.def)             Requested size: 318.20024pt x 199.16928pt.
+<<<<<<< HEAD
  [10 <./SudokuDifficulty.png>] [11 <./FillominoDifficulty.png>] <FillominoRunTi
 me.png, id=51, 1008.1665pt x 551.4201pt>
+=======
+ [5 <./SudokuDifficulty.png> <./FillominoDifficulty.png>] <FillominoRunTime.png
+, id=34, 1008.1665pt x 551.4201pt>
+>>>>>>> 4835d29e31030ebc3634808e77aa0c5384a3a0fd
 File: FillominoRunTime.png Graphic file (type png)
 
 <use FillominoRunTime.png>
 Package pdftex.def Info: FillominoRunTime.png used on input line 50.
 (pdftex.def)             Requested size: 468.19263pt x 256.0748pt.
+<<<<<<< HEAD
 ) (./related.tex [12 <./FillominoRunTime.png>])
 (./conlusion.tex [13]) [14] (./main.aux) ) 
 Here is how much of TeX's memory you used:
@@ -394,6 +501,34 @@ Output written on main.pdf (14 pages, 446123 bytes).
 PDF statistics:
  93 PDF objects out of 1000 (max. 8388607)
  61 compressed objects within 1 object stream
+=======
+ [6]) (./related.tex [7 <./FillominoRunTime.png>])
+(./conlusion.tex) [8] (./main.aux) ) 
+Here is how much of TeX's memory you used:
+ 2037 strings out of 493117
+ 28621 string characters out of 6135433
+ 91092 words of memory out of 5000000
+ 5448 multiletter control sequences out of 15000+600000
+ 12919 words of font info for 50 fonts, out of 8000000 for 9000
+ 1141 hyphenation exceptions out of 8191
+ 37i,9n,24p,1302b,562s stack positions out of 5000i,500n,10000p,200000b,80000s
+</usr/local/texlive/2014/texmf-dist/fonts/t
+ype1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2014/texmf-dist/fonts/ty
+pe1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2014/texmf-dist/fonts/typ
+e1/public/amsfonts/cm/cmmi12.pfb></usr/local/texlive/2014/texmf-dist/fonts/type
+1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/
+public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/pu
+blic/amsfonts/cm/cmr12.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/publ
+ic/amsfonts/cm/cmr17.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public
+/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/
+amsfonts/cm/cmti12.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/a
+msfonts/cm/cmtt12.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/am
+sfonts/symbols/msbm10.pfb>
+Output written on main.pdf (8 pages, 447188 bytes).
+PDF statistics:
+ 82 PDF objects out of 1000 (max. 8388607)
+ 54 compressed objects within 1 object stream
+>>>>>>> 4835d29e31030ebc3634808e77aa0c5384a3a0fd
  0 named destinations out of 1000 (max. 500000)
  16 words of extra memory for PDF output out of 10000 (max. 10000000)
 
