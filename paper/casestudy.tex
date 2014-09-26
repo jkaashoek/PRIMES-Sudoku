@@ -2,7 +2,11 @@
 
 \subsection{Sudoku}
 
-After a Sudoku puzzle is generated, we determine its difficulty using machine learning. For each puzzle, a vector is generated with components describing the unsolved board. These characteristics are:
+
+After a Sudoku puzzle is generated, we determine its difficulty using
+machine learning. For each puzzle, a vector is generated with
+components describing the unsolved board. These characteristics are:
+
 \begin{itemize}
 \item Number of solutions
 \item Number of empty squares
@@ -13,11 +17,160 @@ After a Sudoku puzzle is generated, we determine its difficulty using machine le
 \item Standard deviation of number of occurrences of each digit from the mean number of occurrences
 \end{itemize}
 
-The SVM library by scikit-learn then uses the vector to categorize the puzzle into one of four difficulties: (1) Easy, (2) Medium, (3) Hard, and (4) Evil.
+
+The SVM library by scikit-learn then uses the vector to categorize the
+puzzle into one of four difficulties: (1) Easy, (2) Medium, (3) Hard,
+and (4) Evil.
+
+\subsubsection{Declarative Definition}
+We use the python frontend of z3 constraint solver to specify the 9X9
+sudoku puzzle declaratively. As can be noticed from the encoding it
+can be easily generalized to other sudoku sizes such as 16X16 or
+25X25.
+
+
+We first define 81 different integer variables (X[0][0], X[0][1], …,
+X[8][8]), where X[i][j] denotes the value of the sudoku cell (i,j). We
+also define the valid set of values each element can take, i.e. 1 <=
+X[i][j] <= 9 (valid values).
+
+\begin{lstlisting}[language=python]
+X = [[Int('x%d%d' % (i,j)) for i in range(9)] for j in range(9)]
+valid_values = [And ( X[i][j] >= 1, X[i][j] <= 9) for i in range(9)
+for j in range(9)]
+
+\end{lstlisting}
+
+We now add sudoku constraints that the values in each row should be
+distinct (rowdistinct), values in each column should be distinct
+(colsdistinct), and that each 3X3 square should have distinct values
+(threebythreedistinct).
+
+\begin{lstlisting}[language=python]
+row_distinct = [Distinct(X[i]) for i in range(9)]
+cols_distinct = [Distinct([X[i][j] for i in range(9)]) for j in
+range(9)] 
+three_by_three_distinct = [ Distinct([X[3*k + i][3*l + j] for i in
+range(3) for j in range(3)]) for k in range(3) for l in range(3)]
+
+\end{lstlisting}
+
+To encode partially filled sudoku board (where a 0 value denotes an
+empty space), we simply add the constraint X[i][j] == board[i][j] when
+board[i][j] != 0. 
+
+\begin{lstlisting}[language=python]
+ already_set = [X[i][j] == board[i][j] if board[i][j] != 0 for i in
+ range(9) for j in range(9)]
+
+\end{lstlisting}
+
+The complete set of constraints sudoku constraint is obtained by
+combining all previous constraints:
+
+\begin{lstlisting}[language=python]
+sudoku_constraint = valid_values + row_distinct + cols_distinct +
+three_by_three_distinct + already_set
+\end{lstlisting}
+
+
+\subsubsection{Creating the Initial Puzzle}
+To accomplish this, we use a set of equations using the python z3
+constraint solver. This would generate a sudoku board such as the one
+below. 
+
+[[4, 9, 7, 1, 8, 2, 5, 3, 6]
+[1, 5, 2, 3, 6, 4, 8, 9, 7] 
+[8, 6, 3, 5, 7, 9, 4, 1, 2],
+[7, 3, 4, 6, 9, 1, 2, 5, 8],
+[2, 8, 9, 4, 3, 5, 7, 6, 1],
+[5, 1, 6, 7, 2, 8, 9, 4, 3],
+[3, 2, 5, 9, 1, 7, 6, 8, 4],
+[9, 7, 1, 8, 4, 6, 3, 2, 5],
+[6, 4, 8, 2, 5, 3, 1, 7, 9]]
+
+\subsubsection{Emptying Squares}
+The next step is to start emptying this board. Our method for
+selecting the next square to remove included a number of
+substeps. First, we calculate the percentage of squares filled in each
+row (number of squares in row that are full/9). We then randomly
+select one of these percentages and generate a random number between 0
+and 1. If this number is greater than the percentage, we find a new
+percentage and a new decimal between 0 and 1. Once we have a number
+between 0 and 1 that is less than the percentage calculated we keep
+this row. We then follow the same process to find which column in the
+row we should empty. We set the square in the selected row and column
+equal to zero, signifying emptiness.
+
+
+After we have found a square to empty, we generate a temporary board
+with the selected square  having a value of 0. We also a new set of
+constraints to go along with this board using z3. If z3 can solve the
+new set of equations in less than K ways, we have a desired result and
+we keep this board. If z3 can generate a number of solutions that is
+greater than or equal to K, the chosen square is added to a list of
+squares that do not work and should not be tried again. This temporary
+board is discarded and we find another square using the board we had
+before the temporary board was generated. Once we find a square that,
+when removed, results in a desired board, we find another square to
+empty. If no other squares work, meaning that the number of squares
+emptied plus the number of squares in the list of squares that do not
+work equals 81, we stop looking for another square to empty. If the
+algorithm does not stop in the first case, it stops once we reach the
+number of squares we wish to empty, although this second case is less
+likely if the desired number of empty squares is greater than 60.
+
+\subsubsection{Transformations}
+We are able to quickly generate more full Sudoku boards for emptying
+without using SAT solvers. To do this, we apply the following
+mathematically symmetrical transformations on an already-created
+Sudoku board:
+
+\begin{enumerate}
+\item Relabeling the nine digits
+\item Permuting the three 3x9 stacks
+\item Permuting the three 9x3 bands
+\item Permuting the three rows within a stack
+\item Permuting the three columns within a band
+\item Reflecting about the axes of symmetry in a square
+\item Rotation by 90 degrees
+\end{enumerate}
+ 
+We chose a random transformation and applied it to an already existing
+board 1000 times to create a new Sudoku board satisfying the original
+constraints. Out of about 6 x 1021 total unique 9x9 Sudoku boards,
+these transformations can generate about 3 x 106 new unique Sudoku
+boards from an existing one [9].
+
+ 
+We can apply most or all of these transformations to already-created
+12x12, 15x15, 16x16, and 25x25 boards. On a 12x12 board, for instance,
+the following transformations are analogous:
+
+
+\begin{enumerate}
+\item Relabeling the twelve digits
+\item Permuting the four 3x12 stacks
+\item Permuting the three 12x4 bands
+\item Permuting the three rows within a stack
+\item Permuting the four columns within a band
+\item Reflecting about the horizontal and vertical axes in a square
+\end{enumerate}
+ 
+This method of quickly generating new boards generalizes to any
+higher-numbered Sudoku board. 
+
+
+The last step of our algorithm is quickly generating more sudoku
+puzzles from the board that was emptied. This task is accomplished by
+performing transformation on the existing board as described above.
+
 
 \subsection{Fillomino}
 
-Using machine learning, we determine the difficulty of an unsolved fillomino puzzle based on the following characteristics:
+Using machine learning, we determine the difficulty of an unsolved
+fillomino puzzle based on the following characteristics:
+
 
 \begin{itemize}
 \item Number of cells
@@ -25,3 +178,164 @@ Using machine learning, we determine the difficulty of an unsolved fillomino puz
 \item Number of regions (connected areas of the same value)
 \item Optimality (whether the puzzle can be emptied further)
 \end{itemize}
+
+\subsubsection{Declarative Definition}
+Using the python frontend on z3, we can declaratively create a Fillomino puzzle.
+First, we define an NxN board and assert that only the values between
+1 and N can be on the board: 
+
+\begin{lstlisting}[language=python]
+cells = [[Int("x%d%d" % (i,j)) for i in range(1,N+1)] for j in
+                range(1,N+1)]
+
+valid_cells = [And(cells[i][j] <= N, cells[i][j] >=1) for i in
+range(N) for j in range(N)]
+\end{lstlisting}
+
+Now we must assert that, for each region on the board, the value of
+all of the squares in a specified region must be the same as the
+number of squares in that region.
+ 
+
+To do this, we first create a variable edgeval that can either be one,
+representing that an outgoing edge to an adjacent square exists or 0,
+showing that the edge does not exist. An outgoing side should only
+exist between two cells that are in the same region. The variable for
+an edge is edgevar(i,j,k,l), where (i,j) is the location of the
+original square and (k,l) is the location of the adjacent square.
+
+
+\begin{lstlisting}[language=python]
+for i in range(N):
+    for j in range(N):
+        for (k,l) in getAdjacent1(i,j):
+            edge_var[(i,j,k,l)] = Int("e%d%d%d%d" % (i,j,k,l))
+edge_val_constraints = [Or(edge_val==0,edge_val==1) for edge_val in
+edge_var.values()]
+\end{lstlisting}
+
+For our method to work, we only want one outgoing edge from every
+square, meaning that the value of edgevar will always be <= 0.
+
+\begin{lstlisting}[language=python]
+for i in range(N):
+        for j in range(N):
+            for (k,l) in getAdjacent1(i,j, N):
+                if lessThan(i,j,k,l):
+                    sum_edges = edge_var[(i,j,k,l)] + edge_var[(k,l,i,j)]
+                    edge_val_constraints.append(sum_edges <= 1)
+\end{lstlisting}
+
+Now we create a new variable for each cell, incell, that is equal to
+the number of edges going into the cell.
+
+
+\begin{lstlisting}[language=python]
+in_cell = [[Int("in%d%d"%(i,j)) for i in range(N)] for j in range(N)]
+
+    in_cell_constraints=[]
+    for i in range(N):
+        for j in range(N):
+            in_cell_constraints.append(And(in_cell[i][j]>=0,
+            in_cell[i][j]<=1))
+            sum_incoming_edges = Sum([edge_var[(k,l,i,j)] for (k,l) in
+            getAdjacent1(i,j, N)])
+            in_cell_constraints.append(in_cell[i][j]==sum_incoming_edges)
+\end{lstlisting}
+
+Next we say that if there is an edge between two cells, those two
+cells are in the same regions, and therefore, they should have the
+same value.
+
+\begin{lstlisting}[language=python]
+  same_value_constraint = []
+    for i in range(N):
+        for j in range(N):
+            for (k,l) in getAdjacent1(i,j, N):
+                if lessThan(i,j,k,l):
+                    same_value_constraint.append(Implies(Or(edge_var[(i,j,k,l)]==1,
+                    edge_var[(k,l,i,j)]==1), cells[i][j] ==
+                    cells[k][l]))
+
+\end{lstlisting}
+
+Finally, we define a cell’s size as being the sum of the sizes of the
+adjacent cells + 1. We want there to be exactly one cell whose size is
+the same as its value.
+
+
+\begin{lstlisting}[language=python]
+size_region_constraint=[]
+size_cell = [[ Int("size%d%d" % (i,j)) for i in range(N)] for j in
+                            range(N)]
+    size_region_constraint=[And(size_cell[i][j] >=1,
+    size_cell[i][j]<=N) for i in range(N) for j in range(N)]
+
+
+    for i in range(N):
+        for j in range(N):
+            size_adjacent = Sum([If(edge_var[(i,j,k,l)]==1,
+            size_cell[k][l],0) for (k,l) in getAdjacent1(i,j, N)])
+            size_region_constraint.append(size_cell[i][j] ==
+            (size_adjacent+1))
+            size_region_constraint.append(Implies(in_cell[i][j]==0,
+            size_cell[i][j] == cells[i][j]))
+\end{lstlisting}
+
+
+\subsubsection{Creating the Initial Puzzle}
+We have two option to create the initial puzzle. We can run the
+declarative definition of a Fillomino puzzle, but this code is slow
+and will only get as puzzle because z3 does not come up with a
+different solution each time the code is run, it is the same one every
+time. Our second option is to randomly create a completed Fillomino
+puzzle using python without any z3. The python code works by selecting
+a starting square, randomly selecting a sequence length from a list of
+valid sequence lengths, and then setting a list of squares that are
+sequence length long that all have the value sequence length. We
+continue like this until the board is completely filled.
+
+
+
+\subsubsection{Choosing a Valid Square}
+Choosing a Valid Square
+Our first step is define what we mean by a valid square. For most
+cases, we want to find a square that, when removed, results in a board
+that has exactly one solution, but in general, we want it to have less
+than K solutions. Our first step is to randomly choose a square on the
+board, with the only restriction being that every region must have at
+least one cell that is not emptied, as in the rules of Fillomino. 
+
+In Sudoku, a square in a row, column, or three by three grid that had
+less emptied squares in it already was more likely to be chosen. This
+is not the case in Fillomino because the number of squares in a row or
+column do not matter, the only constraint is that there must be at
+least one value in every region that is not emptied.
+ 
+As in Sudoku, we create a temporary board that has the selected square
+removed (the square has a value of 0). We then apply the z3
+declarative definition on this temporary board, and if z3 can find K
+or more ways to solve the puzzle, we know that we should not remove
+the square. We resort back to the old board, add the square that we
+tried to a list of squares that we know do not work, and try again
+with a new random square. This process continues until we have a
+desired number of squares emptied.
+
+
+\subsubsection{Transformations}
+Because of the randomness of the different regions, there are less
+transformations that can be applied to Fillomino than Sudoku, but a
+number still exist. These are:
+
+\begin{enumerate}
+\item Rotation
+\item Vertical reflection
+\item Horizontal reflection
+\end{enumerate}
+
+Applying these transformation to the original z3 declarative
+definition puzzles as well as the randomly generating python generated
+puzzles result in a fast way to create many more boards. The
+transformation can also be applied to an emptied board to get more
+solutions.
+
