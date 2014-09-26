@@ -1,60 +1,85 @@
+\section{Overview of our Framework}
 
-\section{General Approach}
+We present an overview of our general framework to synthesize puzzles
+of varying complexity levels. Our framework takes three components as
+input: a declarative definition of the puzzle $\puzzledecl$, a
+complexity function $\puzzlecomplexity$, and a set of transformation
+functions $\puzzletransformset$. We first define these components and
+then present our synthesis algorithm to automatically generate
+different puzzles.
 
 \begin{definition}
-We define a puzzle board $\puzzleboard$ to be a two dimensional $n
-\times m$ board. Let $\puzzleval$ denote a function that assigns
-values to the squares on the puzzle board such that the value of the
-square $(i,j)$ is defined by $\puzzleval(i,j)$, where $1 \leq i \leq
-n$, $1 \leq j \leq m$, $V: \natnumbers \times \natnumbers \rightarrow
-\puzzledomain$, and $\puzzledomain$ denotes the set of all possible
-values the puzzle squares can take.
+A two dimensional puzzle board of size $n \times m$ is defined using a
+valuation function $\puzzleboard: \natnumbers \times \natnumbers
+\rightarrow \puzzledomain$ that assigns values to the squares on the
+puzzle board. The value of the square $(i,j)$ is denoted by
+$\puzzleboard(i,j)$, where $1 \leq i \leq n$, $1 \leq j \leq m$, and
+$\puzzledomain$ denotes the set of all possible values the puzzle
+squares can take.
 \end{definition}
 
-The main components of our technique are:
-\begin{itemize}
-\item{A declarative definition of puzzle $\puzzledecl$}
-\item{A Complexity Function : $\puzzlecomplexity$}
-\item{A set of Transformation Functions : $\puzzletransformset$}
-\end{itemize}
-
 \begin{definition}
-A declarative definition of puzzle $\puzzledecl$ defines constraints over the set of valid values $\puzzleval(i,j)$ that puzzle squares can take.
+The declarative definition of puzzle $\puzzledecl$ defines constraints over the set of valid values $\puzzleboard(i,j)$ that the puzzle squares can take.
 \end{definition}
 
 \begin{definition}
 The complexity function $\puzzlecomplexity : \puzzleboard \rightarrow
-\complexityrange$ takes a puzzle board $puzzleboard$ as input and maps
+\complexityrange$ takes a puzzle board $\puzzleboard$ as input and maps
 it to a finite class of hardness levels denoted by $\complexityrange$.
 \end{definition}
 
 \begin{definition}
-A transformation function $\puzzletransform : \puzzleboard \rightarrow \puzzleboard$ takes a puzzle board as input and transforms it another puzzle board such that the new puzzle board also satisfies the puzzle constraints. The set of all transformation functions are denoted by $\puzzletransformset$.
+A transformation function $\puzzletransform : \puzzleboard \rightarrow
+\puzzleboard$ takes a puzzle board as input and transforms it to
+another puzzle board such that the new puzzle board also satisfies the
+puzzle constraints $\puzzledecl$. The set of all transformation
+functions are denoted by $\puzzletransformset$.
 \end{definition}
 
-\begin{verbatim}
-The General Puzzle Creation Algorithm
-P_I = GetRandomPuzzle(P_D)
+\begin{algorithm}[!htpb]
+\caption{$\puzzlegen$($\puzzledecl$, $\puzzlecomplexity$, $\puzzletransformset$)}
+\begin{algorithmic}[1]
+\STATE $\randomPuzzle := \getrandom(\puzzledecl)$
+\STATE $\currentpuzzle := \randomPuzzle$
+\STATE $\squarestested := \Phi$
+\WHILE{$|\squarestested| \neq |\randomPuzzle|$}
+\STATE $(i,j) = \choosesquare(\currentpuzzle)$
+\STATE $\squarestested = \squarestested \cup (i,j)$
+\IF{$\isremovevalid(\currentpuzzle,i,j)$}
+\STATE {\[ \currentpuzzle(k,l) = \left\{ 
+  \begin{array}{l l}
+    \currentpuzzle(k,l) & \quad \mbox{if $(k,l) \neq (i,j)$}\\
+    \phi & \quad \mbox{if $(k,l) = (i,j)$}
+  \end{array} \right.\]
+}
+\FOR{$\puzzletransform \in \puzzletransformset$}
+\STATE{$\allpuzzles := \allpuzzles \cup \puzzletransform(\currentpuzzle)$}
+\ENDFOR
+\STATE{$\complexitydict := \{\}$}
+\FOR{$\puzzleboard \in \allpuzzles$}
+\STATE{$h := \puzzlecomplexity(\puzzleboard)$}
+\STATE{$\complexitydict[h] := \complexitydict[h] \cup \puzzleboard$}
+\ENDFOR
+\ENDIF
+\ENDWHILE
+\RETURN{$\complexitydict$}
+\end{algorithmic}
+\caption{The $\puzzlegen$ algorithm for synthesizing puzzles of varying complexity levles.}
+\end{algorithm}
 
-While isRemoveValid(P_c,i,j):
-  P_c = P_c - {i,j}
-  For T \in T_P:
-    R = R U T(P_c)
-
-For P \in R:
-  D[F_c(P)] = P
-\end{verbatim}
-
-The algorithm first uses an off-the-shelf constraint solver to solve
-the puzzle constraints $P_D$ to get an initial random board
-configuration. It then starts removing the value at a square (i,j)
-until there are no more square values remaining to be removed. The
-algorithm uses the isValidSquare function to check if certain puzzle
-constraints hold after removing the square value (i,j). An example
-isRemoveOK function is that the Number of solutions to the puzzle
-after removing the square value is only $1$. Let $P_c$ denote the puzzle
-obtained after removing a valid square. We then apply a set of
-transformation functions $T_P$ to get a set of new puzzles.
+The algorithm first uses the $\getrandom$ function to get an initial
+random puzzle board configuration $\randomPuzzle$ by solving the
+puzzle constraints $\puzzledecl$ using an off-the-shelf constraint
+solver. Note that sometimes for this first step, we also use custom
+random puzzle generators for scalability. It then starts removing the
+value at a square (i,j) until there are no more square values
+remaining to be removed. The algorithm uses the isValidSquare function
+to check if certain puzzle constraints hold after removing the square
+value (i,j). An example isRemoveOK function is that the Number of
+solutions to the puzzle after removing the square value is only
+$1$. Let $P_c$ denote the puzzle obtained after removing a valid
+square. We then apply a set of transformation functions $T_P$ to get a
+set of new puzzles.
 
 
 
