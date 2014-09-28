@@ -6,9 +6,12 @@ Our method of determining puzzle difficulty was to use machine learning to categ
 
 For our sudoku database, we recorded 206 puzzles from Web Sudoku, the largest online sudoku puzzle provider. For our fillomino database, we recorded 40 puzzles from Math In English, a puzzle website that had categorized puzzles by difficulty levels similar to those of Web Sudoku: (1) Easy, (2) Moderate, (3) Challenging, and (4) Super Difficult. Below are graphs of the average success rates of 500 trials as the percentage of puzzles in the training set was increased.  
 
-\centerline{\includegraphics[height = 7cm]{SudokuDifficulty.png}}
-
-\centerline{\includegraphics[height = 7cm]{FillominoDifficulty.png}}
+\begin{figure}
+     \centering
+     \subfloat{\includegraphics[height = 5cm]{SudokuDifficulty.png}\label{<figure1>}}
+     \subfloat{\includegraphics[height = 5cm]{FillominoDifficulty.png}\label{<figure2>}}
+     \caption{Success Rates (a) Sudoku (b) Fillomino}
+\end{figure}
 
 Our results show that as we increased the number of puzzles in the training set, the success rate increased to $80 \%$.
 
@@ -20,13 +23,16 @@ When we empty a puzzle with dimensions NxN, we set as a parameter the target num
 
 The graph below shows program running times to create and empty 9x9, 16x16, and 25x25 Sudoku puzzles as the target number of empty squares is increased. There is an exponential increase in run time as the number of possible empty spaces increased. Even for 25x25 sudoku puzzles, we find that the time required to generate a sudoku puzzle is quite reasonable (around 500 seconds).
 
-\centerline{\includegraphics[height = 7cm]{sudoku2.png}}
-
 We can see in the graph that the generation time for 9x9 puzzles does not continue to increase after the target number of empty cells was raised beyond 60 because the emptying had stopped before the target of 60+ empty cells had been reached. 
 
 A similar experiment with Fillomino puzzles demonstrates a similar pattern of stagnation after a threshold. Unlike the run times of Sudoku puzzles, however, the run times for fillomino puzzles follow a linear trend, not an exponential trend, as the target number of empty spaces is increased.
 
-\centerline{\includegraphics[height = 7cm]{fillomino2.png}}
+\begin{figure}
+     \centering
+     \subfloat{\includegraphics[height = 5cm]{sudoku2.png}\label{<figure1>}}
+     \subfloat{\includegraphics[height = 5cm]{fillomino2.png}\label{<figure2>}}
+     \caption{Running Times by Target Number of Empty Spaces (a) Sudoku (b) Fillomino}
+\end{figure}
 
 
 
