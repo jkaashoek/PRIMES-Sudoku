@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2014.5.25)  28 SEP 2014 09:28
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2014.5.25)  28 SEP 2014 12:17
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -299,32 +299,11 @@ File: lstlang1.sty 2014/03/04 1.5c listings language file
 (./introduction.tex [1
 
 {/usr/local/texlive/2014/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]) (./gen
-eral.tex [2] [3] [4] [5]) (./casestudy.tex
+eral.tex [2] [3] [4] [5]) (./casestudymodified.tex
 LaTeX Font Info:    Font shape `OT1/cmtt/bx/n' in size <10.95> not available
 (Font)              Font shape `OT1/cmtt/m/n' tried instead on input line 18.
- [6] [7]
-[8]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 120.
 
- (/usr/local/texlive/2014/texmf-dist/tex/latex/base/omscmr.fd
-File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
-)
-LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 120.
- [9] [10]
-Overfull \hbox (41.0628pt too wide) in paragraph at lines 250--251
-[][][][][][][][][][][][][][][]  
- []
-
-[11]
-Overfull \hbox (110.04779pt too wide) in paragraph at lines 265--266
-[][][][][][][][][][][][][][][][][][][][][][]  
- []
-
-Missing character: There is no â in font cmr12!
-Missing character: There is no € in font cmr12!
-Missing character: There is no ™ in font cmr12!
-[12] [13]) (./experiments.tex
+[6] [7] [8] [9] [10] [11] [12]) (./experiments.tex [13]
 ./experiments.tex:11: Undefined control sequence.
 l.11      \subfloat
                    {\includegraphics[height = 5cm]{SudokuDifficulty.png}\lab...
@@ -348,13 +327,13 @@ File: FillominoDifficulty.png Graphic file (type png)
 <use FillominoDifficulty.png>
 Package pdftex.def Info: FillominoDifficulty.png used on input line 12.
 (pdftex.def)             Requested size: 227.28336pt x 142.26378pt.
- [14] [15 <./SudokuDifficulty.png> <./FillominoDifficulty.png>]
+ [14 <./SudokuDifficulty.png> <./FillominoDifficulty.png>]
 ./experiments.tex:32: Undefined control sequence.
 l.32      \subfloat
                    {\includegraphics[height = 5cm]{sudoku2.png}\label{<figur...
 
 ? 
-<sudoku2.png, id=70, 797.1381pt x 496.4949pt>
+<sudoku2.png, id=67, 797.1381pt x 496.4949pt>
 File: sudoku2.png Graphic file (type png)
  <use sudoku2.png>
 Package pdftex.def Info: sudoku2.png used on input line 32.
@@ -365,31 +344,31 @@ l.33      \subfloat
                    {\includegraphics[height = 5cm]{fillomino2.png}\label{<fi...
 
 ? 
-<fillomino2.png, id=71, 795.6927pt x 495.0495pt>
+<fillomino2.png, id=68, 795.6927pt x 495.0495pt>
 File: fillomino2.png Graphic file (type png)
  <use fillomino2.png>
 Package pdftex.def Info: fillomino2.png used on input line 33.
 (pdftex.def)             Requested size: 228.65668pt x 142.26378pt.
 )
-(./related.tex [16 <./sudoku2.png> <./fillomino2.png>]) (./future.tex [17]
-[18]) (./conclusion.tex) [19] (./main.aux)
+(./related.tex [15] [16 <./sudoku2.png> <./fillomino2.png>]) (./future.tex
+[17]) (./conclusion.tex) [18] [19] (./main.aux)
 
 LaTeX Warning: There were multiply-defined labels.
 
  )
 (\end occurred inside a group at level 16)
 
-### semi simple group (level 16) entered at line 358 (\begingroup)
-### semi simple group (level 15) entered at line 346 (\begingroup)
-### semi simple group (level 14) entered at line 294 (\begingroup)
-### semi simple group (level 13) entered at line 270 (\begingroup)
-### semi simple group (level 12) entered at line 252 (\begingroup)
-### semi simple group (level 11) entered at line 234 (\begingroup)
-### semi simple group (level 10) entered at line 220 (\begingroup)
-### semi simple group (level 9) entered at line 197 (\begingroup)
-### semi simple group (level 8) entered at line 171 (\begingroup)
-### semi simple group (level 7) entered at line 150 (\begingroup)
-### semi simple group (level 6) entered at line 128 (\begingroup)
+### semi simple group (level 16) entered at line 39 (\begingroup)
+### semi simple group (level 15) entered at line 27 (\begingroup)
+### semi simple group (level 14) entered at line 14 (\begingroup)
+### semi simple group (level 13) entered at line 243 (\begingroup)
+### semi simple group (level 12) entered at line 221 (\begingroup)
+### semi simple group (level 11) entered at line 204 (\begingroup)
+### semi simple group (level 10) entered at line 189 (\begingroup)
+### semi simple group (level 9) entered at line 176 (\begingroup)
+### semi simple group (level 8) entered at line 161 (\begingroup)
+### semi simple group (level 7) entered at line 135 (\begingroup)
+### semi simple group (level 6) entered at line 117 (\begingroup)
 ### semi simple group (level 5) entered at line 79 (\begingroup)
 ### semi simple group (level 4) entered at line 60 (\begingroup)
 ### semi simple group (level 3) entered at line 50 (\begingroup)
@@ -397,13 +376,13 @@ LaTeX Warning: There were multiply-defined labels.
 ### semi simple group (level 1) entered at line 22 (\begingroup)
 ### bottom level 
 Here is how much of TeX's memory you used:
- 4027 strings out of 493117
- 57481 string characters out of 6135433
- 172868 words of memory out of 5000000
- 7396 multiletter control sequences out of 15000+600000
+ 4010 strings out of 493117
+ 57203 string characters out of 6135433
+ 180868 words of memory out of 5000000
+ 7382 multiletter control sequences out of 15000+600000
  13695 words of font info for 53 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 38i,10n,40p,1317b,2067s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 38i,10n,40p,1302b,2047s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts
 /cm/cmbx10.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/
 cm/cmbx12.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/c
@@ -419,7 +398,7 @@ usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></u
 sr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></us
 r/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb></usr
 /local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on main.pdf (19 pages, 540789 bytes).
+Output written on main.pdf (19 pages, 544239 bytes).
 PDF statistics:
  135 PDF objects out of 1000 (max. 8388607)
  90 compressed objects within 1 object stream

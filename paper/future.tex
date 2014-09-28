@@ -2,8 +2,8 @@
 
 We are currently working on extending our algorithm to support automated generation of Python programming problems. Since our generic algorithm is parametric with respect to problem definition, complexity function definition, and solving algorithm, we just need to instantiate these components for generating Python problems. We are using the Sketch[cite sketch] solver to encode Python semantics inside a constraint solver. For example, consider the following python function everyOther that appends every alternate element of an input list l1 with every alternate element of another input list l2.
 
-\begin{lstlisting}[language=Python]
-
+\singlespace
+\begin{lstlisting}[language=Python, frame=single]
 def everyOther(l1,l2):
   x=l1[:2]
   y=l2[:2]
@@ -11,30 +11,31 @@ def everyOther(l1,l2):
   return z
 
 \end{lstlisting}
+\doublespace
 
 This python program is then converted into an equivalent Sketch program. The main challenge in this translation is that Sketch is a statically typed language whereas Python is dynamically typed, but we use a strategy similar to the strategy used in Autograder [4] to use union types to encode Python types in Sketch. The translated code looks like this.
 
-\begin{lstlisting}[language=Python]
-
+\singlespace
+\begin{lstlisting}[language=Python, frame=single]
 MultiType everyOther(MultiType l1,MultiType l2){
   MultiType x = listSlice(l1,0,2);
   MultiType y = listSlice(l2,0,2);
   MultiType z = append(x,y);
   return z;
 }
-
 \end{lstlisting}
+\doublespace
 
 We now introduce holes inside the translated program using the hole construct (??) in Sketch. These hole values can take any constant integer values. We then use the Sketch solver to solve the constraints such that there still exists a unique solution to the problem while the number of holes are maximized. After the end of the algorithm, we expect to get a new python programming problem as:
 
-\begin{lstlisting}[language=Python]
-
+\singlespace
+\begin{lstlisting}[language=Python, frame=single]
 def everyOther(l1,l2):
   x=l1[:__]
   y=l2[:__]
   z = __.append(y)
   return __
-}
 \end{lstlisting}
+\doublespace
 
 In addition to programming problems, we would also like to generate problems in Mathematics (algebra, trigonometry, geometry etc.) as well. We only need to define new domain-specific languages to encode the corresponding semantics of these domains, and then we can plug them into our algorithm to generate new problems.

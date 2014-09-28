@@ -83,7 +83,7 @@ below.
 The next step is to start emptying this board. Our method for
 selecting the next square to remove includes a number of
 sub-steps. First, we calculate the percentage of squares in each row that are filled in ((number of squares in row that are full)/9). We then randomly
-select one of these percentages and generate a random number between 0
+select one of these nine percentages and generate a random number between 0
 and 1. If this number is greater than the percentage, we find a new
 percentage and a new decimal between 0 and 1. Once we have a number
 between 0 and 1 that is less than the percentage calculated we keep
@@ -93,24 +93,23 @@ equal to zero, signifying emptiness.
 
 
 After we have found a square to empty, we generate a temporary board
-with the selected square  having a value of 0. We also a new set of
-constraints to go along with this board using z3. If z3 can solve the
-new set of equations in less than K ways, we have a desired result and
-we keep this board. If z3 can generate a number of solutions that is
+with the selected square having a value of 0. We also construct a new set of
+constraints to go along with this board using z3, using values from the temporary board. If z3 can solve the
+new set of equations in fewer than K ways, we have a desired result and keep this board. If z3 can generate a number of solutions that is
 greater than or equal to K, the chosen square is added to a list of
 squares that do not work and should not be tried again. This temporary
 board is discarded and we find another square using the board we had
 before the temporary board was generated. Once we find a square that,
 when removed, results in a desired board, we find another square to
-empty. If no other squares work, meaning that the number of squares
-emptied plus the number of squares in the list of squares that do not
+empty. If no other squares work, meaning that the sum of the number of squares
+emptied and the number of squares in the list of squares that do not
 work equals 81, we stop looking for another square to empty. If the
 algorithm does not stop in the first case, it stops once we reach the
 number of squares we wish to empty, although this second case is less
 likely if the desired number of empty squares is greater than 60.
 
 \subsubsection{Defining Complexity}
-After a Sudoku puzzle is generated, we determine its difficulty using
+After a sudoku puzzle is generated, we determine its difficulty using
 machine learning. For each puzzle, a vector is generated with
 components describing the unsolved board. These characteristics are:
 
@@ -131,11 +130,10 @@ puzzle into one of four difficulties: (1) Easy, (2) Medium, (3) Hard,
 and (4) Evil.
 
 \subsubsection{Transformations}
-We are able to quickly generate more full Sudoku boards for emptying
+We are able to quickly generate more full sudoku boards for emptying
 without using SAT solvers. To do this, we apply the following
 mathematically symmetrical transformations on an already-created
-Sudoku board:
-
+sudoku board:
 \singlespace
 \begin{enumerate}
 \item Relabeling the nine digits
@@ -148,16 +146,14 @@ Sudoku board:
 \end{enumerate}
 \doublespace
  
-We chose a random transformation and applied it to an already existing
-board 1000 times to create a new Sudoku board satisfying the original
-constraints. Out of about 6 x 1021 total unique 9x9 Sudoku boards,
-these transformations can generate about 3 x 106 new unique Sudoku
-boards from an existing one.
+We apply random transformations to an already existing board 1000 times to create a new Sudoku board satisfying the original
+constraints. Out of about $6 \times 10^{21}$ total unique 9x9 Sudoku boards,
+these transformations can generate about $3\times 10^6$ new unique Sudoku
+boards from an existing one. [source]
 
 We can apply most or all of these transformations to already-created
 12x12, 15x15, 16x16, and 25x25 boards. On a 12x12 board, for instance,
 the following transformations are analogous:
-
 \singlespace
 \begin{enumerate}
 \item Relabeling the twelve digits
@@ -172,6 +168,7 @@ the following transformations are analogous:
 This method of quickly generating new boards generalizes to any
 higher-numbered Sudoku board. 
 
+$\space$
 
 The last step of our algorithm is quickly generating more sudoku
 puzzles from the board that was emptied. This task is accomplished by
