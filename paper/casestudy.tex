@@ -29,10 +29,10 @@ can be easily generalized to other sudoku sizes such as 16X16 or
 25X25.
 
 
-We first define 81 different integer variables (X[0][0], X[0][1], …,
+We first define 81 different integer variables (X[0][0], X[0][1], \ldots,
 X[8][8]), where X[i][j] denotes the value of the sudoku cell (i,j). We
-also define the valid set of values each element can take, i.e. 1 <=
-X[i][j] <= 9 (valid values).
+also define the valid set of values each element can take, i.e. 1 $\leq$
+X[i][j] $\leq$ 9 (valid values).
 
 \begin{lstlisting}[language=python]
 X = [[Int('x%d%d' % (i,j)) for i in range(9)] for j in range(9)]
@@ -42,9 +42,9 @@ for j in range(9)]
 \end{lstlisting}
 
 We now add sudoku constraints that the values in each row should be
-distinct (rowdistinct), values in each column should be distinct
-(colsdistinct), and that each 3X3 square should have distinct values
-(threebythreedistinct).
+distinct (rows\textunderscore distinct), values in each column should be distinct
+(cols\textunderscore distinct), and that each 3X3 square should have distinct values
+(three\textunderscore by\textunderscore three\textunderscore distinct).
 
 \begin{lstlisting}[language=python]
 row_distinct = [Distinct(X[i]) for i in range(9)]
@@ -77,21 +77,24 @@ three_by_three_distinct + already_set
 \subsubsection{Creating the Initial Puzzle}
 To accomplish this, we use a set of equations using the python z3
 constraint solver. This would generate a sudoku board such as the one
-below. 
+below. \newline
 
-[[4, 9, 7, 1, 8, 2, 5, 3, 6]
-[1, 5, 2, 3, 6, 4, 8, 9, 7] 
-[8, 6, 3, 5, 7, 9, 4, 1, 2],
-[7, 3, 4, 6, 9, 1, 2, 5, 8],
-[2, 8, 9, 4, 3, 5, 7, 6, 1],
-[5, 1, 6, 7, 2, 8, 9, 4, 3],
-[3, 2, 5, 9, 1, 7, 6, 8, 4],
-[9, 7, 1, 8, 4, 6, 3, 2, 5],
-[6, 4, 8, 2, 5, 3, 1, 7, 9]]
+\begin{center}
+[[4, 9, 7, 1, 8, 2, 5, 3, 6] \newline
+[1, 5, 2, 3, 6, 4, 8, 9, 7] \newline
+[8, 6, 3, 5, 7, 9, 4, 1, 2] \newline
+[7, 3, 4, 6, 9, 1, 2, 5, 8] \newline
+[2, 8, 9, 4, 3, 5, 7, 6, 1] \newline
+[5, 1, 6, 7, 2, 8, 9, 4, 3] \newline
+[3, 2, 5, 9, 1, 7, 6, 8, 4] \newline
+[9, 7, 1, 8, 4, 6, 3, 2, 5] \newline
+[6, 4, 8, 2, 5, 3, 1, 7, 9]] \newline
+\end{center}
 
 \subsubsection{Emptying Squares}
+
 The next step is to start emptying this board. Our method for
-selecting the next square to remove included a number of
+selecting the next square to remove includes a number of
 substeps. First, we calculate the percentage of squares filled in each
 row (number of squares in row that are full/9). We then randomly
 select one of these percentages and generate a random number between 0
@@ -140,7 +143,7 @@ We chose a random transformation and applied it to an already existing
 board 1000 times to create a new Sudoku board satisfying the original
 constraints. Out of about 6 x 1021 total unique 9x9 Sudoku boards,
 these transformations can generate about 3 x 106 new unique Sudoku
-boards from an existing one [9].
+boards from an existing one.
 
  
 We can apply most or all of these transformations to already-created
@@ -219,10 +222,10 @@ square, meaning that the value of edgevar will always be <= 0.
 
 \begin{lstlisting}[language=python]
 for i in range(N):
-        for j in range(N):
-            for (k,l) in getAdjacent1(i,j, N):
-                if lessThan(i,j,k,l):
-                    sum_edges = edge_var[(i,j,k,l)] + edge_var[(k,l,i,j)]
+   for j in range(N):
+      for (k,l) in getAdjacent1(i,j, N):
+         if lessThan(i,j,k,l):
+            sum_edges = edge_var[(i,j,k,l)] + edge_var[(k,l,i,j)]
                     edge_val_constraints.append(sum_edges <= 1)
 \end{lstlisting}
 
