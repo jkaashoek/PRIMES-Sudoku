@@ -1,4 +1,4 @@
-\section{CaseStudies}
+\section{Case Studies}
 
 \subsection{Sudoku}
 
@@ -14,18 +14,20 @@ X[8][8]), where X[i][j] denotes the value of the sudoku cell (i,j). We
 also define the valid set of values each element can take, i.e. 1 $\leq$
 X[i][j] $\leq$ 9 (valid values).
 
+\singlespace
 \begin{lstlisting}[language=python]
 X = [[Int('x%d%d' % (i,j)) for i in range(9)] for j in range(9)]
 valid_values = [And ( X[i][j] >= 1, X[i][j] <= 9) for i in range(9)
 for j in range(9)]
-
 \end{lstlisting}
+\doublespace
 
 We now add sudoku constraints that the values in each row should be
 distinct (rows\textunderscore distinct), values in each column should be distinct
 (cols\textunderscore distinct), and that each 3X3 square should have distinct values
 (three\textunderscore by\textunderscore three\textunderscore distinct).
 
+\singlespace
 \begin{lstlisting}[language=python]
 row_distinct = [Distinct(X[i]) for i in range(9)]
 cols_distinct = [Distinct([X[i][j] for i in range(9)]) for j in
@@ -34,24 +36,29 @@ three_by_three_distinct = [ Distinct([X[3*k + i][3*l + j] for i in
 range(3) for j in range(3)]) for k in range(3) for l in range(3)]
 
 \end{lstlisting}
+\doublespace
 
 To encode partially filled sudoku board (where a 0 value denotes an
 empty space), we simply add the constraint X[i][j] == board[i][j] when
 board[i][j] != 0. 
 
+\singlespace
 \begin{lstlisting}[language=python]
  already_set = [X[i][j] == board[i][j] if board[i][j] != 0 for i in
  range(9) for j in range(9)]
 
 \end{lstlisting}
+\doublespace
 
 The complete set of constraints sudoku constraint is obtained by
 combining all previous constraints:
 
+\singlespace
 \begin{lstlisting}[language=python]
 sudoku_constraint = valid_values + row_distinct + cols_distinct +
 three_by_three_distinct + already_set
 \end{lstlisting}
+\doublespace
 
 
 \subsubsection{Creating the Initial Puzzle}
@@ -59,6 +66,7 @@ To accomplish this, we use a set of equations using the python z3
 constraint solver. This would generate a sudoku board such as the one
 below. \newline
 
+\singlespace
 \begin{center}
 [[4, 9, 7, 1, 8, 2, 5, 3, 6] \newline
 [1, 5, 2, 3, 6, 4, 8, 9, 7] \newline
@@ -70,6 +78,7 @@ below. \newline
 [9, 7, 1, 8, 4, 6, 3, 2, 5] \newline
 [6, 4, 8, 2, 5, 3, 1, 7, 9]] \newline
 \end{center}
+\doublespace
 
 \subsubsection{Emptying Squares}
 
@@ -183,6 +192,7 @@ Using the python frontend on z3, we can declaratively create a Fillomino puzzle.
 First, we define an NxN board and assert that only the values between
 1 and N can be on the board: 
 
+\singlespace
 \begin{lstlisting}[language=python]
 cells = [[Int("x%d%d" % (i,j)) for i in range(1,N+1)] for j in
                 range(1,N+1)]
@@ -190,6 +200,7 @@ cells = [[Int("x%d%d" % (i,j)) for i in range(1,N+1)] for j in
 valid_cells = [And(cells[i][j] <= N, cells[i][j] >=1) for i in
 range(N) for j in range(N)]
 \end{lstlisting}
+\doublespace
 
 Now we must assert that, for each region on the board, the value of
 all of the squares in a specified region must be the same as the
@@ -203,7 +214,7 @@ exist between two cells that are in the same region. The variable for
 an edge is edgevar(i,j,k,l), where (i,j) is the location of the
 original square and (k,l) is the location of the adjacent square.
 
-
+\singlespace
 \begin{lstlisting}[language=python]
 for i in range(N):
     for j in range(N):
@@ -212,10 +223,12 @@ for i in range(N):
 edge_val_constraints = [Or(edge_val==0,edge_val==1) for edge_val in
 edge_var.values()]
 \end{lstlisting}
+\doublespace
 
 For our method to work, we only want one outgoing edge from every
 square, meaning that the value of edgevar will always be <= 0.
 
+\singlespace
 \begin{lstlisting}[language=python]
 for i in range(N):
    for j in range(N):
@@ -224,11 +237,12 @@ for i in range(N):
             sum_edges = edge_var[(i,j,k,l)] + edge_var[(k,l,i,j)]
                     edge_val_constraints.append(sum_edges <= 1)
 \end{lstlisting}
+\doublespace
 
 Now we create a new variable for each cell, incell, that is equal to
 the number of edges going into the cell.
 
-
+\singlespace
 \begin{lstlisting}[language=python]
 in_cell = [[Int("in%d%d"%(i,j)) for i in range(N)] for j in range(N)]
 
@@ -241,11 +255,13 @@ in_cell = [[Int("in%d%d"%(i,j)) for i in range(N)] for j in range(N)]
             getAdjacent1(i,j, N)])
             in_cell_constraints.append(in_cell[i][j]==sum_incoming_edges)
 \end{lstlisting}
+\doublespace
 
 Next we say that if there is an edge between two cells, those two
 cells are in the same regions, and therefore, they should have the
 same value.
 
+\singlespace
 \begin{lstlisting}[language=python]
   same_value_constraint = []
     for i in range(N):
@@ -257,12 +273,13 @@ same value.
                     cells[k][l]))
 
 \end{lstlisting}
+\doublespace
 
 Finally, we define a cell’s size as being the sum of the sizes of the
 adjacent cells + 1. We want there to be exactly one cell whose size is
 the same as its value.
 
-
+\singlespace
 \begin{lstlisting}[language=python]
 size_region_constraint=[]
 size_cell = [[ Int("size%d%d" % (i,j)) for i in range(N)] for j in
@@ -280,7 +297,7 @@ size_cell = [[ Int("size%d%d" % (i,j)) for i in range(N)] for j in
             size_region_constraint.append(Implies(in_cell[i][j]==0,
             size_cell[i][j] == cells[i][j]))
 \end{lstlisting}
-
+\doublespace
 
 \subsubsection{Creating the Initial Puzzle}
 We have two option to create the initial puzzle. We can run the
