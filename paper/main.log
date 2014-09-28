@@ -1,4 +1,12 @@
+<<<<<<< HEAD
 This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2014.5.25)  27 SEP 2014 21:51
+=======
+<<<<<<< HEAD
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012/MacPorts 2012_10) (format=pdflatex 2013.8.31)  27 SEP 2014 21:46
+=======
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2014.5.25)  27 SEP 2014 21:48
+>>>>>>> b684050bf9c8e3abe3888559b06801494578b4aa
+>>>>>>> FETCH_HEAD
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -124,10 +132,17 @@ File: lstmisc.sty 2014/03/04 1.5c (Carsten Heinz)
 \lst@skipnumbers=\count101
 \lst@framebox=\box29
 )
+<<<<<<< HEAD
+(/opt/local/share/texmf-texlive-dist/tex/latex/listings/listings.cfg
+File: listings.cfg 2007/02/22 1.4 listings configuration
+))
+Package: listings 2007/02/22 1.4 (Carsten Heinz)
+=======
 (/usr/local/texlive/2014/texmf-dist/tex/latex/listings/listings.cfg
 File: listings.cfg 2014/03/04 1.5c listings configuration
 ))
 Package: listings 2014/03/04 1.5c (Carsten Heinz)
+>>>>>>> b684050bf9c8e3abe3888559b06801494578b4aa
 
 (./main.aux)
 \openout1 = `main.aux'.
@@ -144,7 +159,12 @@ LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 11.
 LaTeX Font Info:    ... okay on input line 11.
 LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 11.
 LaTeX Font Info:    ... okay on input line 11.
+<<<<<<< HEAD
+
+(/opt/local/share/texmf-texlive-dist/tex/context/base/supp-pdf.mkii
+=======
  (/usr/local/texlive/2014/texmf-dist/tex/context/base/supp-pdf.mkii
+>>>>>>> b684050bf9c8e3abe3888559b06801494578b4aa
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count102
 \scratchdimen=\dimen109
@@ -157,6 +177,17 @@ LaTeX Font Info:    ... okay on input line 11.
 \MPnumerator=\count106
 \makeMPintoPDFobject=\count107
 \everyMPtoPDFconversion=\toks27
+<<<<<<< HEAD
+) (/opt/local/share/texmf-texlive-dist/tex/generic/oberdiek/pdftexcmds.sty
+Package: pdftexcmds 2011/11/29 v0.20 Utility functions of pdfTeX for LuaTeX (HO
+)
+
+(/opt/local/share/texmf-texlive-dist/tex/generic/oberdiek/ifluatex.sty
+Package: ifluatex 2010/03/01 v1.3 Provides the ifluatex switch (HO)
+Package ifluatex Info: LuaTeX not detected.
+)
+(/opt/local/share/texmf-texlive-dist/tex/generic/oberdiek/ifpdf.sty
+=======
 ) (/usr/local/texlive/2014/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
 Package: pdftexcmds 2011/11/29 v0.20 Utility functions of pdfTeX for LuaTeX (HO
 )
@@ -166,6 +197,7 @@ Package: ifluatex 2010/03/01 v1.3 Provides the ifluatex switch (HO)
 Package ifluatex Info: LuaTeX not detected.
 )
 (/usr/local/texlive/2014/texmf-dist/tex/generic/oberdiek/ifpdf.sty
+>>>>>>> b684050bf9c8e3abe3888559b06801494578b4aa
 Package: ifpdf 2011/01/30 v2.3 Provides the ifpdf switch (HO)
 Package ifpdf Info: pdfTeX in PDF mode is detected.
 )
@@ -174,6 +206,24 @@ Package pdftexcmds Info: \pdf@primitive is available.
 Package pdftexcmds Info: \pdf@ifprimitive is available.
 Package pdftexcmds Info: \pdfdraftmode found.
 )
+<<<<<<< HEAD
+(/opt/local/share/texmf-texlive-dist/tex/latex/oberdiek/epstopdf-base.sty
+Package: epstopdf-base 2010/02/09 v2.5 Base part for package epstopdf
+
+(/opt/local/share/texmf-texlive-dist/tex/latex/oberdiek/grfext.sty
+Package: grfext 2010/08/19 v1.1 Manage graphics extensions (HO)
+
+(/opt/local/share/texmf-texlive-dist/tex/generic/oberdiek/kvdefinekeys.sty
+Package: kvdefinekeys 2011/04/07 v1.3 Define keys (HO)
+))
+(/opt/local/share/texmf-texlive-dist/tex/latex/oberdiek/kvoptions.sty
+Package: kvoptions 2011/06/30 v3.11 Key value format for package options (HO)
+
+(/opt/local/share/texmf-texlive-dist/tex/generic/oberdiek/kvsetkeys.sty
+Package: kvsetkeys 2012/04/25 v1.16 Key value parser (HO)
+
+(/opt/local/share/texmf-texlive-dist/tex/generic/oberdiek/etexcmds.sty
+=======
 (/usr/local/texlive/2014/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 Package: epstopdf-base 2010/02/09 v2.5 Base part for package epstopdf
 
@@ -190,6 +240,7 @@ Package: kvoptions 2011/06/30 v3.11 Key value format for package options (HO)
 Package: kvsetkeys 2012/04/25 v1.16 Key value parser (HO)
 
 (/usr/local/texlive/2014/texmf-dist/tex/generic/oberdiek/etexcmds.sty
+>>>>>>> b684050bf9c8e3abe3888559b06801494578b4aa
 Package: etexcmds 2011/02/16 v1.5 Avoid name clashes with e-TeX commands (HO)
 Package etexcmds Info: Could not find \expanded.
 (etexcmds)             That can mean that you are not using pdfTeX 1.50 or
@@ -201,13 +252,34 @@ Package grfext Info: Graphics extension search list:
 G,.JBIG2,.JB2,.eps]
 (grfext)             \AppendGraphicsExtensions on input line 452.
 
+<<<<<<< HEAD
+(/opt/local/share/texmf-texlive-dist/tex/latex/latexconfig/epstopdf-sys.cfg
+=======
 (/usr/local/texlive/2014/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
+>>>>>>> b684050bf9c8e3abe3888559b06801494578b4aa
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
 \c@lstlisting=\count108
 LaTeX Font Info:    Try loading font information for U+msa on input line 16.
 
+<<<<<<< HEAD
+(/opt/local/share/texmf-texlive-dist/tex/latex/amsfonts/umsa.fd
+File: umsa.fd 2009/06/22 v3.00 AMS symbols A
+)
+LaTeX Font Info:    Try loading font information for U+msb on input line 16.
+
+(/opt/local/share/texmf-texlive-dist/tex/latex/amsfonts/umsb.fd
+File: umsb.fd 2009/06/22 v3.00 AMS symbols B
+) (./macros.tex
+\c@definition=\count109
+) (./introduction.tex [1
+
+{/opt/local/var/db/texmf/fonts/map/pdftex/updmap/pdftex.map}]) (./general.tex [
+2] [3] [4]) (./casestudy.tex
+(/opt/local/share/texmf-texlive-dist/tex/latex/listings/lstlang1.sty
+File: lstlang1.sty 2004/09/05 1.3 listings language file
+=======
 (/usr/local/texlive/2014/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
@@ -232,122 +304,192 @@ LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
 
 (/usr/local/texlive/2014/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2014/03/04 1.5c listings language file
+>>>>>>> b684050bf9c8e3abe3888559b06801494578b4aa
 )
-Overfull \hbox (61.19922pt too wide) in paragraph at lines 38--39
+Overfull \hbox (61.19922pt too wide) in paragraph at lines 18--19
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
 ][][] 
  []
 
+<<<<<<< HEAD
+LaTeX Font Info:    Try loading font information for OML+cmr on input line 19.
+(/opt/local/share/texmf-texlive-dist/tex/latex/base/omlcmr.fd
+=======
 [5]
 LaTeX Font Info:    Try loading font information for OML+cmr on input line 39.
  (/usr/local/texlive/2014/texmf-dist/tex/latex/base/omlcmr.fd
+>>>>>>> b684050bf9c8e3abe3888559b06801494578b4aa
 File: omlcmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OML/cmr/m/n' in size <12> not available
-(Font)              Font shape `OML/cmm/m/it' tried instead on input line 39.
+(Font)              Font shape `OML/cmm/m/it' tried instead on input line 19.
 
-Overfull \hbox (82.34918pt too wide) in paragraph at lines 39--40
+Overfull \hbox (82.34918pt too wide) in paragraph at lines 19--20
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
 ][] 
  []
 
 
-Overfull \hbox (4.55672pt too wide) in paragraph at lines 44--48
+Overfull \hbox (4.55672pt too wide) in paragraph at lines 24--28
 \OT1/cmr/m/n/12 and that each 3X3 square should have dis-tinct val-ues (three[]
 by[]three[]distinct). 
  []
 
 
+<<<<<<< HEAD
+Overfull \hbox (54.14923pt too wide) in paragraph at lines 31--32
+=======
 Overfull \hbox (54.14923pt too wide) in paragraph at lines 51--52
+>>>>>>> b684050bf9c8e3abe3888559b06801494578b4aa
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 33.
+(/opt/local/share/texmf-texlive-dist/tex/latex/base/omscmr.fd
+File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
+)
+LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 33.
+
+Overfull \hbox (75.2992pt too wide) in paragraph at lines 33--34
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
 
-Overfull \hbox (75.2992pt too wide) in paragraph at lines 53--54
-[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
- []
-
-
-Overfull \hbox (68.2492pt too wide) in paragraph at lines 54--56
+Overfull \hbox (68.2492pt too wide) in paragraph at lines 34--36
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
 
-Overfull \hbox (82.34918pt too wide) in paragraph at lines 63--64
+Overfull \hbox (82.34918pt too wide) in paragraph at lines 43--44
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
 ][][] 
  []
 
-
-Overfull \hbox (68.2492pt too wide) in paragraph at lines 72--73
+[5]
+Overfull \hbox (68.2492pt too wide) in paragraph at lines 52--53
 [][][][][][][][][][][][][][][][][] 
  []
 
 
+<<<<<<< HEAD
+Underfull \hbox (badness 10000) in paragraph at lines 58--61
+=======
 Underfull \hbox (badness 10000) in paragraph at lines 78--81
+>>>>>>> b684050bf9c8e3abe3888559b06801494578b4aa
 
  []
 
 [6] [7] [8]
+<<<<<<< HEAD
+Overfull \hbox (47.09924pt too wide) in paragraph at lines 180--181
+=======
 Overfull \hbox (47.09924pt too wide) in paragraph at lines 191--192
+>>>>>>> b684050bf9c8e3abe3888559b06801494578b4aa
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
 ][] 
  []
 
 
+<<<<<<< HEAD
+Overfull \hbox (47.09924pt too wide) in paragraph at lines 183--184
+=======
 Overfull \hbox (47.09924pt too wide) in paragraph at lines 194--195
+>>>>>>> b684050bf9c8e3abe3888559b06801494578b4aa
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
 
+<<<<<<< HEAD
+Overfull \hbox (47.09924pt too wide) in paragraph at lines 204--205
+=======
 Overfull \hbox (47.09924pt too wide) in paragraph at lines 215--216
+>>>>>>> b684050bf9c8e3abe3888559b06801494578b4aa
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
 ][] 
  []
 
 
+<<<<<<< HEAD
+Overfull \hbox (82.34918pt too wide) in paragraph at lines 205--206
+[][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (68.2492pt too wide) in paragraph at lines 217--218
+=======
 Overfull \hbox (82.34918pt too wide) in paragraph at lines 216--217
 [][][][][][][][][][][][][][][][][][][] 
  []
 
 [9]
 Overfull \hbox (68.2492pt too wide) in paragraph at lines 228--229
+>>>>>>> b684050bf9c8e3abe3888559b06801494578b4aa
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
 
+<<<<<<< HEAD
+Overfull \hbox (54.14923pt too wide) in paragraph at lines 218--219
+=======
 Overfull \hbox (54.14923pt too wide) in paragraph at lines 229--230
+>>>>>>> b684050bf9c8e3abe3888559b06801494578b4aa
 [][][][][][][][][][][][] 
  []
 
 
+<<<<<<< HEAD
+Overfull \hbox (96.44916pt too wide) in paragraph at lines 226--228
+=======
 Overfull \hbox (96.44916pt too wide) in paragraph at lines 237--239
+>>>>>>> b684050bf9c8e3abe3888559b06801494578b4aa
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
 ][][][] 
  []
 
+<<<<<<< HEAD
+[9]
+Overfull \hbox (32.99927pt too wide) in paragraph at lines 231--232
+=======
 
 Overfull \hbox (32.99927pt too wide) in paragraph at lines 242--243
+>>>>>>> b684050bf9c8e3abe3888559b06801494578b4aa
 [][][][][][][][][][][][][][][] 
  []
 
 
+<<<<<<< HEAD
+Overfull \hbox (103.49915pt too wide) in paragraph at lines 233--234
+=======
 Overfull \hbox (103.49915pt too wide) in paragraph at lines 244--245
+>>>>>>> b684050bf9c8e3abe3888559b06801494578b4aa
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
 
+<<<<<<< HEAD
+Overfull \hbox (124.64911pt too wide) in paragraph at lines 235--236
+=======
 Overfull \hbox (124.64911pt too wide) in paragraph at lines 246--247
+>>>>>>> b684050bf9c8e3abe3888559b06801494578b4aa
 [][][][][][][][][][][][][][][] 
  []
 
 
+<<<<<<< HEAD
+Overfull \hbox (195.14899pt too wide) in paragraph at lines 248--249
+=======
 Overfull \hbox (195.14899pt too wide) in paragraph at lines 259--260
+>>>>>>> b684050bf9c8e3abe3888559b06801494578b4aa
 [][][][][][][][][][][][][][][][][][][][][] 
  []
 
 
+<<<<<<< HEAD
+Overfull \hbox (25.94928pt too wide) in paragraph at lines 249--250
+=======
 Overfull \hbox (25.94928pt too wide) in paragraph at lines 260--261
+>>>>>>> b684050bf9c8e3abe3888559b06801494578b4aa
 [][][][][][][][][][][][][][][][][][][][][][] 
  []
 
@@ -355,37 +497,66 @@ Missing character: There is no â in font cmr12!
 Missing character: There is no € in font cmr12!
 Missing character: There is no ™ in font cmr12!
 
+<<<<<<< HEAD
+Overfull \hbox (75.2992pt too wide) in paragraph at lines 261--262
+=======
 Overfull \hbox (75.2992pt too wide) in paragraph at lines 272--273
+>>>>>>> b684050bf9c8e3abe3888559b06801494578b4aa
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
 ][][] 
  []
 
+<<<<<<< HEAD
+
+Overfull \hbox (32.99927pt too wide) in paragraph at lines 264--267
+=======
 [10]
 Overfull \hbox (32.99927pt too wide) in paragraph at lines 275--278
+>>>>>>> b684050bf9c8e3abe3888559b06801494578b4aa
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
 
+<<<<<<< HEAD
+Overfull \hbox (25.94928pt too wide) in paragraph at lines 269--270
+=======
 Overfull \hbox (25.94928pt too wide) in paragraph at lines 280--281
+>>>>>>> b684050bf9c8e3abe3888559b06801494578b4aa
 [][][][][][][][][][][][][][][][][][][][][] 
  []
 
 
+<<<<<<< HEAD
+Overfull \hbox (75.2992pt too wide) in paragraph at lines 270--271
+=======
 Overfull \hbox (75.2992pt too wide) in paragraph at lines 281--282
+>>>>>>> b684050bf9c8e3abe3888559b06801494578b4aa
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
 
+<<<<<<< HEAD
+Overfull \hbox (32.99927pt too wide) in paragraph at lines 271--272
+=======
 Overfull \hbox (32.99927pt too wide) in paragraph at lines 282--283
+>>>>>>> b684050bf9c8e3abe3888559b06801494578b4aa
 [][][][][][][][][][][][][][][] 
  []
 
 
+<<<<<<< HEAD
+Overfull \hbox (82.34918pt too wide) in paragraph at lines 273--274
+[][][][][][][][][][][][][][][] 
+ []
+
+[10] [11]) (./experiments.tex [12]
+=======
 Overfull \hbox (82.34918pt too wide) in paragraph at lines 284--285
 [][][][][][][][][][][][][][][] 
  []
 
 [11]) (./experiments.tex [12]
+>>>>>>> b684050bf9c8e3abe3888559b06801494578b4aa
 <SudokuDifficulty.png, id=53, 579.6054pt x 362.3136pt>
 File: SudokuDifficulty.png Graphic file (type png)
 
@@ -399,6 +570,48 @@ File: FillominoDifficulty.png Graphic file (type png)
 <use FillominoDifficulty.png>
 Package pdftex.def Info: FillominoDifficulty.png used on input line 17.
 (pdftex.def)             Requested size: 318.20024pt x 199.16928pt.
+<<<<<<< HEAD
+ [13 <./SudokuDifficulty.png>] [14 <./FillominoDifficulty.png>] <SudokuRunTime.
+png, id=65, 889.6437pt x 518.1759pt>
+File: SudokuRunTime.png Graphic file (type png)
+
+<use SudokuRunTime.png>
+Package pdftex.def Info: SudokuRunTime.png used on input line 37.
+(pdftex.def)             Requested size: 439.66232pt x 256.0748pt.
+
+<FillominoRunTime.png, id=66, 1008.1665pt x 551.4201pt>
+File: FillominoRunTime.png Graphic file (type png)
+
+<use FillominoRunTime.png>
+Package pdftex.def Info: FillominoRunTime.png used on input line 50.
+(pdftex.def)             Requested size: 468.19263pt x 256.0748pt.
+ [15 <./SudokuRunTime.png>]) (./related.tex [16 <./FillominoRunTime.png>]) (./f
+uture.tex [17]) (./conclusion.tex) [18] [19]
+(./main.aux) ) 
+Here is how much of TeX's memory you used:
+ 3374 strings out of 495063
+ 48294 string characters out of 3181830
+ 144793 words of memory out of 3000000
+ 6482 multiletter control sequences out of 15000+200000
+ 12919 words of font info for 50 fonts, out of 3000000 for 9000
+ 14 hyphenation exceptions out of 8191
+ 38i,9n,42p,1302b,1455s stack positions out of 5000i,500n,10000p,200000b,50000s
+</opt/local/share/texmf-texlive-dist/fonts/type1/public/amsfonts/
+cm/cmbx12.pfb></opt/local/share/texmf-texlive-dist/fonts/type1/public/amsfonts/
+cm/cmex10.pfb></opt/local/share/texmf-texlive-dist/fonts/type1/public/amsfonts/
+cm/cmmi12.pfb></opt/local/share/texmf-texlive-dist/fonts/type1/public/amsfonts/
+cm/cmmi8.pfb></opt/local/share/texmf-texlive-dist/fonts/type1/public/amsfonts/c
+m/cmr10.pfb></opt/local/share/texmf-texlive-dist/fonts/type1/public/amsfonts/cm
+/cmr12.pfb></opt/local/share/texmf-texlive-dist/fonts/type1/public/amsfonts/cm/
+cmr17.pfb></opt/local/share/texmf-texlive-dist/fonts/type1/public/amsfonts/cm/c
+mr8.pfb></opt/local/share/texmf-texlive-dist/fonts/type1/public/amsfonts/cm/cms
+y10.pfb></opt/local/share/texmf-texlive-dist/fonts/type1/public/amsfonts/cm/cms
+y8.pfb></opt/local/share/texmf-texlive-dist/fonts/type1/public/amsfonts/cm/cmti
+12.pfb></opt/local/share/texmf-texlive-dist/fonts/type1/public/amsfonts/cm/cmtt
+12.pfb></opt/local/share/texmf-texlive-dist/fonts/type1/public/amsfonts/symbols
+/msbm10.pfb>
+Output written on main.pdf (19 pages, 544849 bytes).
+=======
  [13 <./SudokuDifficulty.png>] [14 <./FillominoDifficulty.png>] <sudoku2.png, i
 d=65, 797.1381pt x 496.4949pt>
 File: sudoku2.png Graphic file (type png)
@@ -437,6 +650,7 @@ c/amsfonts/cm/cmti12.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public
 /amsfonts/cm/cmtt12.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/
 amsfonts/symbols/msbm10.pfb>
 Output written on main.pdf (19 pages, 503405 bytes).
+>>>>>>> b684050bf9c8e3abe3888559b06801494578b4aa
 PDF statistics:
  127 PDF objects out of 1000 (max. 8388607)
  84 compressed objects within 1 object stream
