@@ -119,6 +119,10 @@ components describing the unsolved board. These characteristics are:
 \item Standard deviation of number of occurrences of each digit from the mean number of occurrences
 \end{itemize}
 \doublespace
+<<<<<<< HEAD
+=======
+
+>>>>>>> FETCH_HEAD
 
 The SVM library by scikit-learn then uses the vector to categorize the
 puzzle into one of four difficulties: (1) Easy, (2) Medium, (3) Hard,
@@ -320,7 +324,7 @@ desired number of squares emptied.
 Using machine learning, we determine the difficulty of an unsolved
 fillomino puzzle based on the following characteristics:
 
-
+\singlespace
 \begin{itemize}
 \item Number of cells
 \item Number of empty squares
@@ -328,16 +332,19 @@ fillomino puzzle based on the following characteristics:
 \item Optimality (whether the puzzle can be emptied further)
 \end{itemize}
 
+\doublespace
 \subsubsection{Transformations}
 Because of the randomness of the different regions, there are less
 transformations that can be applied to Fillomino than Sudoku, but a
 number still exist. These are:
 
+\singlespace
 \begin{enumerate}
 \item Rotation
 \item Vertical reflection
 \item Horizontal reflection
 \end{enumerate}
+\doublespace
 
 Applying these transformation to the original z3 declarative
 definition puzzles as well as the randomly generating python generated
