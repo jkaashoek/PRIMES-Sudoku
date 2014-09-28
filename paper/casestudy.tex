@@ -3,32 +3,31 @@
 \subsection{Sudoku}
 
 \subsubsection{Declarative Definition}
-We use the python frontend of z3 constraint solver to specify the 9X9
-sudoku puzzle declaratively. As can be noticed from the encoding it
-can be easily generalized to other sudoku sizes such as 16X16 or
-25X25.
+We use the python frontend of the z3 constraint solver to specify the 9x9
+sudoku puzzle declaratively. As can be noticed from the encoding, it
+can be easily generalized to other sudoku sizes, such as 16x16 or
+25x25.
 
-
-We first define 81 different integer variables (X[0][0], X[0][1], \ldots,
-X[8][8]), where X[i][j] denotes the value of the sudoku cell (i,j). We
+We first define 81 different integer variables (\t{X[0][0], X[0][1], \ldots,
+X[8][8]}), where \t{X[i][j]} denotes the value of the sudoku cell (i, j). We
 also define the valid set of values each element can take, i.e. 1 $\leq$
-X[i][j] $\leq$ 9 (valid values).
+\t{X[i][j]} $\leq$ 9 (valid values).
 
 \singlespace
-\begin{lstlisting}[language=python]
+\begin{lstlisting}[language=python, frame = single]
 X = [[Int('x%d%d' % (i,j)) for i in range(9)] for j in range(9)]
 valid_values = [And ( X[i][j] >= 1, X[i][j] <= 9) for i in range(9)
 for j in range(9)]
 \end{lstlisting}
 \doublespace
 
-We now add sudoku constraints that the values in each row should be
-distinct (rows\textunderscore distinct), values in each column should be distinct
-(cols\textunderscore distinct), and that each 3X3 square should have distinct values
-(three\textunderscore by\textunderscore three\textunderscore distinct).
+We now add the sudoku constraints that the values in each row should be
+distinct (\t{rows\textunderscore distinct}), values in each column should be distinct
+(\t{cols\textunderscore distinct}), and that values each 3x3 square should be distinct
+(\t{three\textunderscore by\textunderscore three\textunderscore distinct}).
 
 \singlespace
-\begin{lstlisting}[language=python]
+\begin{lstlisting}[language=python, frame = single]
 row_distinct = [Distinct(X[i]) for i in range(9)]
 cols_distinct = [Distinct([X[i][j] for i in range(9)]) for j in
 range(9)] 
@@ -39,11 +38,11 @@ range(3) for j in range(3)]) for k in range(3) for l in range(3)]
 \doublespace
 
 To encode partially filled sudoku board (where a 0 value denotes an
-empty space), we simply add the constraint X[i][j] == board[i][j] when
-board[i][j] != 0. 
+empty space), we simply add the constraint \t{X[i][j] == board[i][j]} when
+\t{board[i][j]} != 0. 
 
 \singlespace
-\begin{lstlisting}[language=python]
+\begin{lstlisting}[language=python, frame = single]
  already_set = [X[i][j] == board[i][j] if board[i][j] != 0 for i in
  range(9) for j in range(9)]
 
@@ -54,7 +53,7 @@ The complete set of constraints sudoku constraint is obtained by
 combining all previous constraints:
 
 \singlespace
-\begin{lstlisting}[language=python]
+\begin{lstlisting}[language=python, frame = single]
 sudoku_constraint = valid_values + row_distinct + cols_distinct +
 three_by_three_distinct + already_set
 \end{lstlisting}
@@ -62,10 +61,9 @@ three_by_three_distinct + already_set
 
 
 \subsubsection{Creating the Initial Puzzle}
-To accomplish this, we use a set of equations using the python z3
-constraint solver. This would generate a sudoku board such as the one
-below. \newline
-
+To accomplish this, we use a set of equations using the python z3 constraint solver. This would generate a sudoku board in a 2 dimensional list such as the one
+below. 
+\t{
 \singlespace
 \begin{center}
 [[4, 9, 7, 1, 8, 2, 5, 3, 6] \newline
@@ -77,15 +75,14 @@ below. \newline
 [3, 2, 5, 9, 1, 7, 6, 8, 4] \newline
 [9, 7, 1, 8, 4, 6, 3, 2, 5] \newline
 [6, 4, 8, 2, 5, 3, 1, 7, 9]] \newline
-\end{center}
+\end{center}}
 \doublespace
 
 \subsubsection{Emptying Squares}
 
 The next step is to start emptying this board. Our method for
 selecting the next square to remove includes a number of
-substeps. First, we calculate the percentage of squares filled in each
-row (number of squares in row that are full/9). We then randomly
+sub-steps. First, we calculate the percentage of squares in each row that are filled in ((number of squares in row that are full)/9). We then randomly
 select one of these percentages and generate a random number between 0
 and 1. If this number is greater than the percentage, we find a new
 percentage and a new decimal between 0 and 1. Once we have a number
@@ -128,10 +125,6 @@ components describing the unsolved board. These characteristics are:
 \item Standard deviation of number of occurrences of each digit from the mean number of occurrences
 \end{itemize}
 \doublespace
-<<<<<<< HEAD
-=======
-
->>>>>>> FETCH_HEAD
 
 The SVM library by scikit-learn then uses the vector to categorize the
 puzzle into one of four difficulties: (1) Easy, (2) Medium, (3) Hard,

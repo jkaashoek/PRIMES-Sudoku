@@ -1,21 +1,6 @@
 \begin{abstract}
 
-Students learn by practicing over lots of problems, but generating
-fresh problems that have specific characteristics such as using a
-certain set of concepts or being of a given difficulty level are a
-tedious task for a teacher. In this paper, we present an iterative
-constraint-based technique for automatically generating problems which
-is general enough for many domains. Our technique takes as parameters
-the problem definition, the complexity function, and domain-specific
-semantics-preserving transformations. We present an instantiation of
-our technique over automated generation of sudoku puzzles, and are
-currently extending our technique to generate Python programming
-problems. Since defining complexity of a sudoku puzzle is still an
-open research question, we use machine learning to learn a function
-that predicts the hardness of a sudoku puzzle using lots of labelled
-sudoku puzzles from various online sources. Our technique was able to
-efficiently generate more than 200,000 interesting sudoku puzzles of
-different sizes (9x9, 16x16, 25x25) and of different complexity
-levels.
+Students learn by practicing many problems, but generating fresh problems that have specific characteristics, such as using a certain set of concepts or being of a given difficulty level, is a
+tedious task for a teacher. In this paper, we present an iterative constraint-based technique for automatically generating problems.  Our technique, which is general in many domains, takes as parameters the problem definition, the complexity function, and domain-specific semantics-preserving transformations. We present an instantiation of our technique with automated generation of sudoku and fillomino puzzles, and we are currently extending our technique to generate Python programming problems. Since defining complexities of sudoku and fillomino puzzles is still an open research question, we developed our own mechanism to define complexity, using machine learning to generate a function for difficulty from puzzles with already known  difficulties. Using this technique, we generated over 200,000 sudoku puzzles of different sizes (9x9, 16x16, 25x25) and over 10,000 fillomino puzzles of sizes ranging from 2x2 to 16x16.
 
 \end{abstract}
