@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012/MacPorts 2012_10) (format=pdflatex 2013.8.31)  27 SEP 2014 22:10
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012/MacPorts 2012_10) (format=pdflatex 2013.8.31)  27 SEP 2014 22:15
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -6,7 +6,7 @@ entering extended mode
 (./casestudy.tex
 ! Undefined control sequence.
 l.1 \section
-            {CaseStudies}
+            {Case Studies}
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
 misspelled it (e.g., `\hobx'), type `I' and the correct
@@ -21,7 +21,7 @@ Type  H <return>  for immediate help.
  ...                                              
                                                   
 l.1 \section{C
-              aseStudies}
+              ase Studies}
 You're in trouble here.  Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
 
@@ -38,7 +38,7 @@ Missing character: There is no e in font nullfont!
 Missing character: There is no s in font nullfont!
 
 Overfull \hbox (20.0pt too wide) in paragraph at lines 1--2
-[] 
+[]
  []
 
 ! Undefined control sequence.
@@ -3514,8 +3514,17 @@ Overfull \hbox (20.0pt too wide) in paragraph at lines 106--110
 []
  []
 
+! Undefined control sequence.
+l.111 \singlespace
+                  
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
 
-Overfull \hbox (20.0pt too wide) in paragraph at lines 111--111
+
+Overfull \hbox (20.0pt too wide) in paragraph at lines 112--112
 [] 
  []
 
@@ -3805,6 +3814,15 @@ Missing character: There is no n in font nullfont!
 Missing character: There is no c in font nullfont!
 Missing character: There is no e in font nullfont!
 Missing character: There is no s in font nullfont!
+! Undefined control sequence.
+l.121 \doublespace
+                  
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
 Missing character: There is no T in font nullfont!
 Missing character: There is no h in font nullfont!
 Missing character: There is no e in font nullfont!
@@ -3934,12 +3952,12 @@ Missing character: There is no i in font nullfont!
 Missing character: There is no l in font nullfont!
 Missing character: There is no . in font nullfont!
 
-Overfull \hbox (20.0pt too wide) in paragraph at lines 122--125
+Overfull \hbox (20.0pt too wide) in paragraph at lines 124--127
 []
  []
 
 ! Undefined control sequence.
-l.126 \subsubsection
+l.128 \subsubsection
                     {Transformations}
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -4142,12 +4160,12 @@ Missing character: There is no r in font nullfont!
 Missing character: There is no d in font nullfont!
 Missing character: There is no : in font nullfont!
 
-Overfull \hbox (20.0pt too wide) in paragraph at lines 126--131
+Overfull \hbox (20.0pt too wide) in paragraph at lines 128--133
 []
  []
 
 ! Undefined control sequence.
-l.132 \singlespace
+l.134 \singlespace
                   
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -4156,7 +4174,7 @@ spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
 
-Overfull \hbox (20.0pt too wide) in paragraph at lines 133--133
+Overfull \hbox (20.0pt too wide) in paragraph at lines 135--135
 [] 
  []
 
@@ -4363,7 +4381,7 @@ Missing character: There is no e in font nullfont!
 Missing character: There is no e in font nullfont!
 Missing character: There is no s in font nullfont!
 ! Undefined control sequence.
-l.142 \doublespace
+l.144 \doublespace
                   
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -4624,7 +4642,7 @@ Missing character: There is no n in font nullfont!
 Missing character: There is no e in font nullfont!
 Missing character: There is no . in font nullfont!
 
-Overfull \hbox (20.0pt too wide) in paragraph at lines 144--149
+Overfull \hbox (20.0pt too wide) in paragraph at lines 146--151
 []
  []
 
@@ -4786,12 +4804,12 @@ Missing character: There is no u in font nullfont!
 Missing character: There is no s in font nullfont!
 Missing character: There is no : in font nullfont!
 
-Overfull \hbox (20.0pt too wide) in paragraph at lines 151--154
+Overfull \hbox (20.0pt too wide) in paragraph at lines 153--156
 []
  []
 
 ! Undefined control sequence.
-l.155 \singlespace
+l.157 \singlespace
                   
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -4800,7 +4818,7 @@ spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
 
-Overfull \hbox (20.0pt too wide) in paragraph at lines 156--156
+Overfull \hbox (20.0pt too wide) in paragraph at lines 158--158
 [] 
  []
 
@@ -5001,7 +5019,7 @@ Missing character: There is no a in font nullfont!
 Missing character: There is no r in font nullfont!
 Missing character: There is no e in font nullfont!
 ! Undefined control sequence.
-l.164 \doublespace
+l.166 \doublespace
                   
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -5091,7 +5109,7 @@ Missing character: There is no r in font nullfont!
 Missing character: There is no d in font nullfont!
 Missing character: There is no . in font nullfont!
 
-Overfull \hbox (20.0pt too wide) in paragraph at lines 166--168
+Overfull \hbox (20.0pt too wide) in paragraph at lines 168--170
 []
  []
 
@@ -5267,12 +5285,12 @@ Missing character: There is no v in font nullfont!
 Missing character: There is no e in font nullfont!
 Missing character: There is no . in font nullfont!
 
-Overfull \hbox (20.0pt too wide) in paragraph at lines 170--173
+Overfull \hbox (20.0pt too wide) in paragraph at lines 172--175
 []
  []
 
 ! Undefined control sequence.
-l.175 \subsection
+l.177 \subsection
                  {Fillomino}
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -5290,12 +5308,12 @@ Missing character: There is no i in font nullfont!
 Missing character: There is no n in font nullfont!
 Missing character: There is no o in font nullfont!
 
-Overfull \hbox (20.0pt too wide) in paragraph at lines 175--176
+Overfull \hbox (20.0pt too wide) in paragraph at lines 177--178
 [] 
  []
 
 ! Undefined control sequence.
-l.177 \subsubsection
+l.179 \subsubsection
                     {Declarative Definition}
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -5471,7 +5489,7 @@ Missing character: There is no r in font nullfont!
 Missing character: There is no d in font nullfont!
 Missing character: There is no : in font nullfont!
 
-Overfull \hbox (20.0pt too wide) in paragraph at lines 177--181
+Overfull \hbox (20.0pt too wide) in paragraph at lines 179--183
 []
  []
 
@@ -5482,7 +5500,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.182 \begin{lstlisting}
+l.184 \begin{lstlisting}
                         [language=python]
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
@@ -5533,7 +5551,7 @@ Missing character: There is no 1 in font nullfont!
 Missing character: There is no ) in font nullfont!
 Missing character: There is no ] in font nullfont!
 
-Overfull \hbox (20.0pt too wide) in paragraph at lines 182--185
+Overfull \hbox (20.0pt too wide) in paragraph at lines 184--187
 []
  []
 
@@ -5545,7 +5563,7 @@ Missing character: There is no d in font nullfont!
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.186 valid_
+l.188 valid_
             cells = [And(cells[i][j] <= N, cells[i][j] >=1) for i in
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
@@ -5557,7 +5575,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.188 \end{lstlisting}
+l.190 \end{lstlisting}
                       
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
@@ -5566,7 +5584,7 @@ or  <return>  to continue without it.
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.188 \end{lstlisting}
+l.190 \end{lstlisting}
                       
 I've inserted something that you may have forgotten.
 (See the <inserted text> above.)
@@ -5575,25 +5593,25 @@ really didn't forget anything, try typing `2' now; then
 my insertion and my current dilemma will both disappear.
 
 
-Overfull \hbox (50.33417pt too wide) in paragraph at lines 186--189
+Overfull \hbox (50.33417pt too wide) in paragraph at lines 188--191
 []$[]\OML/cmm/m/it/10 ells \OT1/cmr/m/n/10 =
  []
 
 
-Overfull \hbox (82.98647pt too wide) in paragraph at lines 186--189
+Overfull \hbox (82.98647pt too wide) in paragraph at lines 188--191
 \OT1/cmr/m/n/10 [\OML/cmm/m/it/10 And\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 cells\OT
 1/cmr/m/n/10 [\OML/cmm/m/it/10 i\OT1/cmr/m/n/10 ][\OML/cmm/m/it/10 j\OT1/cmr/m/
 n/10 ] \OML/cmm/m/it/10 <\OT1/cmr/m/n/10 =
  []
 
 
-Overfull \hbox (70.62637pt too wide) in paragraph at lines 186--189
+Overfull \hbox (70.62637pt too wide) in paragraph at lines 188--191
 \OML/cmm/m/it/10 N; cells\OT1/cmr/m/n/10 [\OML/cmm/m/it/10 i\OT1/cmr/m/n/10 ][\
 OML/cmm/m/it/10 j\OT1/cmr/m/n/10 ] \OML/cmm/m/it/10 >\OT1/cmr/m/n/10 =
  []
 
 
-Overfull \hbox (155.4452pt too wide) in paragraph at lines 186--189
+Overfull \hbox (155.4452pt too wide) in paragraph at lines 188--191
 \OT1/cmr/m/n/10 1)\OML/cmm/m/it/10 foriinrange\OT1/cmr/m/n/10 (\OML/cmm/m/it/10
  N\OT1/cmr/m/n/10 )\OML/cmm/m/it/10 forjinrange\OT1/cmr/m/n/10 (\OML/cmm/m/it/1
 0 N\OT1/cmr/m/n/10 )]$ 
@@ -5733,7 +5751,7 @@ Missing character: There is no o in font nullfont!
 Missing character: There is no n in font nullfont!
 Missing character: There is no . in font nullfont!
 
-Overfull \hbox (20.0pt too wide) in paragraph at lines 190--193
+Overfull \hbox (20.0pt too wide) in paragraph at lines 192--195
 []
  []
 
@@ -6073,7 +6091,7 @@ Missing character: There is no r in font nullfont!
 Missing character: There is no e in font nullfont!
 Missing character: There is no . in font nullfont!
 
-Overfull \hbox (20.0pt too wide) in paragraph at lines 195--201
+Overfull \hbox (20.0pt too wide) in paragraph at lines 197--203
 []
  []
 
@@ -6084,7 +6102,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.203 \begin{lstlisting}
+l.205 \begin{lstlisting}
                         [language=python]
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
@@ -6172,7 +6190,7 @@ Missing character: There is no e in font nullfont!
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.207             edge_
+l.209             edge_
                        var[(i,j,k,l)] = Int("e%d%d%d%d" % (i,j,k,l))
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
@@ -6184,7 +6202,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.210 \end{lstlisting}
+l.212 \end{lstlisting}
                       
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
@@ -6193,7 +6211,7 @@ or  <return>  to continue without it.
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.210 \end{lstlisting}
+l.212 \end{lstlisting}
                       
 I've inserted something that you may have forgotten.
 (See the <inserted text> above.)
@@ -6202,35 +6220,35 @@ really didn't forget anything, try typing `2' now; then
 my insertion and my current dilemma will both disappear.
 
 
-Overfull \hbox (20.0pt too wide) in paragraph at lines 203--211
+Overfull \hbox (20.0pt too wide) in paragraph at lines 205--213
 []
  []
 
 
-Overfull \hbox (68.33005pt too wide) in paragraph at lines 203--211
+Overfull \hbox (68.33005pt too wide) in paragraph at lines 205--213
 []\OML/cmm/m/it/10 ar\OT1/cmr/m/n/10 [(\OML/cmm/m/it/10 i; j; k; l\OT1/cmr/m/n/
 10 )] =
  []
 
 
-Overfull \hbox (122.60472pt too wide) in paragraph at lines 203--211
+Overfull \hbox (122.60472pt too wide) in paragraph at lines 205--213
 \OML/cmm/m/it/10 Int\OT1/cmr/m/n/10 ("\OML/cmm/m/it/10 eedge[]al[]onstraints \O
 T1/cmr/m/n/10 =
  []
 
 
-Overfull \hbox (70.55843pt too wide) in paragraph at lines 203--211
+Overfull \hbox (70.55843pt too wide) in paragraph at lines 205--213
 \OT1/cmr/m/n/10 [\OML/cmm/m/it/10 Or\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 edge[]al 
 \OT1/cmr/m/n/10 ==
  []
 
 
-Overfull \hbox (60.64125pt too wide) in paragraph at lines 203--211
+Overfull \hbox (60.64125pt too wide) in paragraph at lines 205--213
 \OT1/cmr/m/n/10 0\OML/cmm/m/it/10 ; edge[]al \OT1/cmr/m/n/10 ==
  []
 
 
-Overfull \hbox (142.7997pt too wide) in paragraph at lines 203--211
+Overfull \hbox (142.7997pt too wide) in paragraph at lines 205--213
 \OT1/cmr/m/n/10 1)\OML/cmm/m/it/10 foredge[]alinedge[]ar:values\OT1/cmr/m/n/10 
 ()]$ 
  []
@@ -6340,7 +6358,7 @@ Missing character: There is no = in font nullfont!
 Missing character: There is no 0 in font nullfont!
 Missing character: There is no . in font nullfont!
 
-Overfull \hbox (20.0pt too wide) in paragraph at lines 212--214
+Overfull \hbox (20.0pt too wide) in paragraph at lines 214--216
 []
  []
 
@@ -6351,7 +6369,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.215 \begin{lstlisting}
+l.217 \begin{lstlisting}
                         [language=python]
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
@@ -6460,7 +6478,7 @@ Missing character: There is no m in font nullfont!
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.220             sum_
+l.222             sum_
                       edges = edge_var[(i,j,k,l)] + edge_var[(k,l,i,j)]
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
@@ -6472,7 +6490,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.222 \end{lstlisting}
+l.224 \end{lstlisting}
                       
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
@@ -6481,7 +6499,7 @@ or  <return>  to continue without it.
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.222 \end{lstlisting}
+l.224 \end{lstlisting}
                       
 I've inserted something that you may have forgotten.
 (See the <inserted text> above.)
@@ -6490,30 +6508,30 @@ really didn't forget anything, try typing `2' now; then
 my insertion and my current dilemma will both disappear.
 
 
-Overfull \hbox (20.0pt too wide) in paragraph at lines 215--223
+Overfull \hbox (20.0pt too wide) in paragraph at lines 217--225
 []
  []
 
 
-Overfull \hbox (34.52672pt too wide) in paragraph at lines 215--223
+Overfull \hbox (34.52672pt too wide) in paragraph at lines 217--225
 []\OML/cmm/m/it/10 dges \OT1/cmr/m/n/10 =
  []
 
 
-Overfull \hbox (85.1982pt too wide) in paragraph at lines 215--223
+Overfull \hbox (85.1982pt too wide) in paragraph at lines 217--225
 \OML/cmm/m/it/10 edge[]ar\OT1/cmr/m/n/10 [(\OML/cmm/m/it/10 i; j; k; l\OT1/cmr/
 m/n/10 )] +
  []
 
 
-Overfull \hbox (261.06126pt too wide) in paragraph at lines 215--223
+Overfull \hbox (261.06126pt too wide) in paragraph at lines 217--225
 \OML/cmm/m/it/10 edge[]ar\OT1/cmr/m/n/10 [(\OML/cmm/m/it/10 k; l; i; j\OT1/cmr/
 m/n/10 )]\OML/cmm/m/it/10 edge[]al[]onstraints:append\OT1/cmr/m/n/10 (\OML/cmm/
 m/it/10 sum[]dges <\OT1/cmr/m/n/10 =
  []
 
 
-Overfull \hbox (8.88892pt too wide) in paragraph at lines 215--223
+Overfull \hbox (8.88892pt too wide) in paragraph at lines 217--225
 \OT1/cmr/m/n/10 1)$ 
  []
 
@@ -6606,7 +6624,7 @@ Missing character: There is no l in font nullfont!
 Missing character: There is no l in font nullfont!
 Missing character: There is no . in font nullfont!
 
-Overfull \hbox (20.0pt too wide) in paragraph at lines 224--226
+Overfull \hbox (20.0pt too wide) in paragraph at lines 226--228
 []
  []
 
@@ -6617,7 +6635,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.228 \begin{lstlisting}
+l.230 \begin{lstlisting}
                         [language=python]
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
@@ -6645,7 +6663,7 @@ Missing character: There is no n in font nullfont!
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.229 in_
+l.231 in_
          cell = [[Int("in%d%d"%(i,j)) for i in range(N)] for j in range(N)]
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
@@ -6653,23 +6671,23 @@ you left one out. Proceed, with fingers crossed.
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.230 
+l.232 
       
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
 
 
-Overfull \hbox (20.0pt too wide) in paragraph at lines 228--230
+Overfull \hbox (20.0pt too wide) in paragraph at lines 230--232
 []
  []
 
 
-Overfull \hbox (25.64667pt too wide) in paragraph at lines 228--230
+Overfull \hbox (25.64667pt too wide) in paragraph at lines 230--232
 []\OML/cmm/m/it/10 ell \OT1/cmr/m/n/10 =
  []
 
 
-Overfull \hbox (38.68597pt too wide) in paragraph at lines 228--230
+Overfull \hbox (38.68597pt too wide) in paragraph at lines 230--232
 \OT1/cmr/m/n/10 [[\OML/cmm/m/it/10 Int\OT1/cmr/m/n/10 ("\OML/cmm/m/it/10 in$ 
  []
 
@@ -6678,7 +6696,7 @@ Missing character: There is no n in font nullfont!
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.231     in_
+l.233     in_
              cell_constraints=[]
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
@@ -6690,7 +6708,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.239 \end{lstlisting}
+l.241 \end{lstlisting}
                       
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
@@ -6699,7 +6717,7 @@ or  <return>  to continue without it.
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.239 \end{lstlisting}
+l.241 \end{lstlisting}
                       
 I've inserted something that you may have forgotten.
 (See the <inserted text> above.)
@@ -6708,24 +6726,24 @@ really didn't forget anything, try typing `2' now; then
 my insertion and my current dilemma will both disappear.
 
 
-Overfull \hbox (96.49318pt too wide) in paragraph at lines 231--240
+Overfull \hbox (96.49318pt too wide) in paragraph at lines 233--242
 []$[]\OML/cmm/m/it/10 ell[]onstraints \OT1/cmr/m/n/10 =
  []
 
 
-Overfull \hbox (82.37764pt too wide) in paragraph at lines 231--240
+Overfull \hbox (82.37764pt too wide) in paragraph at lines 233--242
 \OT1/cmr/m/n/10 []\OML/cmm/m/it/10 foriinrange\OT1/cmr/m/n/10 (\OML/cmm/m/it/10
  N\OT1/cmr/m/n/10 ) :
  []
 
 
-Overfull \hbox (78.06743pt too wide) in paragraph at lines 231--240
+Overfull \hbox (78.06743pt too wide) in paragraph at lines 233--242
 \OML/cmm/m/it/10 forjinrange\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 N\OT1/cmr/m/n/10 
 ) :
  []
 
 
-Overfull \hbox (197.97855pt too wide) in paragraph at lines 231--240
+Overfull \hbox (197.97855pt too wide) in paragraph at lines 233--242
 \OML/cmm/m/it/10 in[]ell[]onstraints:append\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 An
 d\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 in[]ell\OT1/cmr/m/n/10 [\OML/cmm/m/it/10 i\O
 T1/cmr/m/n/10 ][\OML/cmm/m/it/10 j\OT1/cmr/m/n/10 ] \OML/cmm/m/it/10 >\OT1/cmr/
@@ -6733,19 +6751,19 @@ m/n/10 =
  []
 
 
-Overfull \hbox (71.56314pt too wide) in paragraph at lines 231--240
+Overfull \hbox (71.56314pt too wide) in paragraph at lines 233--242
 \OT1/cmr/m/n/10 0\OML/cmm/m/it/10 ; in[]ell\OT1/cmr/m/n/10 [\OML/cmm/m/it/10 i\
 OT1/cmr/m/n/10 ][\OML/cmm/m/it/10 j\OT1/cmr/m/n/10 ] \OML/cmm/m/it/10 <\OT1/cmr
 /m/n/10 =
  []
 
 
-Overfull \hbox (108.00047pt too wide) in paragraph at lines 231--240
+Overfull \hbox (108.00047pt too wide) in paragraph at lines 233--242
 \OT1/cmr/m/n/10 1))\OML/cmm/m/it/10 sum[]ncoming[]dges \OT1/cmr/m/n/10 =
  []
 
 
-Overfull \hbox (425.81967pt too wide) in paragraph at lines 231--240
+Overfull \hbox (425.81967pt too wide) in paragraph at lines 233--242
 \OML/cmm/m/it/10 Sum\OT1/cmr/m/n/10 ([\OML/cmm/m/it/10 edge[]ar\OT1/cmr/m/n/10 
 [(\OML/cmm/m/it/10 k; l; i; j\OT1/cmr/m/n/10 )]\OML/cmm/m/it/10 for\OT1/cmr/m/n
 /10 (\OML/cmm/m/it/10 k; l\OT1/cmr/m/n/10 )\OML/cmm/m/it/10 ingetAdjacent\OT1/c
@@ -6755,7 +6773,7 @@ ML/cmm/m/it/10 i\OT1/cmr/m/n/10 ][\OML/cmm/m/it/10 j\OT1/cmr/m/n/10 ] ==
  []
 
 
-Overfull \hbox (88.55605pt too wide) in paragraph at lines 231--240
+Overfull \hbox (88.55605pt too wide) in paragraph at lines 233--242
 \OML/cmm/m/it/10 sum[]ncoming[]dges\OT1/cmr/m/n/10 )$ 
  []
 
@@ -6877,7 +6895,7 @@ Missing character: There is no u in font nullfont!
 Missing character: There is no e in font nullfont!
 Missing character: There is no . in font nullfont!
 
-Overfull \hbox (20.0pt too wide) in paragraph at lines 241--244
+Overfull \hbox (20.0pt too wide) in paragraph at lines 243--246
 []
  []
 
@@ -6888,7 +6906,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.245 \begin{lstlisting}
+l.247 \begin{lstlisting}
                         [language=python]
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
@@ -6918,7 +6936,7 @@ Missing character: There is no e in font nullfont!
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.246   same_
+l.248   same_
              value_constraint = []
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
@@ -6926,67 +6944,67 @@ you left one out. Proceed, with fingers crossed.
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.254 
+l.256 
       
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
 
 
-Overfull \hbox (20.0pt too wide) in paragraph at lines 245--254
+Overfull \hbox (20.0pt too wide) in paragraph at lines 247--256
 []
  []
 
 
-Overfull \hbox (80.5098pt too wide) in paragraph at lines 245--254
+Overfull \hbox (80.5098pt too wide) in paragraph at lines 247--256
 []\OML/cmm/m/it/10 alue[]onstraint \OT1/cmr/m/n/10 =
  []
 
 
-Overfull \hbox (82.37764pt too wide) in paragraph at lines 245--254
+Overfull \hbox (82.37764pt too wide) in paragraph at lines 247--256
 \OT1/cmr/m/n/10 []\OML/cmm/m/it/10 foriinrange\OT1/cmr/m/n/10 (\OML/cmm/m/it/10
  N\OT1/cmr/m/n/10 ) :
  []
 
 
-Overfull \hbox (78.06743pt too wide) in paragraph at lines 245--254
+Overfull \hbox (78.06743pt too wide) in paragraph at lines 247--256
 \OML/cmm/m/it/10 forjinrange\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 N\OT1/cmr/m/n/10 
 ) :
  []
 
 
-Overfull \hbox (143.4704pt too wide) in paragraph at lines 245--254
+Overfull \hbox (143.4704pt too wide) in paragraph at lines 247--256
 \OML/cmm/m/it/10 for\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 k; l\OT1/cmr/m/n/10 )\OML
 /cmm/m/it/10 ingetAdjacent\OT1/cmr/m/n/10 1(\OML/cmm/m/it/10 i; j; N\OT1/cmr/m/
 n/10 ) :
  []
 
 
-Overfull \hbox (93.85971pt too wide) in paragraph at lines 245--254
+Overfull \hbox (93.85971pt too wide) in paragraph at lines 247--256
 \OML/cmm/m/it/10 iflessThan\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 i; j; k; l\OT1/cmr
 /m/n/10 ) :
  []
 
 
-Overfull \hbox (282.43045pt too wide) in paragraph at lines 245--254
+Overfull \hbox (282.43045pt too wide) in paragraph at lines 247--256
 \OML/cmm/m/it/10 same[]alue[]onstraint:append\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 
 Implies\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 Or\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 ed
 ge[]ar\OT1/cmr/m/n/10 [(\OML/cmm/m/it/10 i; j; k; l\OT1/cmr/m/n/10 )] ==
  []
 
 
-Overfull \hbox (105.7537pt too wide) in paragraph at lines 245--254
+Overfull \hbox (105.7537pt too wide) in paragraph at lines 247--256
 \OT1/cmr/m/n/10 1\OML/cmm/m/it/10 ; edge[]ar\OT1/cmr/m/n/10 [(\OML/cmm/m/it/10 
 k; l; i; j\OT1/cmr/m/n/10 )] ==
  []
 
 
-Overfull \hbox (70.94588pt too wide) in paragraph at lines 245--254
+Overfull \hbox (70.94588pt too wide) in paragraph at lines 247--256
 \OT1/cmr/m/n/10 1)\OML/cmm/m/it/10 ; cells\OT1/cmr/m/n/10 [\OML/cmm/m/it/10 i\O
 T1/cmr/m/n/10 ][\OML/cmm/m/it/10 j\OT1/cmr/m/n/10 ] ==
  []
 
 
-Overfull \hbox (47.62283pt too wide) in paragraph at lines 245--254
+Overfull \hbox (47.62283pt too wide) in paragraph at lines 247--256
 \OML/cmm/m/it/10 cells\OT1/cmr/m/n/10 [\OML/cmm/m/it/10 k\OT1/cmr/m/n/10 ][\OML
 /cmm/m/it/10 l\OT1/cmr/m/n/10 ]))$ 
  []
@@ -6998,7 +7016,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.255 \end{lstlisting}
+l.257 \end{lstlisting}
                       
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
@@ -7136,7 +7154,7 @@ Missing character: There is no u in font nullfont!
 Missing character: There is no e in font nullfont!
 Missing character: There is no . in font nullfont!
 
-Overfull \hbox (20.0pt too wide) in paragraph at lines 257--260
+Overfull \hbox (20.0pt too wide) in paragraph at lines 259--262
 []
  []
 
@@ -7147,7 +7165,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.262 \begin{lstlisting}
+l.264 \begin{lstlisting}
                         [language=python]
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
@@ -7177,7 +7195,7 @@ Missing character: There is no e in font nullfont!
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.263 size_
+l.265 size_
            region_constraint=[]
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
@@ -7185,49 +7203,49 @@ you left one out. Proceed, with fingers crossed.
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.268 
+l.270 
       
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
 
 
-Overfull \hbox (20.0pt too wide) in paragraph at lines 262--268
+Overfull \hbox (20.0pt too wide) in paragraph at lines 264--270
 []
  []
 
 
-Overfull \hbox (85.41899pt too wide) in paragraph at lines 262--268
+Overfull \hbox (85.41899pt too wide) in paragraph at lines 264--270
 []\OML/cmm/m/it/10 egion[]onstraint \OT1/cmr/m/n/10 =
  []
 
 
-Overfull \hbox (49.08144pt too wide) in paragraph at lines 262--268
+Overfull \hbox (49.08144pt too wide) in paragraph at lines 264--270
 \OT1/cmr/m/n/10 []\OML/cmm/m/it/10 size[]ell \OT1/cmr/m/n/10 =
  []
 
 
-Overfull \hbox (195.95877pt too wide) in paragraph at lines 262--268
+Overfull \hbox (195.95877pt too wide) in paragraph at lines 264--270
 \OT1/cmr/m/n/10 [[\OML/cmm/m/it/10 Int\OT1/cmr/m/n/10 ("\OML/cmm/m/it/10 sizera
 nge\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 N\OT1/cmr/m/n/10 )]\OML/cmm/m/it/10 size[]
 egion[]onstraint \OT1/cmr/m/n/10 =
  []
 
 
-Overfull \hbox (95.92435pt too wide) in paragraph at lines 262--268
+Overfull \hbox (95.92435pt too wide) in paragraph at lines 264--270
 \OT1/cmr/m/n/10 [\OML/cmm/m/it/10 And\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 size[]el
 l\OT1/cmr/m/n/10 [\OML/cmm/m/it/10 i\OT1/cmr/m/n/10 ][\OML/cmm/m/it/10 j\OT1/cm
 r/m/n/10 ] \OML/cmm/m/it/10 >\OT1/cmr/m/n/10 =
  []
 
 
-Overfull \hbox (79.99486pt too wide) in paragraph at lines 262--268
+Overfull \hbox (79.99486pt too wide) in paragraph at lines 264--270
 \OT1/cmr/m/n/10 1\OML/cmm/m/it/10 ; size[]ell\OT1/cmr/m/n/10 [\OML/cmm/m/it/10 
 i\OT1/cmr/m/n/10 ][\OML/cmm/m/it/10 j\OT1/cmr/m/n/10 ] \OML/cmm/m/it/10 <\OT1/c
 mr/m/n/10 =
  []
 
 
-Overfull \hbox (159.57016pt too wide) in paragraph at lines 262--268
+Overfull \hbox (159.57016pt too wide) in paragraph at lines 264--270
 \OML/cmm/m/it/10 N\OT1/cmr/m/n/10 )\OML/cmm/m/it/10 foriinrange\OT1/cmr/m/n/10 
 (\OML/cmm/m/it/10 N\OT1/cmr/m/n/10 )\OML/cmm/m/it/10 forjinrange\OT1/cmr/m/n/10
  (\OML/cmm/m/it/10 N\OT1/cmr/m/n/10 )]$ 
@@ -7270,7 +7288,7 @@ Missing character: There is no e in font nullfont!
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.272             size_
+l.274             size_
                        adjacent = Sum([If(edge_var[(i,j,k,l)]==1,
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
@@ -7282,7 +7300,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.278 \end{lstlisting}
+l.280 \end{lstlisting}
                       
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
@@ -7291,7 +7309,7 @@ or  <return>  to continue without it.
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.278 \end{lstlisting}
+l.280 \end{lstlisting}
                       
 I've inserted something that you may have forgotten.
 (See the <inserted text> above.)
@@ -7300,24 +7318,24 @@ really didn't forget anything, try typing `2' now; then
 my insertion and my current dilemma will both disappear.
 
 
-Overfull \hbox (20.0pt too wide) in paragraph at lines 270--279
+Overfull \hbox (20.0pt too wide) in paragraph at lines 272--281
 []
  []
 
 
-Overfull \hbox (48.06056pt too wide) in paragraph at lines 270--279
+Overfull \hbox (48.06056pt too wide) in paragraph at lines 272--281
 []\OML/cmm/m/it/10 djacent \OT1/cmr/m/n/10 =
  []
 
 
-Overfull \hbox (138.67513pt too wide) in paragraph at lines 270--279
+Overfull \hbox (138.67513pt too wide) in paragraph at lines 272--281
 \OML/cmm/m/it/10 Sum\OT1/cmr/m/n/10 ([\OML/cmm/m/it/10 If\OT1/cmr/m/n/10 (\OML/
 cmm/m/it/10 edge[]ar\OT1/cmr/m/n/10 [(\OML/cmm/m/it/10 i; j; k; l\OT1/cmr/m/n/1
 0 )] ==
  []
 
 
-Overfull \hbox (421.31392pt too wide) in paragraph at lines 270--279
+Overfull \hbox (421.31392pt too wide) in paragraph at lines 272--281
 \OT1/cmr/m/n/10 1\OML/cmm/m/it/10 ; size[]ell\OT1/cmr/m/n/10 [\OML/cmm/m/it/10 
 k\OT1/cmr/m/n/10 ][\OML/cmm/m/it/10 l\OT1/cmr/m/n/10 ]\OML/cmm/m/it/10 ; \OT1/c
 mr/m/n/10 0)\OML/cmm/m/it/10 for\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 k; l\OT1/cmr/
@@ -7328,12 +7346,12 @@ N\OT1/cmr/m/n/10 )])\OML/cmm/m/it/10 size[]egion[]onstraint:append\OT1/cmr/m/n/
  []
 
 
-Overfull \hbox (67.05095pt too wide) in paragraph at lines 270--279
+Overfull \hbox (67.05095pt too wide) in paragraph at lines 272--281
 \OT1/cmr/m/n/10 (\OML/cmm/m/it/10 size[]djacent \OT1/cmr/m/n/10 +
  []
 
 
-Overfull \hbox (244.36806pt too wide) in paragraph at lines 270--279
+Overfull \hbox (244.36806pt too wide) in paragraph at lines 272--281
 \OT1/cmr/m/n/10 1))\OML/cmm/m/it/10 size[]egion[]onstraint:append\OT1/cmr/m/n/1
 0 (\OML/cmm/m/it/10 Implies\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 in[]ell\OT1/cmr/m/
 n/10 [\OML/cmm/m/it/10 i\OT1/cmr/m/n/10 ][\OML/cmm/m/it/10 j\OT1/cmr/m/n/10 ] =
@@ -7341,19 +7359,19 @@ n/10 [\OML/cmm/m/it/10 i\OT1/cmr/m/n/10 ][\OML/cmm/m/it/10 j\OT1/cmr/m/n/10 ] =
  []
 
 
-Overfull \hbox (79.99486pt too wide) in paragraph at lines 270--279
+Overfull \hbox (79.99486pt too wide) in paragraph at lines 272--281
 \OT1/cmr/m/n/10 0\OML/cmm/m/it/10 ; size[]ell\OT1/cmr/m/n/10 [\OML/cmm/m/it/10 
 i\OT1/cmr/m/n/10 ][\OML/cmm/m/it/10 j\OT1/cmr/m/n/10 ] ==
  []
 
 
-Overfull \hbox (47.05704pt too wide) in paragraph at lines 270--279
+Overfull \hbox (47.05704pt too wide) in paragraph at lines 272--281
 \OML/cmm/m/it/10 cells\OT1/cmr/m/n/10 [\OML/cmm/m/it/10 i\OT1/cmr/m/n/10 ][\OML
 /cmm/m/it/10 j\OT1/cmr/m/n/10 ]))$ 
  []
 
 ! Undefined control sequence.
-l.281 \subsubsection
+l.283 \subsubsection
                     {Creating the Initial Puzzle}
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -7933,12 +7951,12 @@ Missing character: There is no e in font nullfont!
 Missing character: There is no d in font nullfont!
 Missing character: There is no . in font nullfont!
 
-Overfull \hbox (20.0pt too wide) in paragraph at lines 281--292
+Overfull \hbox (20.0pt too wide) in paragraph at lines 283--294
 []
  []
 
 ! Undefined control sequence.
-l.295 \subsubsection
+l.297 \subsubsection
                     {Choosing a Valid Square}
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -8321,7 +8339,7 @@ Missing character: There is no n in font nullfont!
 Missing character: There is no o in font nullfont!
 Missing character: There is no . in font nullfont!
 
-Overfull \hbox (20.0pt too wide) in paragraph at lines 295--303
+Overfull \hbox (20.0pt too wide) in paragraph at lines 297--305
 []
  []
 
@@ -8591,7 +8609,7 @@ Missing character: There is no e in font nullfont!
 Missing character: There is no d in font nullfont!
 Missing character: There is no . in font nullfont!
 
-Overfull \hbox (20.0pt too wide) in paragraph at lines 304--309
+Overfull \hbox (20.0pt too wide) in paragraph at lines 306--311
 []
  []
 
@@ -9001,12 +9019,12 @@ Missing character: There is no e in font nullfont!
 Missing character: There is no d in font nullfont!
 Missing character: There is no . in font nullfont!
 
-Overfull \hbox (20.0pt too wide) in paragraph at lines 310--318
+Overfull \hbox (20.0pt too wide) in paragraph at lines 312--320
 []
  []
 
 ! Undefined control sequence.
-l.319 \subsubsection
+l.321 \subsubsection
                     {Defining Complexity}
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -9140,12 +9158,12 @@ Missing character: There is no c in font nullfont!
 Missing character: There is no s in font nullfont!
 Missing character: There is no : in font nullfont!
 
-Overfull \hbox (20.0pt too wide) in paragraph at lines 319--322
+Overfull \hbox (20.0pt too wide) in paragraph at lines 321--324
 []
  []
 
 ! Undefined control sequence.
-l.323 \singlespace
+l.325 \singlespace
                   
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -9154,7 +9172,7 @@ spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
 
-Overfull \hbox (20.0pt too wide) in paragraph at lines 324--324
+Overfull \hbox (20.0pt too wide) in paragraph at lines 326--326
 [] 
  []
 
@@ -9284,7 +9302,7 @@ Missing character: There is no e in font nullfont!
 Missing character: There is no r in font nullfont!
 Missing character: There is no ) in font nullfont!
 ! Undefined control sequence.
-l.331 \doublespace
+l.333 \doublespace
                   
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -9293,7 +9311,7 @@ spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
 ! Undefined control sequence.
-l.332 \subsubsection
+l.334 \subsubsection
                     {Transformations}
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -9456,12 +9474,12 @@ Missing character: There is no r in font nullfont!
 Missing character: There is no e in font nullfont!
 Missing character: There is no : in font nullfont!
 
-Overfull \hbox (20.0pt too wide) in paragraph at lines 332--336
+Overfull \hbox (20.0pt too wide) in paragraph at lines 334--338
 []
  []
 
 ! Undefined control sequence.
-l.337 \singlespace
+l.339 \singlespace
                   
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -9470,7 +9488,7 @@ spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
 
-Overfull \hbox (20.0pt too wide) in paragraph at lines 338--338
+Overfull \hbox (20.0pt too wide) in paragraph at lines 340--340
 [] 
  []
 
@@ -9521,7 +9539,7 @@ Missing character: There is no i in font nullfont!
 Missing character: There is no o in font nullfont!
 Missing character: There is no n in font nullfont!
 ! Undefined control sequence.
-l.343 \doublespace
+l.345 \doublespace
                   
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -9758,7 +9776,7 @@ Missing character: There is no n in font nullfont!
 Missing character: There is no s in font nullfont!
 Missing character: There is no . in font nullfont!
 
-Overfull \hbox (20.0pt too wide) in paragraph at lines 345--350
+Overfull \hbox (20.0pt too wide) in paragraph at lines 347--352
 []
  []
 
