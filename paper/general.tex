@@ -6,15 +6,15 @@ input: a declarative definition of the puzzle $\puzzledecl$, a
 complexity function $\puzzlecomplexity$, and a set of transformation
 functions $\puzzletransformset$. We first define these components and
 then present our synthesis algorithm to automatically generate
-different puzzles.
+puzzles of varying complexity.
 
 \begin{definition}
 A two dimensional puzzle board of size $n \times m$ is defined using a
 valuation function $\puzzleboard: \natnumbers \times \natnumbers
-\rightarrow \puzzledomain$ that assigns values to the squares on the
-puzzle board. The value of the square $(i,j)$ is denoted by
+\rightarrow \puzzledomain$, which assigns values to the squares on the
+puzzle board. The value of a square $(i,j)$ on the puzzle board is denoted by
 $\puzzleboard(i,j)$, where $1 \leq i \leq n$, $1 \leq j \leq m$, and
-$\puzzledomain$ denotes the set of all possible values the puzzle
+$\puzzledomain$ denotes the set of possible values the puzzle
 squares can take.
 \end{definition}
 
@@ -41,25 +41,27 @@ functions are denoted by $\puzzletransformset$.
 \begin{algorithmic}[1]
 \STATE $\randomPuzzle := \getrandom(\puzzledecl)$
 \STATE $\currentpuzzle := \randomPuzzle$
-\STATE $\squarestested := \Phi$
+\STATE $\squarestested := \emptyset$
+\STATE{$\complexitydict := \{\}$}
 \WHILE{$|\squarestested| \neq |\randomPuzzle|$}
 \STATE $(i,j) = \choosesquare(\currentpuzzle)$
 \STATE $\squarestested = \squarestested \cup (i,j)$
 \IF{$\isremovevalid(\currentpuzzle,i,j)$}
-\STATE {\[ \currentpuzzle(k,l) = \left\{ 
+\STATE {\[ \currentpuzzle'(k,l) = \left\{ 
   \begin{array}{l l}
     \currentpuzzle(k,l) & \quad \mbox{if $(k,l) \neq (i,j)$}\\
     \phi & \quad \mbox{if $(k,l) = (i,j)$}
   \end{array} \right.\]
 }
+\STATE{$\allpuzzles := \emptyset$}
 \FOR{$\puzzletransform \in \puzzletransformset$}
-\STATE{$\allpuzzles := \allpuzzles \cup \puzzletransform(\currentpuzzle)$}
+\STATE{$\allpuzzles := \allpuzzles \cup \puzzletransform(\currentpuzzle')$}
 \ENDFOR
-\STATE{$\complexitydict := \{\}$}
 \FOR{$\puzzleboard \in \allpuzzles$}
 \STATE{$h := \puzzlecomplexity(\puzzleboard)$}
 \STATE{$\complexitydict[h] := \complexitydict[h] \cup \puzzleboard$}
 \ENDFOR
+\STATE{$\currentpuzzle := \currentpuzzle'$}
 \ENDIF
 \ENDWHILE
 \RETURN{$\complexitydict$}
@@ -70,18 +72,66 @@ functions are denoted by $\puzzletransformset$.
 The algorithm first uses the $\getrandom$ function to get an initial
 random puzzle board configuration $\randomPuzzle$ by solving the
 puzzle constraints $\puzzledecl$ using an off-the-shelf constraint
-solver. Note that sometimes for this first step, we also use custom
-random puzzle generators for scalability. It then starts removing the
-value at a square (i,j) until there are no more square values
-remaining to be removed. The algorithm uses the isValidSquare function
-to check if certain puzzle constraints hold after removing the square
-value (i,j). An example isRemoveOK function is that the Number of
-solutions to the puzzle after removing the square value is only
-$1$. Let $P_c$ denote the puzzle obtained after removing a valid
-square. We then apply a set of transformation functions $T_P$ to get a
-set of new puzzles.
+solver. It then starts emptying squares on the board one at a time
+until all the squares have been tested, i.e. the size of the set
+$|\squarestested|$ becomes equal to the size of the puzzle board
+$|\randomPuzzle|$. The algorithm chooses the squares to be emptied
+using the $\choosesquare$ function, which takes the current puzzle
+board configuration $\currentpuzzle$ as an input. The $\choosesquare$
+function uses a user-defined strategy to select a square that can vary
+from being completely random to a strategy that selects squares based
+on the distribution of the values of the current puzzle board. After a
+square is selected to be removed, the algorithm checks whether certain
+puzzle constraints are met after removing the chosen square using the
+$\isremovevalid$ function. A common $\isremovevalid$ function is to
+check if the current puzzle $\currentpuzzle$ has a unique solution,
+but our framework allows for any general $\isremovevalid$ function.
 
-$\space$
+If the $\isremovevalid$ function returns \t{True}, i.e. if we still
+get a valid puzzle after removing the square $(i,j)$ from the puzzle
+$\currentpuzzle$, the algorithm creates a new puzzle $\currentpuzzle'$
+that has the same square values as the puzzle $\currentpuzzle$ except
+the square $(i,j)$ whose value is set to $\phi$ (denoting an empty
+square). Often times, we can apply puzzle constraints-preserving
+transformations to the puzzle boards to get new puzzle board
+configurations. The algorithm applies the set of transformations
+$\puzzletransformset$ to the new puzzle board $\currentpuzzle'$ to
+obtain a set of puzzle boards $\allpuzzles$. Finally, the algorithm
+computes the complexity of each puzzle board $h$ using the complexity
+function $\puzzlecomplexity$ and assigns it to appropriate complexity
+level in the dictionary $\complexitydict$. This $\complexitydict$ is
+the resulting dictionary that is returned by the $\puzzlegen$
+algorithm.
 
-The difficulty of a generated puzzle is determined by characteristics of the unsolved board. 
+In general, it is hard to provide a puzzle complexity function
+$\puzzlecomplexity$ that can assign a hardness level to a puzzle
+board. Even for relatively simpler puzzles such as the sudoku, the
+complexity function is an open research question. In our framework, we
+try to approximate this complexity function using machine learning
+techniques. We obtain a set of labelled tranining data that consists
+of a set of puzzle configurations each labelled with a hardness label
+$h$. Currently we use the puzzle data available in books/web/news
+papers, but we plan to get such labelled training data from human
+subjects in near future. For a puzzle, we define a feature vector
+consisting of a set of features that are specific to the puzzle which
+may be useful to capture its complexity. We then use Support Vector
+Machines to learn a function $\puzzlecomplexity$ that can map the
+feature vectors of the puzzles in the training set to their
+corresponding hardness levels.
+
+Our framework allows for general $\isremovevalid$ functions such as a
+function that checks whether the number of current solutions is less
+than a constant $k$. A general strategy to perform this check is to
+use an off-the-shelf constraint solver to first find a solution $S$ to
+the puzzle, and then solve for another solution $S'$ by adding an
+extra constraint that the solution can not be the original solution $S
+\neq S'$. For a value $k$, we get the constraint $S' \neq S_1 \lor S'
+\neq S_2 \cdots S' \neq S_k$. This strategy needs $k+1$ solver calls
+to check whether a square can be emptied from the puzzle baord, which
+can make the overall algorithm quite expenesive. For the common case
+of $k=1$ (the constraint that the puzzle should always have a unique
+solution), we can perform this check efficiently using just a single
+solver call by adding a constraint that $S' \neq \randomPuzzle$,
+i.e. there should not exist a solution $S'$ different from the
+original puzzle board.
 
