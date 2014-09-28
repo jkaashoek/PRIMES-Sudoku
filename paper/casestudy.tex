@@ -2,26 +2,6 @@
 
 \subsection{Sudoku}
 
-
-After a Sudoku puzzle is generated, we determine its difficulty using
-machine learning. For each puzzle, a vector is generated with
-components describing the unsolved board. These characteristics are:
-
-\begin{itemize}
-\item Number of solutions
-\item Number of empty squares
-\item Number of rows with at least seven blank squares
-\item Number of columns with at least seven blank squares
-\item Number of 3x3 grids with at least seven blank squares
-\item Number of occurrences of each digit (9 components)
-\item Standard deviation of number of occurrences of each digit from the mean number of occurrences
-\end{itemize}
-
-
-The SVM library by scikit-learn then uses the vector to categorize the
-puzzle into one of four difficulties: (1) Easy, (2) Medium, (3) Hard,
-and (4) Evil.
-
 \subsubsection{Declarative Definition}
 We use the python frontend of z3 constraint solver to specify the 9X9
 sudoku puzzle declaratively. As can be noticed from the encoding it
@@ -123,6 +103,26 @@ algorithm does not stop in the first case, it stops once we reach the
 number of squares we wish to empty, although this second case is less
 likely if the desired number of empty squares is greater than 60.
 
+\subsubsection{Defining Complexity}
+After a Sudoku puzzle is generated, we determine its difficulty using
+machine learning. For each puzzle, a vector is generated with
+components describing the unsolved board. These characteristics are:
+
+\begin{itemize}
+\item Number of solutions
+\item Number of empty squares
+\item Number of rows with at least seven blank squares
+\item Number of columns with at least seven blank squares
+\item Number of 3x3 grids with at least seven blank squares
+\item Number of occurrences of each digit (9 components)
+\item Standard deviation of number of occurrences of each digit from the mean number of occurrences
+\end{itemize}
+
+
+The SVM library by scikit-learn then uses the vector to categorize the
+puzzle into one of four difficulties: (1) Easy, (2) Medium, (3) Hard,
+and (4) Evil.
+
 \subsubsection{Transformations}
 We are able to quickly generate more full Sudoku boards for emptying
 without using SAT solvers. To do this, we apply the following
@@ -170,17 +170,6 @@ performing transformation on the existing board as described above.
 
 
 \subsection{Fillomino}
-
-Using machine learning, we determine the difficulty of an unsolved
-fillomino puzzle based on the following characteristics:
-
-
-\begin{itemize}
-\item Number of cells
-\item Number of empty squares
-\item Number of regions (connected areas of the same value)
-\item Optimality (whether the puzzle can be emptied further)
-\end{itemize}
 
 \subsubsection{Declarative Definition}
 Using the python frontend on z3, we can declaratively create a Fillomino puzzle.
@@ -324,6 +313,17 @@ tried to a list of squares that we know do not work, and try again
 with a new random square. This process continues until we have a
 desired number of squares emptied.
 
+\subsubsection{Defining Complexity}
+Using machine learning, we determine the difficulty of an unsolved
+fillomino puzzle based on the following characteristics:
+
+
+\begin{itemize}
+\item Number of cells
+\item Number of empty squares
+\item Number of regions (connected areas of the same value)
+\item Optimality (whether the puzzle can be emptied further)
+\end{itemize}
 
 \subsubsection{Transformations}
 Because of the randomness of the different regions, there are less
