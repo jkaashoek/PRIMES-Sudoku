@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2014.5.25)  28 SEP 2014 12:17
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2014.5.25)  28 SEP 2014 12:54
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -167,7 +167,25 @@ File: color.cfg 2007/01/18 v1.5 color configuration of teTeX/TeXLive
 )
 Package color Info: Driver file: pdftex.def on input line 137.
 )
-(./main.aux
+(/usr/local/texlive/2014/texmf-dist/tex/latex/tools/tabularx.sty
+Package: tabularx 2014/05/13 v2.10 `tabularx' package (DPC)
+
+(/usr/local/texlive/2014/texmf-dist/tex/latex/tools/array.sty
+Package: array 2008/09/09 v2.4c Tabular extension package (FMi)
+\col@sep=\dimen117
+\extrarowheight=\dimen118
+\NC@list=\toks27
+\extratabsurround=\skip48
+\backup@length=\skip49
+)
+\TX@col@width=\dimen119
+\TX@old@table=\dimen120
+\TX@old@col=\dimen121
+\TX@target=\dimen122
+\TX@delta=\dimen123
+\TX@cols=\count105
+\TX@ftn=\toks28
+) (./main.aux
 
 LaTeX Warning: Label `<figure1>' multiply defined.
 
@@ -177,31 +195,31 @@ LaTeX Warning: Label `<figure2>' multiply defined.
 )
 \openout1 = `main.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 17.
-LaTeX Font Info:    ... okay on input line 17.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 17.
-LaTeX Font Info:    ... okay on input line 17.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 17.
-LaTeX Font Info:    ... okay on input line 17.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 17.
-LaTeX Font Info:    ... okay on input line 17.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 17.
-LaTeX Font Info:    ... okay on input line 17.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 17.
-LaTeX Font Info:    ... okay on input line 17.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 18.
+LaTeX Font Info:    ... okay on input line 18.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 18.
+LaTeX Font Info:    ... okay on input line 18.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 18.
+LaTeX Font Info:    ... okay on input line 18.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 18.
+LaTeX Font Info:    ... okay on input line 18.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 18.
+LaTeX Font Info:    ... okay on input line 18.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 18.
+LaTeX Font Info:    ... okay on input line 18.
  (/usr/local/texlive/2014/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count105
-\scratchdimen=\dimen117
+\scratchcounter=\count106
+\scratchdimen=\dimen124
 \scratchbox=\box30
-\nofMPsegments=\count106
-\nofMParguments=\count107
-\everyMPshowfont=\toks27
-\MPscratchCnt=\count108
-\MPscratchDim=\dimen118
-\MPnumerator=\count109
-\makeMPintoPDFobject=\count110
-\everyMPtoPDFconversion=\toks28
+\nofMPsegments=\count107
+\nofMParguments=\count108
+\everyMPshowfont=\toks29
+\MPscratchCnt=\count109
+\MPscratchDim=\dimen125
+\MPnumerator=\count110
+\makeMPintoPDFobject=\count111
+\everyMPtoPDFconversion=\toks30
 ) (/usr/local/texlive/2014/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
 Package: pdftexcmds 2011/11/29 v0.20 Utility functions of pdfTeX for LuaTeX (HO
 )
@@ -246,7 +264,7 @@ G,.JBIG2,.JB2,.eps]
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
-\c@lstlisting=\count111
+\c@lstlisting=\count112
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -282,16 +300,16 @@ e
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-LaTeX Font Info:    Try loading font information for U+msa on input line 23.
+LaTeX Font Info:    Try loading font information for U+msa on input line 24.
 (/usr/local/texlive/2014/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 23.
+LaTeX Font Info:    Try loading font information for U+msb on input line 24.
 
 (/usr/local/texlive/2014/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) (./abstract.tex) (./macros.tex
-\c@definition=\count112
+\c@definition=\count113
 
 (/usr/local/texlive/2014/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2014/03/04 1.5c listings language file
@@ -328,47 +346,46 @@ File: FillominoDifficulty.png Graphic file (type png)
 Package pdftex.def Info: FillominoDifficulty.png used on input line 12.
 (pdftex.def)             Requested size: 227.28336pt x 142.26378pt.
  [14 <./SudokuDifficulty.png> <./FillominoDifficulty.png>]
-./experiments.tex:32: Undefined control sequence.
-l.32      \subfloat
+./experiments.tex:30: Undefined control sequence.
+l.30      \subfloat
                    {\includegraphics[height = 5cm]{sudoku2.png}\label{<figur...
 
 ? 
 <sudoku2.png, id=67, 797.1381pt x 496.4949pt>
 File: sudoku2.png Graphic file (type png)
  <use sudoku2.png>
-Package pdftex.def Info: sudoku2.png used on input line 32.
+Package pdftex.def Info: sudoku2.png used on input line 30.
 (pdftex.def)             Requested size: 228.40305pt x 142.26378pt.
 
-./experiments.tex:33: Undefined control sequence.
-l.33      \subfloat
+./experiments.tex:31: Undefined control sequence.
+l.31      \subfloat
                    {\includegraphics[height = 5cm]{fillomino2.png}\label{<fi...
 
 ? 
 <fillomino2.png, id=68, 795.6927pt x 495.0495pt>
 File: fillomino2.png Graphic file (type png)
  <use fillomino2.png>
-Package pdftex.def Info: fillomino2.png used on input line 33.
+Package pdftex.def Info: fillomino2.png used on input line 31.
 (pdftex.def)             Requested size: 228.65668pt x 142.26378pt.
 )
-(./related.tex [15] [16 <./sudoku2.png> <./fillomino2.png>]) (./future.tex
-[17]) (./conclusion.tex) [18] [19] (./main.aux)
+(./related.tex [15 <./sudoku2.png> <./fillomino2.png>]) (./future.tex [16]
+[17]) (./conclusion.tex) [18] (./main.aux)
 
 LaTeX Warning: There were multiply-defined labels.
 
  )
-(\end occurred inside a group at level 16)
+(\end occurred inside a group at level 15)
 
-### semi simple group (level 16) entered at line 39 (\begingroup)
-### semi simple group (level 15) entered at line 27 (\begingroup)
-### semi simple group (level 14) entered at line 14 (\begingroup)
-### semi simple group (level 13) entered at line 243 (\begingroup)
-### semi simple group (level 12) entered at line 221 (\begingroup)
-### semi simple group (level 11) entered at line 204 (\begingroup)
-### semi simple group (level 10) entered at line 189 (\begingroup)
-### semi simple group (level 9) entered at line 176 (\begingroup)
-### semi simple group (level 8) entered at line 161 (\begingroup)
-### semi simple group (level 7) entered at line 135 (\begingroup)
-### semi simple group (level 6) entered at line 117 (\begingroup)
+### semi simple group (level 15) entered at line 39 (\begingroup)
+### semi simple group (level 14) entered at line 27 (\begingroup)
+### semi simple group (level 13) entered at line 14 (\begingroup)
+### semi simple group (level 12) entered at line 240 (\begingroup)
+### semi simple group (level 11) entered at line 218 (\begingroup)
+### semi simple group (level 10) entered at line 201 (\begingroup)
+### semi simple group (level 9) entered at line 186 (\begingroup)
+### semi simple group (level 8) entered at line 173 (\begingroup)
+### semi simple group (level 7) entered at line 158 (\begingroup)
+### semi simple group (level 6) entered at line 128 (\begingroup)
 ### semi simple group (level 5) entered at line 79 (\begingroup)
 ### semi simple group (level 4) entered at line 60 (\begingroup)
 ### semi simple group (level 3) entered at line 50 (\begingroup)
@@ -376,13 +393,13 @@ LaTeX Warning: There were multiply-defined labels.
 ### semi simple group (level 1) entered at line 22 (\begingroup)
 ### bottom level 
 Here is how much of TeX's memory you used:
- 4010 strings out of 493117
- 57203 string characters out of 6135433
- 180868 words of memory out of 5000000
- 7382 multiletter control sequences out of 15000+600000
+ 4102 strings out of 493117
+ 58368 string characters out of 6135433
+ 182593 words of memory out of 5000000
+ 7468 multiletter control sequences out of 15000+600000
  13695 words of font info for 53 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 38i,10n,40p,1302b,2047s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 38i,11n,40p,1302b,1636s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts
 /cm/cmbx10.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/
 cm/cmbx12.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/c
@@ -398,10 +415,10 @@ usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></u
 sr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></us
 r/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb></usr
 /local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on main.pdf (19 pages, 544239 bytes).
+Output written on main.pdf (18 pages, 544112 bytes).
 PDF statistics:
- 135 PDF objects out of 1000 (max. 8388607)
- 90 compressed objects within 1 object stream
+ 131 PDF objects out of 1000 (max. 8388607)
+ 87 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  21 words of extra memory for PDF output out of 10000 (max. 10000000)
 

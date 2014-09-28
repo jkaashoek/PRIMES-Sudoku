@@ -4,7 +4,7 @@
 
 Our method of determining puzzle difficulty was to use machine learning to categorize a puzzle's characterizing vector. To test the reliability of this approach, we recorded published puzzles and their respective difficulty levels from online puzzle providers. This database of puzzles was randomly divided into two sets: a training set and a testing set. The training set was used to generate the SVM's categorization function, and the testing set was used to generate the "success rate": the percentage of puzzles in the testing set whose SVM-determined difficulty matched the difficulty assigned by the puzzle providers. 
 
-For our sudoku database, we recorded 206 puzzles from Web Sudoku, the largest online sudoku puzzle provider. For our fillomino database, we recorded 40 puzzles from Math In English, a puzzle website that had categorized puzzles by difficulty levels similar to those of Web Sudoku: (1) Easy, (2) Moderate, (3) Challenging, and (4) Super Difficult. Below are graphs of the average success rates of 500 trials as the percentage of puzzles in the training set was increased.  
+For our sudoku database, we recorded 206 puzzles from Web Sudoku, the largest online sudoku puzzle provider. For our fillomino database, we recorded 40 puzzles from Math In English, a puzzle website that had categorized puzzles by difficulty levels similar to those of Web Sudoku: (1) Easy, (2) Moderate, (3) Challenging, and (4) Super Difficult. Below are graphs of the average success rates of 500 trials as the percentage of puzzles in the training set was increased. Our results show that as we increased the number of puzzles in the training set, the success rate increased to $80 \%$.
 
 \begin{figure}
      \centering
@@ -12,8 +12,6 @@ For our sudoku database, we recorded 206 puzzles from Web Sudoku, the largest on
      \subfloat{\includegraphics[height = 5cm]{FillominoDifficulty.png}\label{<figure2>}}
      \caption{Success Rates (a) Sudoku (b) Fillomino}
 \end{figure}
-
-Our results show that as we increased the number of puzzles in the training set, the success rate increased to $80 \%$.
 
 \subsection{Scalability of Our Approach}
 
