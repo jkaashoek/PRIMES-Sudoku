@@ -108,6 +108,7 @@ After a Sudoku puzzle is generated, we determine its difficulty using
 machine learning. For each puzzle, a vector is generated with
 components describing the unsolved board. These characteristics are:
 
+\singlespace
 \begin{itemize}
 \item Number of solutions
 \item Number of empty squares
@@ -117,6 +118,7 @@ components describing the unsolved board. These characteristics are:
 \item Number of occurrences of each digit (9 components)
 \item Standard deviation of number of occurrences of each digit from the mean number of occurrences
 \end{itemize}
+\doublespace
 
 
 The SVM library by scikit-learn then uses the vector to categorize the
@@ -129,6 +131,7 @@ without using SAT solvers. To do this, we apply the following
 mathematically symmetrical transformations on an already-created
 Sudoku board:
 
+\singlespace
 \begin{enumerate}
 \item Relabeling the nine digits
 \item Permuting the three 3x9 stacks
@@ -138,6 +141,7 @@ Sudoku board:
 \item Reflecting about the axes of symmetry in a square
 \item Rotation by 90 degrees
 \end{enumerate}
+\doublespace
  
 We chose a random transformation and applied it to an already existing
 board 1000 times to create a new Sudoku board satisfying the original
@@ -150,7 +154,7 @@ We can apply most or all of these transformations to already-created
 12x12, 15x15, 16x16, and 25x25 boards. On a 12x12 board, for instance,
 the following transformations are analogous:
 
-
+\singlespace
 \begin{enumerate}
 \item Relabeling the twelve digits
 \item Permuting the four 3x12 stacks
@@ -159,6 +163,7 @@ the following transformations are analogous:
 \item Permuting the four columns within a band
 \item Reflecting about the horizontal and vertical axes in a square
 \end{enumerate}
+\doublespace
  
 This method of quickly generating new boards generalizes to any
 higher-numbered Sudoku board. 
@@ -317,7 +322,7 @@ desired number of squares emptied.
 Using machine learning, we determine the difficulty of an unsolved
 fillomino puzzle based on the following characteristics:
 
-
+\singlespace
 \begin{itemize}
 \item Number of cells
 \item Number of empty squares
@@ -325,16 +330,19 @@ fillomino puzzle based on the following characteristics:
 \item Optimality (whether the puzzle can be emptied further)
 \end{itemize}
 
+\doublespace
 \subsubsection{Transformations}
 Because of the randomness of the different regions, there are less
 transformations that can be applied to Fillomino than Sudoku, but a
 number still exist. These are:
 
+\singlespace
 \begin{enumerate}
 \item Rotation
 \item Vertical reflection
 \item Horizontal reflection
 \end{enumerate}
+\doublespace
 
 Applying these transformation to the original z3 declarative
 definition puzzles as well as the randomly generating python generated
