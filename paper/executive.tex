@@ -2,12 +2,42 @@
 
 \usepackage{amsfonts}
 \usepackage{amsthm}
+\usepackage{algorithm}
+\usepackage{algorithmic}
+\usepackage{graphicx}
+\usepackage{listings}
 \usepackage{setspace}
+\usepackage[margin=1in]{geometry}
+\usepackage{color}
+\usepackage{tabularx}
+\definecolor{bluekeywords}{rgb}{0.13,0.13,1}
+\definecolor{greencomments}{rgb}{0,0.5,0}
+\definecolor{redstrings}{rgb}{0.9,0,0}
+
+\date{}
+
 \begin{document}
 \doublespacing
+\input{macros}
 
-\title{Automated Constraint-based Generation of Puzzles of Varying Complexity}
+\title{$\puzzlejar$: Automated Constraint-based Generation of Puzzles of Varying Complexity}
 
 \maketitle
+
+Engaging students in practicing a wide range of problems facilitates their learning. However, generating fresh problems that have specific characteristics, such as using a certain set of concepts or being of a given difficulty level, is a repetitious task for a teacher. Our goal is to develop a system to automatically generate problems in a large number of domains, including programming and math. 
+
+In this work, we present $\puzzlejar$, a system that solves a simpler task of automatically generating
+Sudoku and Fillomino puzzles of different complexity levels. Most previous
+approaches for automatically generating puzzle problems have been
+specific to a given puzzle and are based on a set of heuristic
+rules. $\puzzlejar$, on the other hand, lets one specify the puzzle
+definition and puzzle complexity using constraints. It then uses efficient constraint-solving to
+incrementally solve constraints generated from different
+iterations. The system first generates a solved, complete puzzle. It then introduces ``holes" into the puzzle to make it an interesting problem in a fashion such that the certain validity constraints are still satisfied. We use the z3 SMT solver  and its theory of linear arithmetic for representing
+and solving the constraints.
+
+We have successfully used $\puzzlejar$ to automatically generate more
+than 200,000 9x9 Sudoku puzzles and more than 10,000 Fillomino
+puzzles. The case studies with Sudoku and Fillomino puzzles show the generality of the algorithm, and our experiments confirm that $\puzzlejar$ can be reasonably applied to generate larger-sized puzzles.
 
 \end{document}
