@@ -11,7 +11,7 @@ varying complexity.
 
 \subsubsection{Definitions}
 
-\begin{definition}
+\begin{definition}[Puzzle]
 A two dimensional puzzle board of size $n \times m$ is defined using a
 valuation function $\puzzleboard: \natnumbers \times \natnumbers
 \rightarrow \puzzledomain$, which assigns values to the squares on the
@@ -21,17 +21,17 @@ $\puzzledomain$ denotes the set of possible values the puzzle
 squares can take.
 \end{definition}
 
-\begin{definition}
+\begin{definition}[Declarative Definition]
 The declarative definition of puzzle $\puzzledecl$ defines constraints over the set of valid values $\puzzleboard(i,j)$ that the puzzle squares can take.
 \end{definition}
 
-\begin{definition}
+\begin{definition}[Complexity]
 The complexity function $\puzzlecomplexity : \puzzleboard \rightarrow
 \complexityrange$ takes a puzzle board $\puzzleboard$ as input and maps
 it to a finite class of hardness levels denoted by $\complexityrange$.
 \end{definition}
 
-\begin{definition}
+\begin{definition}[Transformations]
 A transformation function $\puzzletransform : \puzzleboard \rightarrow
 \puzzleboard$ takes a puzzle board as input and transforms it to
 another puzzle board such that the new puzzle board also satisfies the
@@ -109,7 +109,7 @@ algorithm.
 
 In general, it is difficult to provide a puzzle complexity function
 $\puzzlecomplexity$ that can assign a hardness level to a puzzle
-board. Even for relatively simpler puzzles such as the sudoku, the
+board. Even for relatively simpler puzzles such as the Sudoku, the
 complexity function is an open research
 question~\cite{sudokuchaos}. In $\puzzlejar$, we try to approximate
 this complexity function using machine learning techniques. We obtain

@@ -1,33 +1,72 @@
 \section{Results and Discussions}
 
+<<<<<<< HEAD
+=======
+We run experiments to answer the following questions:
+\begin{enumerate}
+\item What makes one puzzle more difficult than another?
+\item How efficient is $\puzzlejar$?
+\end{enumerate}
+
+\subsection{Machine Learning for Puzzle Complexity Function}
+
+Our method of determining puzzle difficulty was to use machine learning to categorize a puzzle's characterizing vector. To test the reliability of this approach, we recorded published puzzles and their respective difficulty levels from online puzzle providers. This database of puzzles was randomly divided into two sets: a training set and a testing set. The training set was used to generate the SVM's categorization function, and the testing set was used to generate the "success rate": the percentage of puzzles in the testing set whose SVM-determined difficulty matched the difficulty assigned by the puzzle providers. 
+
+For our Sudoku database, we recorded 206 puzzles from Web Sudoku, the
+largest online Sudoku puzzle provider. For our Fillomino database, we
+recorded 40 puzzles from Math In English, a puzzle website that had
+categorized puzzles by difficulty levels similar to those of Web
+Sudoku: (1) Easy, (2) Moderate, (3) Challenging, and (4) Super
+Difficult. Below are graphs of the average success rates of 500 trials
+as the percentage of puzzles in the training set was increased. Our
+results show that as we increase the number of puzzles in the
+training set, the success rate of the learned function increases to $80 \%$.
+
+\begin{figure}[!htpb]
+\centering
+\begin{tabular}{c c}
+\includegraphics[scale=0.40]{experimentgraphs/sudokuSuccessRate2.png}
+&
+\includegraphics[scale=0.40]{experimentgraphs/fillominoSuccessRate2.png}
+\\
+(a) & (b)
+\end{tabular}
+\caption{Success Rates (a) Sudoku (b) Fillomino.}
+\label{successrates}
+\end{figure}
+>>>>>>> FETCH_HEAD
 
 \subsection{Scalability of $\puzzlejar$}
 
 To test the scalability of our puzzle generation algorithm in
-$\puzzlejar$, we generated 16x16 and 25x25 sudoku boards to compare
-with the standard 9x9 boards and all square fillomino boards from
+$\puzzlejar$, we generated 16x16 and 25x25 Sudoku boards to compare
+with the standard 9x9 boards and all square Fillomino boards from
 sizes 2x2 to 16x16.
 
 When we empty a puzzle with dimensions NxN, we set as a parameter the
 target number of cells that the program would aim to empty from an
 initially full board. When the program reaches a point where it cannot
-further empty any more cells (i.e. the emptying of any remaining cell
+further empty any more cells (i.e., the emptying of any remaining cell
 would cause the board to have more than the maximum number of
 allowable solutions), the emptying process will be considered
-finished. Because of this, we observe stagnation in our run times as
+finished. Because of this decision, we observe stagnation in our run times as
 the target number of empty cells is increased beyond a certain
 threshold.
 
+<<<<<<< HEAD
 Figure 3 shows program running times to create and empty 9x9, 16x16, and 25x25 Sudoku puzzles as the target number of empty squares is increased. There is an exponential increase in run time as the number of possible empty spaces increased. Even for 25x25 sudoku puzzles, we find that the time required to generate a sudoku puzzle is quite reasonable (around 500 seconds).
+=======
+The graph below shows program running times to create and empty 9x9, 16x16, and 25x25 Sudoku puzzles as the target number of empty squares is increased. There is an exponential increase in run time as the number of possible empty spaces increased. Even for 25x25 Sudoku puzzles, we find that the time required to generate a Sudoku puzzle is quite reasonable (around 500 seconds).
+>>>>>>> FETCH_HEAD
 
 We can see in Figure 3 that the generation time for 9x9 puzzles does not continue to increase after the target number of empty cells was raised beyond 60 because the emptying had stopped before the target of 60+ empty cells had been reached. 
 
-A similar experiment with Fillomino puzzles demonstrates a similar pattern of stagnation after a threshold. Unlike the run times of Sudoku puzzles, however, the run times for fillomino puzzles follow a linear trend, not an exponential trend, as the target number of empty spaces is increased.
+A similar experiment with Fillomino puzzles demonstrates a similar pattern of stagnation after a threshold. Unlike the run times of Sudoku puzzles, however, the run times for Fillomino puzzles follow a linear trend, not an exponential trend, as the target number of empty spaces is increased.
 
 \begin{figure}[!htpb]
 \centering
 \begin{tabular}{c}
- \includegraphics[scale=0.4]{experimentgraphs/sudokuRunTime3.png}
+ \includegraphics[scale=0.4]{experimentgraphs/SudokuRunTime3.png}
 \\
 \includegraphics[scale=0.4]{experimentgraphs/fillominoRunTime3.png}
 \end{tabular}
