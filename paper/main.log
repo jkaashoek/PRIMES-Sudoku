@@ -1,15 +1,14 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2014.5.25)  29 SEP 2014 14:21
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/MacPorts 2013_5) (format=pdflatex 2014.1.10)  30 SEP 2014 06:40
 entering extended mode
  restricted \write18 enabled.
- file:line:error style messages enabled.
  %&-line parsing enabled.
 **main.tex
 (./main.tex
-LaTeX2e <2014/05/01>
-Babel <3.9k> and hyphenation patterns for 78 languages loaded.
-(/usr/local/texlive/2014/texmf-dist/tex/latex/base/article.cls
+LaTeX2e <2011/06/27>
+Babel <3.9f> and hyphenation patterns for 43 languages loaded.
+(/opt/local/share/texmf-texlive/tex/latex/base/article.cls
 Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
-(/usr/local/texlive/2014/texmf-dist/tex/latex/base/size12.clo
+(/opt/local/share/texmf-texlive/tex/latex/base/size12.clo
 File: size12.clo 2007/10/19 v1.4h Standard LaTeX file (size option)
 )
 \c@part=\count79
@@ -24,7 +23,7 @@ File: size12.clo 2007/10/19 v1.4h Standard LaTeX file (size option)
 \belowcaptionskip=\skip42
 \bibindent=\dimen102
 )
-(/usr/local/texlive/2014/texmf-dist/tex/latex/amsfonts/amsfonts.sty
+(/opt/local/share/texmf-texlive/tex/latex/amsfonts/amsfonts.sty
 Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
 \@emptytoks=\toks14
 \symAMSa=\mathgroup4
@@ -32,7 +31,7 @@ Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
 LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
 (Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
 )
-(/usr/local/texlive/2014/texmf-dist/tex/latex/amscls/amsthm.sty
+(/opt/local/share/texmf-texlive/tex/latex/amscls/amsthm.sty
 Package: amsthm 2004/08/06 v2.20
 \thm@style=\toks15
 \thm@bodyfont=\toks16
@@ -44,11 +43,11 @@ Package: amsthm 2004/08/06 v2.20
 \thm@headsep=\skip45
 \dth@everypar=\toks20
 )
-(/usr/local/texlive/2014/texmf-dist/tex/latex/algorithms/algorithm.sty
+(/opt/local/share/texmf-texlive/tex/latex/algorithms/algorithm.sty
 Package: algorithm 2009/08/24 v0.1 Document Style `algorithm' - floating enviro
 nment
 
-(/usr/local/texlive/2014/texmf-dist/tex/latex/float/float.sty
+(/opt/local/share/texmf-texlive/tex/latex/float/float.sty
 Package: float 2001/11/08 v1.3d Float enhancements (AL)
 \c@float@type=\count87
 \float@exts=\toks21
@@ -56,17 +55,17 @@ Package: float 2001/11/08 v1.3d Float enhancements (AL)
 \@float@everytoks=\toks22
 \@floatcapt=\box27
 )
-(/usr/local/texlive/2014/texmf-dist/tex/latex/base/ifthen.sty
+(/opt/local/share/texmf-texlive/tex/latex/base/ifthen.sty
 Package: ifthen 2001/05/26 v1.1c Standard LaTeX ifthen package (DPC)
 )
 \@float@every@algorithm=\toks23
 \c@algorithm=\count88
 )
-(/usr/local/texlive/2014/texmf-dist/tex/latex/algorithms/algorithmic.sty
+(/opt/local/share/texmf-texlive/tex/latex/algorithms/algorithmic.sty
 Package: algorithmic 2009/08/24 v0.1 Document Style `algorithmic'
 
-(/usr/local/texlive/2014/texmf-dist/tex/latex/graphics/keyval.sty
-Package: keyval 2014/05/08 v1.15 key=value parser (DPC)
+(/opt/local/share/texmf-texlive/tex/latex/graphics/keyval.sty
+Package: keyval 1999/03/16 v1.13 key=value parser (DPC)
 \KV@toks@=\toks24
 )
 \c@ALC@unique=\count89
@@ -76,27 +75,27 @@ Package: keyval 2014/05/08 v1.15 key=value parser (DPC)
 \ALC@tlm=\skip46
 \algorithmicindent=\skip47
 )
-(/usr/local/texlive/2014/texmf-dist/tex/latex/graphics/graphicx.sty
-Package: graphicx 2014/04/25 v1.0g Enhanced LaTeX Graphics (DPC,SPQR)
+(/opt/local/share/texmf-texlive/tex/latex/graphics/graphicx.sty
+Package: graphicx 1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
 
-(/usr/local/texlive/2014/texmf-dist/tex/latex/graphics/graphics.sty
+(/opt/local/share/texmf-texlive/tex/latex/graphics/graphics.sty
 Package: graphics 2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
 
-(/usr/local/texlive/2014/texmf-dist/tex/latex/graphics/trig.sty
+(/opt/local/share/texmf-texlive/tex/latex/graphics/trig.sty
 Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
 )
-(/usr/local/texlive/2014/texmf-dist/tex/latex/latexconfig/graphics.cfg
+(/opt/local/share/texmf-texlive/tex/latex/latexconfig/graphics.cfg
 File: graphics.cfg 2010/04/23 v1.9 graphics configuration of TeX Live
 )
 Package graphics Info: Driver file: pdftex.def on input line 91.
 
-(/usr/local/texlive/2014/texmf-dist/tex/latex/pdftex-def/pdftex.def
+(/opt/local/share/texmf-texlive/tex/latex/pdftex-def/pdftex.def
 File: pdftex.def 2011/05/27 v0.06d Graphics/color for pdfTeX
 
-(/usr/local/texlive/2014/texmf-dist/tex/generic/oberdiek/infwarerr.sty
+(/opt/local/share/texmf-texlive/tex/generic/oberdiek/infwarerr.sty
 Package: infwarerr 2010/04/08 v1.3 Providing info/warning/error messages (HO)
 )
-(/usr/local/texlive/2014/texmf-dist/tex/generic/oberdiek/ltxcmds.sty
+(/opt/local/share/texmf-texlive/tex/generic/oberdiek/ltxcmds.sty
 Package: ltxcmds 2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
 )
 \Gread@gobject=\count93
@@ -104,7 +103,7 @@ Package: ltxcmds 2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
 \Gin@req@height=\dimen103
 \Gin@req@width=\dimen104
 )
-(/usr/local/texlive/2014/texmf-dist/tex/latex/listings/listings.sty
+(/opt/local/share/texmf-texlive/tex/latex/listings/listings.sty
 \lst@mode=\count94
 \lst@gtempboxa=\box28
 \lst@token=\toks25
@@ -118,32 +117,32 @@ Package: ltxcmds 2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
 \lst@lineno=\count99
 \lst@maxwidth=\dimen108
 
-(/usr/local/texlive/2014/texmf-dist/tex/latex/listings/lstmisc.sty
-File: lstmisc.sty 2014/03/04 1.5c (Carsten Heinz)
+(/opt/local/share/texmf-texlive/tex/latex/listings/lstmisc.sty
+File: lstmisc.sty 2007/02/22 1.4 (Carsten Heinz)
 \c@lstnumber=\count100
 \lst@skipnumbers=\count101
 \lst@framebox=\box29
 )
-(/usr/local/texlive/2014/texmf-dist/tex/latex/listings/listings.cfg
-File: listings.cfg 2014/03/04 1.5c listings configuration
+(/opt/local/share/texmf-texlive/tex/latex/listings/listings.cfg
+File: listings.cfg 2007/02/22 1.4 listings configuration
 ))
-Package: listings 2014/03/04 1.5c (Carsten Heinz)
+Package: listings 2007/02/22 1.4 (Carsten Heinz)
 
-(/usr/local/texlive/2014/texmf-dist/tex/latex/setspace/setspace.sty
+(/opt/local/share/texmf-texlive/tex/latex/setspace/setspace.sty
 Package: setspace 2011/12/19 v6.7a set line spacing
 )
-(/usr/local/texlive/2014/texmf-dist/tex/latex/geometry/geometry.sty
+(/opt/local/share/texmf-texlive/tex/latex/geometry/geometry.sty
 Package: geometry 2010/09/12 v5.6 Page Geometry
 
-(/usr/local/texlive/2014/texmf-dist/tex/generic/oberdiek/ifpdf.sty
+(/opt/local/share/texmf-texlive/tex/generic/oberdiek/ifpdf.sty
 Package: ifpdf 2011/01/30 v2.3 Provides the ifpdf switch (HO)
 Package ifpdf Info: pdfTeX in PDF mode is detected.
 )
-(/usr/local/texlive/2014/texmf-dist/tex/generic/oberdiek/ifvtex.sty
+(/opt/local/share/texmf-texlive/tex/generic/oberdiek/ifvtex.sty
 Package: ifvtex 2010/03/01 v1.5 Detect VTeX and its facilities (HO)
 Package ifvtex Info: VTeX not detected.
 )
-(/usr/local/texlive/2014/texmf-dist/tex/generic/ifxetex/ifxetex.sty
+(/opt/local/share/texmf-texlive/tex/generic/ifxetex/ifxetex.sty
 Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
 )
 \Gm@cnth=\count102
@@ -159,18 +158,18 @@ Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
 \Gm@layoutvoffset=\dimen116
 \Gm@dimlist=\toks26
 )
-(/usr/local/texlive/2014/texmf-dist/tex/latex/graphics/color.sty
-Package: color 2014/04/23 v1.1a Standard LaTeX Color (DPC)
+(/opt/local/share/texmf-texlive/tex/latex/graphics/color.sty
+Package: color 2005/11/14 v1.0j Standard LaTeX Color (DPC)
 
-(/usr/local/texlive/2014/texmf-dist/tex/latex/latexconfig/color.cfg
+(/opt/local/share/texmf-texlive/tex/latex/latexconfig/color.cfg
 File: color.cfg 2007/01/18 v1.5 color configuration of teTeX/TeXLive
 )
-Package color Info: Driver file: pdftex.def on input line 137.
+Package color Info: Driver file: pdftex.def on input line 130.
 )
-(/usr/local/texlive/2014/texmf-dist/tex/latex/tools/tabularx.sty
-Package: tabularx 2014/05/13 v2.10 `tabularx' package (DPC)
+(/opt/local/share/texmf-texlive/tex/latex/tools/tabularx.sty
+Package: tabularx 1999/01/07 v2.07 `tabularx' package (DPC)
 
-(/usr/local/texlive/2014/texmf-dist/tex/latex/tools/array.sty
+(/opt/local/share/texmf-texlive/tex/latex/tools/array.sty
 Package: array 2008/09/09 v2.4c Tabular extension package (FMi)
 \col@sep=\dimen117
 \extrarowheight=\dimen118
@@ -207,7 +206,7 @@ LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 18.
 LaTeX Font Info:    ... okay on input line 18.
 LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 18.
 LaTeX Font Info:    ... okay on input line 18.
- (/usr/local/texlive/2014/texmf-dist/tex/context/base/supp-pdf.mkii
+ (/opt/local/share/texmf-texlive/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count106
 \scratchdimen=\dimen124
@@ -220,11 +219,11 @@ LaTeX Font Info:    ... okay on input line 18.
 \MPnumerator=\count110
 \makeMPintoPDFobject=\count111
 \everyMPtoPDFconversion=\toks30
-) (/usr/local/texlive/2014/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
+) (/opt/local/share/texmf-texlive/tex/generic/oberdiek/pdftexcmds.sty
 Package: pdftexcmds 2011/11/29 v0.20 Utility functions of pdfTeX for LuaTeX (HO
 )
 
-(/usr/local/texlive/2014/texmf-dist/tex/generic/oberdiek/ifluatex.sty
+(/opt/local/share/texmf-texlive/tex/generic/oberdiek/ifluatex.sty
 Package: ifluatex 2010/03/01 v1.3 Provides the ifluatex switch (HO)
 Package ifluatex Info: LuaTeX not detected.
 )
@@ -233,22 +232,22 @@ Package pdftexcmds Info: \pdf@primitive is available.
 Package pdftexcmds Info: \pdf@ifprimitive is available.
 Package pdftexcmds Info: \pdfdraftmode found.
 )
-(/usr/local/texlive/2014/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
+(/opt/local/share/texmf-texlive/tex/latex/oberdiek/epstopdf-base.sty
 Package: epstopdf-base 2010/02/09 v2.5 Base part for package epstopdf
 
-(/usr/local/texlive/2014/texmf-dist/tex/latex/oberdiek/grfext.sty
+(/opt/local/share/texmf-texlive/tex/latex/oberdiek/grfext.sty
 Package: grfext 2010/08/19 v1.1 Manage graphics extensions (HO)
 
-(/usr/local/texlive/2014/texmf-dist/tex/generic/oberdiek/kvdefinekeys.sty
+(/opt/local/share/texmf-texlive/tex/generic/oberdiek/kvdefinekeys.sty
 Package: kvdefinekeys 2011/04/07 v1.3 Define keys (HO)
 ))
-(/usr/local/texlive/2014/texmf-dist/tex/latex/oberdiek/kvoptions.sty
+(/opt/local/share/texmf-texlive/tex/latex/oberdiek/kvoptions.sty
 Package: kvoptions 2011/06/30 v3.11 Key value format for package options (HO)
 
-(/usr/local/texlive/2014/texmf-dist/tex/generic/oberdiek/kvsetkeys.sty
+(/opt/local/share/texmf-texlive/tex/generic/oberdiek/kvsetkeys.sty
 Package: kvsetkeys 2012/04/25 v1.16 Key value parser (HO)
 
-(/usr/local/texlive/2014/texmf-dist/tex/generic/oberdiek/etexcmds.sty
+(/opt/local/share/texmf-texlive/tex/generic/oberdiek/etexcmds.sty
 Package: etexcmds 2011/02/16 v1.5 Avoid name clashes with e-TeX commands (HO)
 Package etexcmds Info: Could not find \expanded.
 (etexcmds)             That can mean that you are not using pdfTeX 1.50 or
@@ -260,7 +259,7 @@ Package grfext Info: Graphics extension search list:
 G,.JBIG2,.JB2,.eps]
 (grfext)             \AppendGraphicsExtensions on input line 452.
 
-(/usr/local/texlive/2014/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
+(/opt/local/share/texmf-texlive/tex/latex/latexconfig/epstopdf-sys.cfg
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
@@ -301,124 +300,155 @@ e
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
 LaTeX Font Info:    Try loading font information for U+msa on input line 24.
-(/usr/local/texlive/2014/texmf-dist/tex/latex/amsfonts/umsa.fd
+(/opt/local/share/texmf-texlive/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
 LaTeX Font Info:    Try loading font information for U+msb on input line 24.
 
-(/usr/local/texlive/2014/texmf-dist/tex/latex/amsfonts/umsb.fd
+(/opt/local/share/texmf-texlive/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-) (./abstract.tex) (./macros.tex
+) (./abstract.tex)
+(./macros.tex
 \c@definition=\count113
+ (/opt/local/share/texmf-texlive/tex/latex/listings/lstlang1.sty
+File: lstlang1.sty 2004/09/05 1.3 listings language file
+)) (./introduction.tex [1
 
-(/usr/local/texlive/2014/texmf-dist/tex/latex/listings/lstlang1.sty
-File: lstlang1.sty 2014/03/04 1.5c listings language file
-))
-(./introduction.tex [1
+{/opt/local/var/db/texmf/fonts/map/pdftex/updmap/pdftex.map}]
 
-{/usr/local/texlive/2014/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]) (./gen
-eral.tex [2] [3] [4] [5]) (./casestudymodified.tex
+LaTeX Warning: Reference `sudokuproblsol' on page 2 undefined on input line 33.
+
+
+[2] <puzzlefigs/sudoku_prob.png, id=14, 449.68pt x 467.7475pt>
+File: puzzlefigs/sudoku_prob.png Graphic file (type png)
+
+<use puzzlefigs/sudoku_prob.png>
+Package pdftex.def Info: puzzlefigs/sudoku_prob.png used on input line 52.
+(pdftex.def)             Requested size: 179.8688pt x 187.09567pt.
+
+<puzzlefigs/sudoku_sol.png, id=16, 452.69125pt x 469.755pt>
+File: puzzlefigs/sudoku_sol.png Graphic file (type png)
+
+<use puzzlefigs/sudoku_sol.png>
+Package pdftex.def Info: puzzlefigs/sudoku_sol.png used on input line 54.
+(pdftex.def)             Requested size: 181.07329pt x 187.89867pt.
+
+<puzzlefigs/fillomino_prob.png, id=17, 445.665pt x 470.75874pt>
+File: puzzlefigs/fillomino_prob.png Graphic file (type png)
+
+<use puzzlefigs/fillomino_prob.png>
+Package pdftex.def Info: puzzlefigs/fillomino_prob.png used on input line 66.
+(pdftex.def)             Requested size: 178.26283pt x 188.30016pt.
+
+<puzzlefigs/fillomino_sol.png, id=18, 442.65375pt x 468.75125pt>
+File: puzzlefigs/fillomino_sol.png Graphic file (type png)
+
+<use puzzlefigs/fillomino_sol.png>
+Package pdftex.def Info: puzzlefigs/fillomino_sol.png used on input line 68.
+(pdftex.def)             Requested size: 177.05835pt x 187.49716pt.
+) (./general.tex [3 <./puzzlefigs/sudoku_prob.png> <./puzzlefigs/sudoku_sol.png
+> <./puzzlefigs/fillomino_prob.png> <./puzzlefigs/fillomino_sol.png>] [4] [5] [
+6]) (./casestudymodified.tex [7]
 LaTeX Font Info:    Font shape `OT1/cmtt/bx/n' in size <10.95> not available
-(Font)              Font shape `OT1/cmtt/m/n' tried instead on input line 18.
-
-[6] [7] [8] [9] [10] [11] [12]) (./experiments.tex [13]
-./experiments.tex:11: Undefined control sequence.
+(Font)              Font shape `OT1/cmtt/m/n' tried instead on input line 28.
+ [8] [9]
+[10] [11] [12]) (./experiments.tex [13]
+! Undefined control sequence.
 l.11      \subfloat
                    {\includegraphics[height = 5cm]{SudokuDifficulty.png}\lab...
 
 ? 
-<SudokuDifficulty.png, id=59, 579.6054pt x 362.3136pt>
+<SudokuDifficulty.png, id=68, 579.6054pt x 362.3136pt>
 File: SudokuDifficulty.png Graphic file (type png)
 
 <use SudokuDifficulty.png>
 Package pdftex.def Info: SudokuDifficulty.png used on input line 11.
 (pdftex.def)             Requested size: 227.58406pt x 142.26378pt.
 
-./experiments.tex:12: Undefined control sequence.
+! Undefined control sequence.
 l.12      \subfloat
                    {\includegraphics[height = 5cm]{FillominoDifficulty.png}\...
 
 ? 
-<FillominoDifficulty.png, id=61, 579.6054pt x 362.7954pt>
+<FillominoDifficulty.png, id=69, 579.6054pt x 362.7954pt>
 File: FillominoDifficulty.png Graphic file (type png)
 
 <use FillominoDifficulty.png>
 Package pdftex.def Info: FillominoDifficulty.png used on input line 12.
 (pdftex.def)             Requested size: 227.28336pt x 142.26378pt.
  [14 <./SudokuDifficulty.png> <./FillominoDifficulty.png>]
-./experiments.tex:30: Undefined control sequence.
-l.30      \subfloat
+! Undefined control sequence.
+l.40      \subfloat
                    {\includegraphics[height = 5cm]{sudoku2.png}\label{<figur...
 
 ? 
-<sudoku2.png, id=67, 797.1381pt x 496.4949pt>
+<sudoku2.png, id=75, 797.1381pt x 496.4949pt>
 File: sudoku2.png Graphic file (type png)
  <use sudoku2.png>
-Package pdftex.def Info: sudoku2.png used on input line 30.
+Package pdftex.def Info: sudoku2.png used on input line 40.
 (pdftex.def)             Requested size: 228.40305pt x 142.26378pt.
 
-./experiments.tex:31: Undefined control sequence.
-l.31      \subfloat
+! Undefined control sequence.
+l.41      \subfloat
                    {\includegraphics[height = 5cm]{fillomino2.png}\label{<fi...
 
 ? 
-<fillomino2.png, id=68, 795.6927pt x 495.0495pt>
+<fillomino2.png, id=76, 795.6927pt x 495.0495pt>
 File: fillomino2.png Graphic file (type png)
  <use fillomino2.png>
-Package pdftex.def Info: fillomino2.png used on input line 31.
+Package pdftex.def Info: fillomino2.png used on input line 41.
 (pdftex.def)             Requested size: 228.65668pt x 142.26378pt.
 )
 (./related.tex [15 <./sudoku2.png> <./fillomino2.png>]) (./future.tex [16]
-[17]) (./conclusion.tex) [18] (./main.aux)
+[17]) (./conclusion.tex) [18] (./main.bbl [19]) [20] (./main.aux)
+
+LaTeX Warning: There were undefined references.
+
 
 LaTeX Warning: There were multiply-defined labels.
 
  )
-(\end occurred inside a group at level 15)
+(\end occurred inside a group at level 11)
 
-### semi simple group (level 15) entered at line 39 (\begingroup)
-### semi simple group (level 14) entered at line 27 (\begingroup)
-### semi simple group (level 13) entered at line 14 (\begingroup)
-### semi simple group (level 12) entered at line 241 (\begingroup)
-### semi simple group (level 11) entered at line 219 (\begingroup)
-### semi simple group (level 10) entered at line 202 (\begingroup)
-### semi simple group (level 9) entered at line 187 (\begingroup)
-### semi simple group (level 8) entered at line 174 (\begingroup)
-### semi simple group (level 7) entered at line 159 (\begingroup)
-### semi simple group (level 6) entered at line 129 (\begingroup)
-### semi simple group (level 5) entered at line 79 (\begingroup)
-### semi simple group (level 4) entered at line 60 (\begingroup)
-### semi simple group (level 3) entered at line 50 (\begingroup)
-### semi simple group (level 2) entered at line 38 (\begingroup)
-### semi simple group (level 1) entered at line 22 (\begingroup)
+### semi simple group (level 11) entered at line 77 (\begingroup)
+### semi simple group (level 10) entered at line 65 (\begingroup)
+### semi simple group (level 9) entered at line 52 (\begingroup)
+### semi simple group (level 8) entered at line 216 (\begingroup)
+### semi simple group (level 7) entered at line 203 (\begingroup)
+### semi simple group (level 6) entered at line 179 (\begingroup)
+### semi simple group (level 5) entered at line 139 (\begingroup)
+### semi simple group (level 4) entered at line 70 (\begingroup)
+### semi simple group (level 3) entered at line 60 (\begingroup)
+### semi simple group (level 2) entered at line 48 (\begingroup)
+### semi simple group (level 1) entered at line 32 (\begingroup)
 ### bottom level 
 Here is how much of TeX's memory you used:
- 4102 strings out of 493117
- 58368 string characters out of 6135433
- 182593 words of memory out of 5000000
- 7468 multiletter control sequences out of 15000+600000
+ 4026 strings out of 494227
+ 57482 string characters out of 6157704
+ 183619 words of memory out of 5000000
+ 7204 multiletter control sequences out of 15000+600000
  13695 words of font info for 53 fonts, out of 8000000 for 9000
- 1141 hyphenation exceptions out of 8191
- 38i,11n,40p,1304b,1636s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts
-/cm/cmbx10.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/
-cm/cmbx12.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/c
-m/cmex10.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm
-/cmmi12.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/
-cmmi8.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cm
-r10.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmr1
-2.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.
-pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb
-></usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
-</usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></
-usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></u
-sr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></us
-r/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb></usr
-/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on main.pdf (18 pages, 544066 bytes).
+ 430 hyphenation exceptions out of 8191
+ 38i,13n,40p,956b,1452s stack positions out of 5000i,500n,10000p,200000b,80000s
+</opt/local/share/texmf-texlive/fonts/type1/public/amsfonts/cm/
+cmbx10.pfb></opt/local/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmbx1
+2.pfb></opt/local/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmex10.pfb
+></opt/local/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmmi12.pfb></op
+t/local/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmmi8.pfb></opt/loca
+l/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr10.pfb></opt/local/shar
+e/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr12.pfb></opt/local/share/texm
+f-texlive/fonts/type1/public/amsfonts/cm/cmr17.pfb></opt/local/share/texmf-texl
+ive/fonts/type1/public/amsfonts/cm/cmr8.pfb></opt/local/share/texmf-texlive/fon
+ts/type1/public/amsfonts/cm/cmsy10.pfb></opt/local/share/texmf-texlive/fonts/ty
+pe1/public/amsfonts/cm/cmsy8.pfb></opt/local/share/texmf-texlive/fonts/type1/pu
+blic/amsfonts/cm/cmti12.pfb></opt/local/share/texmf-texlive/fonts/type1/public/
+amsfonts/cm/cmtt10.pfb></opt/local/share/texmf-texlive/fonts/type1/public/amsfo
+nts/cm/cmtt12.pfb></opt/local/share/texmf-texlive/fonts/type1/public/amsfonts/s
+ymbols/msbm10.pfb>
+Output written on main.pdf (20 pages, 678548 bytes).
 PDF statistics:
- 131 PDF objects out of 1000 (max. 8388607)
- 87 compressed objects within 1 object stream
+ 146 PDF objects out of 1000 (max. 8388607)
+ 92 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 21 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 41 words of extra memory for PDF output out of 10000 (max. 10000000)
 
