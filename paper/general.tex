@@ -1,13 +1,15 @@
-\section{Overview of our Framework}
+\subsection{Overview of $\puzzlejar$}
 
-We first present an overview of our general framework to synthesize
-puzzles of varying complexity levels. Our framework takes three
+We first present an overview of the $\puzzlejar$ system to synthesize
+puzzles of varying complexity levels. $\puzzlejar$ takes three
 components as input: (i) a declarative definition $\puzzledecl$ of the
 puzzle $\puzzleboard$, (ii) a complexity function $\puzzlecomplexity$,
 and (iii) a set of transformation functions $\puzzletransformset$. In
 this section, we formally define these components and present our
 general synthesis algorithm to automatically generate puzzles of
 varying complexity.
+
+\subsubsection{Definitions}
 
 \begin{definition}
 A two dimensional puzzle board of size $n \times m$ is defined using a
@@ -69,6 +71,7 @@ functions are denoted by $\puzzletransformset$.
 \end{algorithmic}
 \end{algorithm}
 
+\subsubsection{Constraint-based Synthesis Algorithm}
 
 The algorithm first uses the $\getrandom$ function to generate an initial
 random puzzle board configuration $\randomPuzzle$ by solving the
@@ -86,7 +89,7 @@ square is selected to be removed, the algorithm checks whether certain
 puzzle constraints are met after removing the chosen square using the
 $\isremovevalid$ function. A common $\isremovevalid$ function is to
 check if the current puzzle $\currentpuzzle$ has a unique solution,
-but our framework allows for any general $\isremovevalid$ function.
+but $\puzzlejar$ allows for any general $\isremovevalid$ function.
 
 If the $\isremovevalid$ function returns \t{True}, i.e. if we still
 get a valid puzzle after removing the square $(i,j)$ from the puzzle
@@ -108,7 +111,7 @@ In general, it is difficult to provide a puzzle complexity function
 $\puzzlecomplexity$ that can assign a hardness level to a puzzle
 board. Even for relatively simpler puzzles such as the sudoku, the
 complexity function is an open research
-question~\cite{sudokuchaos}. In our framework, we try to approximate
+question~\cite{sudokuchaos}. In $\puzzlejar$, we try to approximate
 this complexity function using machine learning techniques. We obtain
 a set of labelled training data that consists of a set of puzzle
 configurations each labelled with a hardness label $h$. Currently we
@@ -120,7 +123,7 @@ Vector Machines to learn a function $\puzzlecomplexity$ that can map
 the feature vectors of the puzzles in the training set to their
 corresponding hardness levels.
 
-Our framework allows for any $\isremovevalid$ function such as a
+$\puzzlejar$ allows for any $\isremovevalid$ function such as a
 function that checks whether the number of current solutions is less
 than a constant $k$. A general strategy to perform this check is to
 use an off-the-shelf constraint solver to first find a solution $S$ to
