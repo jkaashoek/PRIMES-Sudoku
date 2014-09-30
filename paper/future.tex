@@ -51,7 +51,12 @@ def everyOther(l1,l2):
 
 \doublespace
 
-This python program is then converted into an equivalent Sketch program. The main challenge in this translation is that Sketch is a statically typed language whereas Python is dynamically typed, but we use a strategy similar to the strategy used in Autograder~\cite{autograder} to use union types to encode Python types in Sketch. The translated code looks like this.
+This python program is then converted into an equivalent Sketch
+program. The main challenge in this translation is that Sketch is a
+statically typed language whereas Python is dynamically typed, but we
+use a strategy similar to the strategy used in
+Autograder~\cite{autograder} to use union types to encode Python types
+in Sketch. The translated code looks as follows:
 
 \singlespace
 \begin{lstlisting}[language=Python, frame=single]
@@ -76,4 +81,6 @@ def everyOther(l1,l2):
 \end{lstlisting}
 \doublespace
 
-In addition to programming problems, we would also like to generate problems in Mathematics (algebra, trigonometry, geometry etc.). We only need to define new domain-specific languages to encode the corresponding semantics of these domains, and then we can plug them into our algorithm to generate new problems.
+In addition to programming problems, we would also like to generate
+problems in Mathematics (algebra, trigonometry, geometry etc.). We
+need to define only new domain-specific languages to encode the corresponding semantics of these domains, and then we can plug them into our algorithm to generate new problems.

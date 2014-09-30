@@ -72,7 +72,7 @@ three_by_three_distinct + already_set
 
 \subsubsection*{Creating the Initial Puzzle}
 We use the z3 constraint solver to generate a Sudoku board in a 2
-dimensional list such as the one shown in Figure.~\ref{Sudokuprobsol}(b)%% below.  \t{
+dimensional list such as the example shown in Figure.~\ref{Sudokuprobsol}(b)%% below.  \t{
 %% \singlespace
 %% \begin{center}
 %% [[4, 9, 7, 1, 8, 2, 5, 3, 6], \newline
@@ -89,7 +89,8 @@ dimensional list such as the one shown in Figure.~\ref{Sudokuprobsol}(b)%% below
 
 \subsubsection*{Emptying Squares}
 
-The next step is to start removing values from the board. Our method for
+The next step in our algorithm is to start removing values from the
+board. For Sudoku, our method for
 selecting the next square to remove includes the following
 sub-steps:
 
@@ -153,9 +154,9 @@ As the last step of our generation algorithm, we perform these transformations a
 
 \subsubsection*{Defining Complexity}
 After a Sudoku puzzle is generated, we determine its difficulty using
-machine learning. For each puzzle, a 15-component vector is generated to describe the unsolved board. These components are (1) number of solutions; (2) number of empty squares; (3) number of rows with at least seven blank squares; (4) number of columns with at least seven blank squares; (5) number of 3x3 grids with at least seven blank squares; (6 - 14) number of occurrences of each digit; (15) standard deviation of number of occurrences of each digit from the mean number of occurrences.
+machine learning. For each puzzle we use, a 15-component vector is generated to describe the unsolved board. These components are (1) number of solutions; (2) number of empty squares; (3) number of rows with at least seven blank squares; (4) number of columns with at least seven blank squares; (5) number of 3x3 grids with at least seven blank squares; (6 - 14) number of occurrences of each digit; (15) standard deviation of number of occurrences of each digit from the mean number of occurrences.
 
-The SVM library by scikit-learn then uses the vector to categorize the
+The SVM library by scikit-learn [citation] then uses the vector to categorize the
 puzzle into one of four difficulties: (1) Easy, (2) Medium, (3) Hard,
 and (4) Evil.
 
@@ -225,11 +226,11 @@ such that there is exactly one cell with a size equal to its value.
 We have two ways of creating the initial full board. We generate a
 full board with z3 using the declarative definition of a Fillomino
 puzzle, but this code is slow and not random in z3. Our second option
-is to create a board using Python only. The Python code works by
+is to create a board only using a Python program. The Python program works by
 selecting a starting square, randomly selecting a sequence length from
 a list of valid sequence lengths, and then setting a list of squares
-that are sequence length long that all have the value sequence
-length. We continue like this until the board is completely filled.
+that are sequence length long and that all have the value sequence
+length. We continue with this selection process until the board is completely filled.
 
 
 \subsubsection*{Emptying Squares}

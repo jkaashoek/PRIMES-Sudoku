@@ -1,10 +1,24 @@
 \section{Results and Discussions}
 
+We run experiments to answer the following questions:
+\begin{enumerate}
+\item What makes one puzzle more difficult than another?
+\item How efficient is $\puzzlejar$?
+\end{enumerate}
+
 \subsection{Machine Learning for Puzzle Complexity Function}
 
 Our method of determining puzzle difficulty was to use machine learning to categorize a puzzle's characterizing vector. To test the reliability of this approach, we recorded published puzzles and their respective difficulty levels from online puzzle providers. This database of puzzles was randomly divided into two sets: a training set and a testing set. The training set was used to generate the SVM's categorization function, and the testing set was used to generate the "success rate": the percentage of puzzles in the testing set whose SVM-determined difficulty matched the difficulty assigned by the puzzle providers. 
 
-For our Sudoku database, we recorded 206 puzzles from Web Sudoku, the largest online Sudoku puzzle provider. For our Fillomino database, we recorded 40 puzzles from Math In English, a puzzle website that had categorized puzzles by difficulty levels similar to those of Web Sudoku: (1) Easy, (2) Moderate, (3) Challenging, and (4) Super Difficult. Below are graphs of the average success rates of 500 trials as the percentage of puzzles in the training set was increased. Our results show that as we increased the number of puzzles in the training set, the success rate increased to $80 \%$.
+For our Sudoku database, we recorded 206 puzzles from Web Sudoku, the
+largest online Sudoku puzzle provider. For our Fillomino database, we
+recorded 40 puzzles from Math In English, a puzzle website that had
+categorized puzzles by difficulty levels similar to those of Web
+Sudoku: (1) Easy, (2) Moderate, (3) Challenging, and (4) Super
+Difficult. Below are graphs of the average success rates of 500 trials
+as the percentage of puzzles in the training set was increased. Our
+results show that as we increase the number of puzzles in the
+training set, the success rate of the learned function increases to $80 \%$.
 
 \begin{figure}[!htpb]
 \centering
@@ -29,10 +43,10 @@ sizes 2x2 to 16x16.
 When we empty a puzzle with dimensions NxN, we set as a parameter the
 target number of cells that the program would aim to empty from an
 initially full board. When the program reaches a point where it cannot
-further empty any more cells (i.e. the emptying of any remaining cell
+further empty any more cells (i.e., the emptying of any remaining cell
 would cause the board to have more than the maximum number of
 allowable solutions), the emptying process will be considered
-finished. Because of this, we observe stagnation in our run times as
+finished. Because of this decision, we observe stagnation in our run times as
 the target number of empty cells is increased beyond a certain
 threshold.
 
