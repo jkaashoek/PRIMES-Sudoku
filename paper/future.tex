@@ -1,6 +1,15 @@
 \section{Future Work}
 
-We are currently working on extending our algorithm to support automated generation of Python programming problems. Since our generic algorithm is parametric with respect to problem definition, complexity function definition, and solving algorithm, we just need to instantiate these components for generating Python problems. We are using the Sketch[cite sketch] solver to encode Python semantics inside a constraint solver. For example, consider the following python function everyOther that appends every alternate element of an input list l1 with every alternate element of another input list l2.
+We are currently working on extending our algorithm to support
+automated generation of Python programming problems. Since our generic
+algorithm is parametric with respect to problem definition, complexity
+function definition, and solving algorithm, we just need to
+instantiate these components for generating Python problems. We are
+using the Sketch~\cite{sketchjournal,sketch06} solver to encode Python
+semantics inside a constraint solver. For example, consider the
+following python function everyOther that appends every alternate
+element of an input list l1 with every alternate element of another
+input list l2.
 
 \singlespace
 \begin{lstlisting}[language=Python, frame=single]
@@ -11,9 +20,38 @@ def everyOther(l1,l2):
   return z
 
 \end{lstlisting}
+
+%% \begin{figure}
+%% \begin{tabular}{c c}
+%% {\begin{lstlisting}[language=Python, frame=single]
+%% def everyOther(l1,l2):
+%%   x=l1[:2]
+%%   y=l2[:2]
+%%   z = x.append(y)
+%%   return z
+
+%% \end{lstlisting}
+%% }
+%% &
+
+%% {\begin{lstlisting}[language=Python, frame=single]
+%% def everyOther(l1,l2):
+%%   x=l1[:__]
+%%   y=l2[:__]
+%%   z = __.append(y)
+%%   return __
+%% \end{lstlisting}
+%% }
+%% \\
+%% (a)
+%% &
+%% (b)
+%% \end{tabular}
+%% \end{figure}
+
 \doublespace
 
-This python program is then converted into an equivalent Sketch program. The main challenge in this translation is that Sketch is a statically typed language whereas Python is dynamically typed, but we use a strategy similar to the strategy used in Autograder [4] to use union types to encode Python types in Sketch. The translated code looks like this.
+This python program is then converted into an equivalent Sketch program. The main challenge in this translation is that Sketch is a statically typed language whereas Python is dynamically typed, but we use a strategy similar to the strategy used in Autograder~\cite{autograder} to use union types to encode Python types in Sketch. The translated code looks like this.
 
 \singlespace
 \begin{lstlisting}[language=Python, frame=single]

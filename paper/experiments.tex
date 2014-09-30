@@ -15,9 +15,19 @@ For our sudoku database, we recorded 206 puzzles from Web Sudoku, the largest on
 
 \subsection{Scalability of Our Approach}
 
-To test the scalability of our puzzle generation algorithm, we generated 16x16 and 25x25 sudoku boards to compare with the standard 9x9 boards and all square fillomino boards from 2x2 to 16x16.
+To test the scalability of our puzzle generation algorithm, we
+generated 16x16 and 25x25 sudoku boards to compare with the standard
+9x9 boards and all square fillomino boards from sizes 2x2 to 16x16.
 
-When we empty a puzzle with dimensions NxN, we set as a parameter the target number of cells that the program would aim to empty from an initially full board. When the program reaches a point where it cannot further empty any more cells (i.e. the emptying of any remaining cell would cause the board to have more than the maximum number of allowable solutions), the emptying process will be considered finished. Because of this, we observe stagnation in our run times as the target number of empty cells is increased beyond a certain threshold. 
+When we empty a puzzle with dimensions NxN, we set as a parameter the
+target number of cells that the program would aim to empty from an
+initially full board. When the program reaches a point where it cannot
+further empty any more cells (i.e. the emptying of any remaining cell
+would cause the board to have more than the maximum number of
+allowable solutions), the emptying process will be considered
+finished. Because of this, we observe stagnation in our run times as
+the target number of empty cells is increased beyond a certain
+threshold.
 
 The graph below shows program running times to create and empty 9x9, 16x16, and 25x25 Sudoku puzzles as the target number of empty squares is increased. There is an exponential increase in run time as the number of possible empty spaces increased. Even for 25x25 sudoku puzzles, we find that the time required to generate a sudoku puzzle is quite reasonable (around 500 seconds).
 
@@ -29,7 +39,7 @@ A similar experiment with Fillomino puzzles demonstrates a similar pattern of st
      \centering
      \subfloat{\includegraphics[height = 5cm]{sudoku2.png}\label{<figure1>}}
      \subfloat{\includegraphics[height = 5cm]{fillomino2.png}\label{<figure2>}}
-     \caption{Running Times by Target Number of Empty Spaces (a) Sudoku (b) Fillomino}
+     \caption{Running Times by Target Number of Empty Spaces (a) Sudoku (b) Fillomino.}
 \end{figure}
 
 

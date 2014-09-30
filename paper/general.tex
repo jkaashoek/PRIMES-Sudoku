@@ -1,12 +1,13 @@
 \section{Overview of our Framework}
 
-We present an overview of our general framework to synthesize puzzles
-of varying complexity levels. Our framework takes three components as
-input: a declarative definition of the puzzle $\puzzledecl$, a
-complexity function $\puzzlecomplexity$, and a set of transformation
-functions $\puzzletransformset$. We first define these components and
-then present our synthesis algorithm to automatically generate
-puzzles of varying complexity.
+We first present an overview of our general framework to synthesize
+puzzles of varying complexity levels. Our framework takes three
+components as input: (i) a declarative definition $\puzzledecl$ of the
+puzzle $\puzzleboard$, (ii) a complexity function $\puzzlecomplexity$,
+and (iii) a set of transformation functions $\puzzletransformset$. In
+this section, we formally define these components and present our
+general synthesis algorithm to automatically generate puzzles of
+varying complexity.
 
 \begin{definition}
 A two dimensional puzzle board of size $n \times m$ is defined using a
@@ -69,7 +70,7 @@ functions are denoted by $\puzzletransformset$.
 \end{algorithm}
 
 
-The algorithm first uses the $\getrandom$ function to get an initial
+The algorithm first uses the $\getrandom$ function to generate an initial
 random puzzle board configuration $\randomPuzzle$ by solving the
 puzzle constraints $\puzzledecl$ using an off-the-shelf constraint
 solver. It then starts emptying squares on the board one at a time
@@ -91,8 +92,8 @@ If the $\isremovevalid$ function returns \t{True}, i.e. if we still
 get a valid puzzle after removing the square $(i,j)$ from the puzzle
 $\currentpuzzle$, the algorithm creates a new puzzle $\currentpuzzle'$
 that has the same square values as the puzzle $\currentpuzzle$ except
-the square $(i,j)$ whose value is set to $\phi$ (denoting an empty
-square). Often times, we can apply puzzle constraints-preserving
+the square $(i,j)$ whose value is now set to $\phi$ (denoting an empty
+square). Often times, we can apply puzzle semanticss-preserving
 transformations to the puzzle boards to get new puzzle board
 configurations. The algorithm applies the set of transformations
 $\puzzletransformset$ to the new puzzle board $\currentpuzzle'$ to
@@ -103,35 +104,36 @@ level in the dictionary $\complexitydict$. This $\complexitydict$ is
 the resulting dictionary that is returned by the $\puzzlegen$
 algorithm.
 
-In general, it is hard to provide a puzzle complexity function
+In general, it is difficult to provide a puzzle complexity function
 $\puzzlecomplexity$ that can assign a hardness level to a puzzle
 board. Even for relatively simpler puzzles such as the sudoku, the
-complexity function is an open research question. In our framework, we
-try to approximate this complexity function using machine learning
-techniques. We obtain a set of labelled tranining data that consists
-of a set of puzzle configurations each labelled with a hardness label
-$h$. Currently we use the puzzle data available in books/web/news
-papers, but we plan to get such labelled training data from human
-subjects in near future. For a puzzle, we define a feature vector
-consisting of a set of features that are specific to the puzzle which
-may be useful to capture its complexity. We then use Support Vector
-Machines to learn a function $\puzzlecomplexity$ that can map the
-feature vectors of the puzzles in the training set to their
+complexity function is an open research
+question~\cite{sudokuchaos}. In our framework, we try to approximate
+this complexity function using machine learning techniques. We obtain
+a set of labelled training data that consists of a set of puzzle
+configurations each labelled with a hardness label $h$. Currently we
+use the puzzle data available in books/web/newspapers, but we plan to
+obtain such labelled training data from human subjects in future. For
+a puzzle, we define a feature vector consisting of a set of features
+that may be useful to capture its complexity. We then use Support
+Vector Machines to learn a function $\puzzlecomplexity$ that can map
+the feature vectors of the puzzles in the training set to their
 corresponding hardness levels.
 
-Our framework allows for general $\isremovevalid$ functions such as a
+Our framework allows for any $\isremovevalid$ function such as a
 function that checks whether the number of current solutions is less
 than a constant $k$. A general strategy to perform this check is to
 use an off-the-shelf constraint solver to first find a solution $S$ to
 the puzzle, and then solve for another solution $S'$ by adding an
-extra constraint that the solution can not be the original solution $S
-\neq S'$. For a value $k$, we get the constraint $S' \neq S_1 \lor S'
-\neq S_2 \cdots S' \neq S_k$. This strategy needs $k+1$ solver calls
-to check whether a square can be emptied from the puzzle baord, which
-can make the overall algorithm quite expenesive. For the common case
-of $k=1$ (the constraint that the puzzle should always have a unique
-solution), we can perform this check efficiently using just a single
-solver call by adding a constraint that $S' \neq \randomPuzzle$,
-i.e. there should not exist a solution $S'$ different from the
-original puzzle board.
+extra constraint that the new solution should not be the previous
+solution $S \neq S'$. For a value $k$, we get the constraint $S' \neq
+S_1 \land S' \neq S_2 \land \cdots \land S' \neq S_k$. This strategy
+needs $k+1$ (potentially exponential) solver calls to check whether a
+square can be emptied from the puzzle board, which can make the
+overall algorithm quite expensive. For the common case of $k=1$ (the
+constraint that the puzzle should always have a unique solution), we
+can perform this check efficiently using just a single solver call by
+adding a constraint that $S' \neq \randomPuzzle$, i.e. check whether
+there exists a solution $S'$ that is different from the original
+puzzle board.
 
