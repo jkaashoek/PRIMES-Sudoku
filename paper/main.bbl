@@ -1,0 +1,70 @@
+\begin{thebibliography}{10}
+
+\bibitem{z3}
+L.~De~Moura and N.~Bj{\o}rner.
+\newblock Z3: An efficient smt solver.
+\newblock In {\em Proceedings of the Theory and Practice of Software, 14th
+  International Conference on Tools and Algorithms for the Construction and
+  Analysis of Systems}, TACAS'08/ETAPS'08, pages 337--340, Berlin, Heidelberg,
+  2008. Springer-Verlag.
+
+\bibitem{sudokuchaos}
+M.~Ercsey{-}Ravasz and Z.~Toroczkai.
+\newblock The chaos within sudoku.
+\newblock {\em CoRR}, abs/1208.0370, 2012.
+
+\bibitem{javablanks}
+N.~Funabiki, Y.~Korenaga, T.~Nakanishi, and K.~Watanabe.
+\newblock An extension of fill-in-the-blank problem function in java
+  programming learning assistant system.
+\newblock In {\em Humanitarian Technology Conference (R10-HTC), 2013 IEEE
+  Region 10}, pages 85--90, Aug 2013.
+
+\bibitem{geometry}
+S.~Gulwani, V.~A. Korthikanti, and A.~Tiwari.
+\newblock Synthesizing geometry constructions.
+\newblock In {\em Proceedings of the 32nd {ACM} {SIGPLAN} Conference on
+  Programming Language Design and Implementation, {PLDI} 2011, San Jose, CA,
+  USA, June 4-8, 2011}, pages 50--61, 2011.
+
+\bibitem{jurkovic}
+N.~Jurkovic.
+\newblock Diagnosing and correcting student's misconceptions in an educational
+  computer algebra system.
+\newblock In {\em Proceedings of the 2001 International Symposium on Symbolic
+  and Algebraic Computation}, ISSAC '01, pages 195--200, New York, NY, USA,
+  2001. ACM.
+
+\bibitem{algebra}
+R.~Singh, S.~Gulwani, and S.~K. Rajamani.
+\newblock Automatically generating algebra problems.
+\newblock In {\em Proceedings of the Twenty-Sixth {AAAI} Conference on
+  Artificial Intelligence, July 22-26, 2012, Toronto, Ontario, Canada.}, 2012.
+
+\bibitem{autograder}
+R.~Singh, S.~Gulwani, and A.~Solar{-}Lezama.
+\newblock Automated feedback generation for introductory programming
+  assignments.
+\newblock In {\em {ACM} {SIGPLAN} Conference on Programming Language Design and
+  Implementation, {PLDI} '13, Seattle, WA, USA, June 16-19, 2013}, pages
+  15--26, 2013.
+
+\bibitem{sketchjournal}
+A.~Solar-Lezama.
+\newblock Program sketching.
+\newblock {\em STTT}, 15(5-6), 2013.
+
+\bibitem{sketch06}
+A.~Solar-Lezama, L.~Tancau, R.~Bod\'{\i}k, S.~A. Seshia, and V.~A. Saraswat.
+\newblock Combinatorial sketching for finite programs.
+\newblock In {\em ASPLOS}, pages 404--415, 2006.
+
+\bibitem{fillominodef}
+Wikipedia.
+\newblock Fillomino, http://en.wikipedia.org/wiki/fillomino, 2014.
+
+\bibitem{sudokudef}
+Wikipedia.
+\newblock Sudoku, http://en.wikipedia.org/wiki/sudoku, 2014.
+
+\end{thebibliography}

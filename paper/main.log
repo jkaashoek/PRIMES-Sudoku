@@ -1,7 +1,6 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2014.5.25)  29 SEP 2014 21:32
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2014.5.25)  30 SEP 2014 12:20
 entering extended mode
  restricted \write18 enabled.
- file:line:error style messages enabled.
  %&-line parsing enabled.
 **main.tex
 (./main.tex
@@ -185,14 +184,7 @@ Package: array 2008/09/09 v2.4c Tabular extension package (FMi)
 \TX@delta=\dimen123
 \TX@cols=\count105
 \TX@ftn=\toks28
-) (./main.aux
-
-LaTeX Warning: Label `<figure1>' multiply defined.
-
-
-LaTeX Warning: Label `<figure2>' multiply defined.
-
-)
+) (./main.aux)
 \openout1 = `main.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 18.
@@ -207,7 +199,8 @@ LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 18.
 LaTeX Font Info:    ... okay on input line 18.
 LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 18.
 LaTeX Font Info:    ... okay on input line 18.
- (/usr/local/texlive/2014/texmf-dist/tex/context/base/supp-pdf.mkii
+
+(/usr/local/texlive/2014/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count106
 \scratchdimen=\dimen124
@@ -300,109 +293,117 @@ e
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-LaTeX Font Info:    Try loading font information for U+msa on input line 24.
-(/usr/local/texlive/2014/texmf-dist/tex/latex/amsfonts/umsa.fd
-File: umsa.fd 2013/01/14 v3.01 AMS symbols A
-)
-LaTeX Font Info:    Try loading font information for U+msb on input line 24.
-
-(/usr/local/texlive/2014/texmf-dist/tex/latex/amsfonts/umsb.fd
-File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-) (./abstract.tex) (./macros.tex
+(./macros.tex
 \c@definition=\count113
 
 (/usr/local/texlive/2014/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2014/03/04 1.5c listings language file
 ))
-(./introduction.tex [1
+LaTeX Font Info:    Try loading font information for U+msa on input line 25.
 
-{/usr/local/texlive/2014/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [2] <pu
-zzlefigs/sudoku_prob.png, id=14, 449.68pt x 467.7475pt>
+(/usr/local/texlive/2014/texmf-dist/tex/latex/amsfonts/umsa.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+LaTeX Font Info:    Try loading font information for U+msb on input line 25.
+
+(/usr/local/texlive/2014/texmf-dist/tex/latex/amsfonts/umsb.fd
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+) (./abstract.tex) (./introduction.tex [1
+
+{/usr/local/texlive/2014/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [2]
+<puzzlefigs/sudoku_prob.png, id=15, 449.68pt x 467.7475pt>
 File: puzzlefigs/sudoku_prob.png Graphic file (type png)
 
 <use puzzlefigs/sudoku_prob.png>
 Package pdftex.def Info: puzzlefigs/sudoku_prob.png used on input line 52.
 (pdftex.def)             Requested size: 179.8688pt x 187.09567pt.
 
-<puzzlefigs/sudoku_sol.png, id=16, 452.69125pt x 469.755pt>
+<puzzlefigs/sudoku_sol.png, id=17, 452.69125pt x 469.755pt>
 File: puzzlefigs/sudoku_sol.png Graphic file (type png)
 
 <use puzzlefigs/sudoku_sol.png>
 Package pdftex.def Info: puzzlefigs/sudoku_sol.png used on input line 54.
 (pdftex.def)             Requested size: 181.07329pt x 187.89867pt.
 
-<puzzlefigs/fillomino_prob.png, id=17, 445.665pt x 470.75874pt>
+<puzzlefigs/fillomino_prob.png, id=18, 445.665pt x 470.75874pt>
 File: puzzlefigs/fillomino_prob.png Graphic file (type png)
 
 <use puzzlefigs/fillomino_prob.png>
 Package pdftex.def Info: puzzlefigs/fillomino_prob.png used on input line 66.
 (pdftex.def)             Requested size: 178.26283pt x 188.30016pt.
 
-<puzzlefigs/fillomino_sol.png, id=18, 442.65375pt x 468.75125pt>
+<puzzlefigs/fillomino_sol.png, id=19, 442.65375pt x 468.75125pt>
 File: puzzlefigs/fillomino_sol.png Graphic file (type png)
 
 <use puzzlefigs/fillomino_sol.png>
 Package pdftex.def Info: puzzlefigs/fillomino_sol.png used on input line 68.
 (pdftex.def)             Requested size: 177.05835pt x 187.49716pt.
-) (./general.tex [3 <./puzzlefigs/sudoku_prob.png> <./puzzlefigs/sudoku_sol.png
-> <./puzzlefigs/fillomino_prob.png> <./puzzlefigs/fillomino_sol.png>] [4] [5] [
-6]) (./casestudymodified.tex [7]
+ [3 <./puzzlefigs/sudoku_prob.png> <./puzzlefigs/sudoku_sol.png> <./puzzlefigs/
+fillomino_prob.png> <./puzzlefigs/fillomino_sol.png>]
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 79.
+ (/usr/local/texlive/2014/texmf-dist/tex/latex/base/omscmr.fd
+File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
+)
+LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 79.
+)
+(./general.tex
+
+LaTeX Font Warning: Font shape `OT1/cmr/bx/sc' undefined
+(Font)              using `OT1/cmr/bx/n' instead on input line 1.
+
+[4] [5] [6]) (./casestudymodified.tex [7]
 LaTeX Font Info:    Font shape `OT1/cmtt/bx/n' in size <10.95> not available
 (Font)              Font shape `OT1/cmtt/m/n' tried instead on input line 28.
- [8] [9]
-[10] [11] [12]) (./experiments.tex [13]
-./experiments.tex:11: Undefined control sequence.
-l.11      \subfloat
-                   {\includegraphics[height = 5cm]{SudokuDifficulty.png}\lab...
+ [8] [9] [10] [11] [12] [13])
+(./experiments.tex
+<experimentgraphs/sudokuSuccessRate2.png, id=69, 579.6054pt x 506.8536pt>
+File: experimentgraphs/sudokuSuccessRate2.png Graphic file (type png)
 
-? 
-<SudokuDifficulty.png, id=68, 579.6054pt x 362.3136pt>
-File: SudokuDifficulty.png Graphic file (type png)
+<use experimentgraphs/sudokuSuccessRate2.png>
+Package pdftex.def Info: experimentgraphs/sudokuSuccessRate2.png used on input 
+line 12.
+(pdftex.def)             Requested size: 231.83804pt x 202.73784pt.
 
-<use SudokuDifficulty.png>
-Package pdftex.def Info: SudokuDifficulty.png used on input line 11.
-(pdftex.def)             Requested size: 227.58406pt x 142.26378pt.
+<experimentgraphs/fillominoSuccessRate2.png, id=70, 579.1236pt x 506.8536pt>
+File: experimentgraphs/fillominoSuccessRate2.png Graphic file (type png)
 
-./experiments.tex:12: Undefined control sequence.
-l.12      \subfloat
-                   {\includegraphics[height = 5cm]{FillominoDifficulty.png}\...
+<use experimentgraphs/fillominoSuccessRate2.png>
+Package pdftex.def Info: experimentgraphs/fillominoSuccessRate2.png used on inp
+ut line 14.
+(pdftex.def)             Requested size: 231.64532pt x 202.73784pt.
 
-? 
-<FillominoDifficulty.png, id=69, 579.6054pt x 362.7954pt>
-File: FillominoDifficulty.png Graphic file (type png)
+Overfull \hbox (17.72835pt too wide) in paragraph at lines 11--18
+ [][] 
+ []
 
-<use FillominoDifficulty.png>
-Package pdftex.def Info: FillominoDifficulty.png used on input line 12.
-(pdftex.def)             Requested size: 227.28336pt x 142.26378pt.
- [14 <./SudokuDifficulty.png> <./FillominoDifficulty.png>]
-./experiments.tex:40: Undefined control sequence.
-l.40      \subfloat
-                   {\includegraphics[height = 5cm]{sudoku2.png}\label{<figur...
+[14] [15 <./experimentgraphs/sudokuSuccessRate2.png> <./experimentgraphs/fillom
+inoSuccessRate2.png>]
+<experimentgraphs/sudokuRunTime3.png, id=79, 1152.7065pt x 437.9562pt>
+File: experimentgraphs/sudokuRunTime3.png Graphic file (type png)
 
-? 
-<sudoku2.png, id=75, 797.1381pt x 496.4949pt>
-File: sudoku2.png Graphic file (type png)
- <use sudoku2.png>
-Package pdftex.def Info: sudoku2.png used on input line 40.
-(pdftex.def)             Requested size: 228.40305pt x 142.26378pt.
+<use experimentgraphs/sudokuRunTime3.png>
+Package pdftex.def Info: experimentgraphs/sudokuRunTime3.png used on input line
+ 48.
+(pdftex.def)             Requested size: 461.07443pt x 175.17937pt.
 
-./experiments.tex:41: Undefined control sequence.
-l.41      \subfloat
-                   {\includegraphics[height = 5cm]{fillomino2.png}\label{<fi...
+<experimentgraphs/fillominoRunTime3.png, id=80, 1152.7065pt x 439.4016pt>
+File: experimentgraphs/fillominoRunTime3.png Graphic file (type png)
 
-? 
-<fillomino2.png, id=76, 795.6927pt x 495.0495pt>
-File: fillomino2.png Graphic file (type png)
- <use fillomino2.png>
-Package pdftex.def Info: fillomino2.png used on input line 41.
-(pdftex.def)             Requested size: 228.65668pt x 142.26378pt.
-)
-(./related.tex [15 <./sudoku2.png> <./fillomino2.png>]) (./future.tex [16]
-[17]) (./conclusion.tex) [18]
-No file main.bbl.
-(./main.aux)
+<use experimentgraphs/fillominoRunTime3.png>
+Package pdftex.def Info: experimentgraphs/fillominoRunTime3.png used on input l
+ine 50.
+(pdftex.def)             Requested size: 461.07443pt x 175.75752pt.
 
-LaTeX Warning: There were multiply-defined labels.
+Overfull \hbox (3.31941pt too wide) in paragraph at lines 47--52
+ [][] 
+ []
+
+) (./related.tex [16 <./experimentgraphs/sudokuRunTime3.png> <./experimentgraph
+s/fillominoRunTime3.png>]) (./future.tex [17] [18]) (./conclusion.tex) [19]
+(./main.bbl [20]) [21] (./main.aux)
+
+LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
  )
 (\end occurred inside a group at level 11)
@@ -420,16 +421,17 @@ LaTeX Warning: There were multiply-defined labels.
 ### semi simple group (level 1) entered at line 32 (\begingroup)
 ### bottom level 
 Here is how much of TeX's memory you used:
- 4127 strings out of 493117
- 58937 string characters out of 6135433
- 186672 words of memory out of 5000000
- 7487 multiletter control sequences out of 15000+600000
- 13695 words of font info for 53 fonts, out of 8000000 for 9000
+ 4165 strings out of 493117
+ 59913 string characters out of 6135433
+ 185685 words of memory out of 5000000
+ 7518 multiletter control sequences out of 15000+600000
+ 17093 words of font info for 66 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 38i,13n,40p,956b,1474s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 38i,13n,40p,812b,1468s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts
 /cm/cmbx10.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/
 cm/cmbx12.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/c
+m/cmcsc10.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/c
 m/cmex10.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm
 /cmmi12.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/
 cmmi8.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cm
@@ -442,10 +444,10 @@ usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></u
 sr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></us
 r/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb></usr
 /local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on main.pdf (18 pages, 668572 bytes).
+Output written on main.pdf (21 pages, 774871 bytes).
 PDF statistics:
- 139 PDF objects out of 1000 (max. 8388607)
- 87 compressed objects within 1 object stream
+ 153 PDF objects out of 1000 (max. 8388607)
+ 97 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  41 words of extra memory for PDF output out of 10000 (max. 10000000)
 
