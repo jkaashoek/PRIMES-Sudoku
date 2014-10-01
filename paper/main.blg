@@ -4,46 +4,46 @@ The top-level auxiliary file: main.aux
 The style file: abbrv.bst
 Database file #1: references.bib
 Warning--entry type for "sudokumath" isn't style-file defined
---line 12 of file references.bib
-You've used 12 entries,
+--line 22 of file references.bib
+You've used 13 entries,
             2118 wiz_defined-function locations,
-            566 strings with 5784 characters,
-and the built_in function-call counts, 4170 in all, are:
-= -- 407
-> -- 166
+            572 strings with 6146 characters,
+and the built_in function-call counts, 4950 in all, are:
+= -- 472
+> -- 249
 < -- 6
-+ -- 69
-- -- 54
-* -- 237
-:= -- 645
-add.period$ -- 35
-call.type$ -- 12
-change.case$ -- 63
++ -- 102
+- -- 86
+* -- 319
+:= -- 786
+add.period$ -- 38
+call.type$ -- 13
+change.case$ -- 82
 chr.to.int$ -- 0
-cite$ -- 12
-duplicate$ -- 187
-empty$ -- 363
-format.name$ -- 54
-if$ -- 930
+cite$ -- 13
+duplicate$ -- 198
+empty$ -- 391
+format.name$ -- 86
+if$ -- 1071
 int.to.chr$ -- 0
-int.to.str$ -- 12
-missing$ -- 9
-newline$ -- 60
-num.names$ -- 24
-pop$ -- 90
+int.to.str$ -- 13
+missing$ -- 10
+newline$ -- 65
+num.names$ -- 26
+pop$ -- 107
 preamble$ -- 1
-purify$ -- 51
+purify$ -- 69
 quote$ -- 0
-skip$ -- 157
+skip$ -- 164
 stack$ -- 0
-substring$ -- 223
-swap$ -- 65
+substring$ -- 259
+swap$ -- 66
 text.length$ -- 6
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 48
+type$ -- 52
 warning$ -- 0
-while$ -- 40
-width$ -- 14
-write$ -- 130
+while$ -- 44
+width$ -- 15
+write$ -- 141
 (There was 1 warning)

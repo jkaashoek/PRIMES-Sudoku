@@ -156,7 +156,7 @@ As the last step of our generation algorithm, we perform these transformations a
 After a Sudoku puzzle is generated, we determine its difficulty using
 machine learning. For each puzzle we use, a 15-component vector is generated to describe the unsolved board. These components are (1) number of solutions; (2) number of empty squares; (3) number of rows with at least seven blank squares; (4) number of columns with at least seven blank squares; (5) number of 3x3 grids with at least seven blank squares; (6 - 14) number of occurrences of each digit; (15) standard deviation of number of occurrences of each digit from the mean number of occurrences.
 
-The SVM library by scikit-learn [citation] then uses the vector to categorize the
+The SVM library by scikit-learn ~\cite{scikitlearn} then uses the vector to categorize the
 puzzle into one of four difficulties: (1) Easy, (2) Medium, (3) Hard,
 and (4) Evil.
 

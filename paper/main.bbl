@@ -39,6 +39,13 @@ N.~Jurkovic.
   and Algebraic Computation}, ISSAC '01, pages 195--200, New York, NY, USA,
   2001. ACM.
 
+\bibitem{scikitlearn}
+F.~Pedregosa, G.~Varoquaux, A.~Gramfort, V.~Michel, B.~Thirion, O.~Grisel,
+  M.~Blondel, P.~Prettenhofer, R.~Weiss, V.~Dubourg, J.~Vanderplas, A.~Passos,
+  D.~Cournapeau, M.~Brucher, M.~Perrot, and E.~Duchesnay.
+\newblock Scikit-learn: Machine learning in python.
+\newblock {\em Journal of Machine Learning Research}, 12:2825--2830, 2011.
+
 \bibitem{algebra}
 R.~Singh, S.~Gulwani, and S.~K. Rajamani.
 \newblock Automatically generating algebra problems.
