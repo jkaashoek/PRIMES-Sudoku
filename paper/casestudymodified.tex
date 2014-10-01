@@ -99,19 +99,28 @@ sub-steps:
 \item {\bf Temporarily set the selected square as emptied.} We create a temporary board and a new set of z3 constraints with the changed value.
 \item{\bf Check whether the temporary board is valid.} If the temporary board has fewer than $k$ solutions, we keep the board. Otherwise, the selected square is added to \t{vals\_tried}, the list of squares that do not work, and we repeat steps 1 - 3 until we have a valid selected square.
 \item{\bf Permanently remove a valid square.}
+
+$\space$
+
 \item{\bf Repeat steps 1 through 4} until the target number of emptied squares is reached or the sum of the number of squares in \t{vals\_tried} and the number that are already emptied reaches 81. 
 \end{enumerate}
 
 \subsubsection*{Transformations}
 
+We are able to quickly generate more full Sudoku boards for emptying
+without using the SMT solver. To do this, we repeatedly apply
+mathematically symmetrical transformations to an already-created
+Sudoku board. Out of about $6 \times 10^{21}$ total unique 9x9 Sudoku
+boards, these transformations can generate about $3\times 10^6$ new
+unique Sudoku boards from an existing one~\cite{sudokumath}. Furthermore, we
+can apply most or all of these transformations to larger boards. Table.~\ref{transformations} shows the symmetrical transformations that can be applied to 9x9 and
+12x12 boards.
 
 \singlespace
 \begin{table}
 \begin{tabularx}{\textwidth}{|X|X|}
 \hline
-\multicolumn{2}{|c|}{Table 1: Symmetrical Transformations}\\
-\hline
-9x9 Sudoku Board & 12x12 Sudoku Board
+\multicolumn{1}{|c}{9x9 Sudoku Board} & \multicolumn{1}{|c|}{12x12 Sudoku Board}
 \\
 \hline
 \begin{enumerate}
@@ -135,19 +144,10 @@ sub-steps:
  \\
 \hline
 \end{tabularx}
+\caption{Success Rates (a) Sudoku (b) Fillomino.}
+\label{transformations}
 \end{table}
-
 \doublespace
-
-We are able to quickly generate more full Sudoku boards for emptying
-without using the SMT solver. To do this, we repeatedly apply
-mathematically symmetrical transformations to an already-created
-Sudoku board. Out of about $6 \times 10^{21}$ total unique 9x9 Sudoku
-boards, these transformations can generate about $3\times 10^6$ new
-unique Sudoku boards from an existing one~\cite{sudokumath}. Furthermore, we
-can apply most or all of these transformations to larger boards. Table
-1 shows the symmetrical transformations that can be applied to 9x9 and
-12x12 boards.
 
 As the last step of our generation algorithm, we perform these transformations again on an already emptied board to generate more emptied puzzles that possibly have a different number of solutions.
 

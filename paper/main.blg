@@ -3,18 +3,16 @@ Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
 The top-level auxiliary file: main.aux
 The style file: abbrv.bst
 Database file #1: references.bib
-Warning--entry type for "sudokumath" isn't style-file defined
---line 22 of file references.bib
 You've used 13 entries,
             2118 wiz_defined-function locations,
-            572 strings with 6146 characters,
-and the built_in function-call counts, 4950 in all, are:
+            572 strings with 6216 characters,
+and the built_in function-call counts, 4946 in all, are:
 = -- 472
 > -- 249
 < -- 6
-+ -- 102
++ -- 101
 - -- 86
-* -- 319
+* -- 317
 := -- 786
 add.period$ -- 38
 call.type$ -- 13
@@ -36,7 +34,7 @@ purify$ -- 69
 quote$ -- 0
 skip$ -- 164
 stack$ -- 0
-substring$ -- 259
+substring$ -- 258
 swap$ -- 66
 text.length$ -- 6
 text.prefix$ -- 0
@@ -46,4 +44,3 @@ warning$ -- 0
 while$ -- 44
 width$ -- 15
 write$ -- 141
-(There was 1 warning)

@@ -1,8 +1,9 @@
 \begin{thebibliography}{10}
 
 \bibitem{sudokumath}
-D.~o.~M. Cornell~University.
-\newblock The math behind sudoku, June 2009.
+{Cornell University, Department of Mathematics}.
+\newblock {The Math Behind Sudoku,
+  http://www.math.cornell.edu/mec/Summer2009/Mahmood/Symmetry.html}, 2009.
 
 \bibitem{z3}
 L.~De~Moura and N.~Bj{\o}rner.
