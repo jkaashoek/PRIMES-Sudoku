@@ -33,11 +33,16 @@ specific to a given puzzle and are based on a set of heuristic
 rules. $\puzzlejar$, on the other hand, lets one specify the puzzle
 definition and puzzle complexity using constraints. It then uses efficient constraint-solving to
 incrementally solve constraints generated from different
-iterations. The system first generates a solved, complete puzzle. It then introduces ``holes" into the puzzle to make it an interesting problem in a fashion such that the certain validity constraints are still satisfied. We use the z3 SMT solver  and its theory of linear arithmetic for representing
-and solving the constraints.
+iterations. The system first generates a solved, complete puzzle. It
+then introduces ``holes" into the puzzle to make it an interesting
+problem. This holes are introduced in a fashion such that the validity
+constraints are still satisfied. We use the z3 SMT solver and its
+theory of linear arithmetic for representing and solving the constraints.
 
 We have successfully used $\puzzlejar$ to automatically generate more
 than 200,000 9x9 Sudoku puzzles and more than 10,000 Fillomino
-puzzles. The case studies with Sudoku and Fillomino puzzles show the generality of the algorithm, and our experiments confirm that $\puzzlejar$ can be reasonably applied to generate larger-sized puzzles.
+puzzles. The case studies with Sudoku and Fillomino puzzles show the
+generality of the algorithm, and our experiments confirm that
+$\puzzlejar$ can be reasonably applied to generate larger and more complex puzzles.
 
 \end{document}
