@@ -1,10 +1,6 @@
 \section{Results and Discussions}
 
-We tested $\puzzlejar$ with two experiments on different components of the algorithm:
-\begin{enumerate}
-\item The scalability of the puzzle generation and emptying steps
-\item The reliability of our machine learning technique in determining difficulty of a puzzle
-\end{enumerate}
+We tested $\puzzlejar$ with two experiments on different components of the algorithm: (i) the scalability of the puzzle generation and emptying steps, and (ii) the reliability of our machine learning technique in determining difficulty of a puzzle
 
 \subsection{Scalability of $\puzzlejar$}
 
@@ -27,7 +23,7 @@ Figure.~\ref{runtimes} shows program running times to create and empty 9x9, 16x1
 
 We can see in Figure.~\ref{runtimes} that the generation time for 9x9 puzzles did not continue to increase after the target number of empty cells was raised beyond 60 because the emptying had stopped before the target of 60+ empty cells had been reached. 
 
-A similar experiment with Fillomino puzzles demonstrates a similar pattern of stagnation after a threshold. Unlike the run times of Sudoku puzzles, however, the run times for Fillomino puzzles follow a linear trend, not an exponential trend, as the target number of empty spaces is increased.
+A similar experiment with Fillomino puzzles demonstrates a similar pattern of stagnation after a threshold. Unlike the run times of Sudoku puzzles, however, the run times for Fillomino puzzles follow a linear trend, not an exponential trend, as the target number of empty spaces is increased. This linear trend could be a result of more constraints in the z3 declaration of Fillomino in the z3 declaration of Sudoku, which allows for fewer iterations.
 
 \begin{figure}[!htpb]
 \centering
