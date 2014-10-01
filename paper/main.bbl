@@ -1,5 +1,9 @@
 \begin{thebibliography}{10}
 
+\bibitem{sudokumath}
+D.~o.~M. Cornell~University.
+\newblock The math behind sudoku, June 2009.
+
 \bibitem{z3}
 L.~De~Moura and N.~Bj{\o}rner.
 \newblock Z3: An efficient smt solver.
@@ -63,7 +67,7 @@ A.~Solar-Lezama, L.~Tancau, R.~Bod\'{\i}k, S.~A. Seshia, and V.~A. Saraswat.
 Wikipedia.
 \newblock Fillomino, http://en.wikipedia.org/wiki/fillomino, 2014.
 
-\bibitem{sudokudef}
+\bibitem{Sudokudef}
 Wikipedia.
 \newblock Sudoku, http://en.wikipedia.org/wiki/sudoku, 2014.
 
