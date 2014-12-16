@@ -9,7 +9,7 @@ urlpatterns = patterns('',
     # Examples:
     # url(r'^$', 'SudokuWeb.views.home', name='home'),
     # url(r'^SudokuWeb/', include('SudokuWeb.foo.urls')),
-    url(r'^static/(?P<path>.*)$', 'django.views.static.serve',{'document_root': settings.MEDIA_ROOT}),
+    url(r'^static/(?P<path>.*)$', 'django.views.static.serve',{'document_root': settings.STATIC_ROOT}),
     url(r'^$', views.index, name='index'),
     url(r'^SudokuHome/$', views.Sudoku_Home, name='Sudoku_Home'),
     url(r'^FillominoHome/$', views.Fillomino_Home, name='Fillomino_Home'),
