@@ -8,6 +8,8 @@ from z3 import *
 import time
 import random
 import os
+import sys
+import settings
 
 def index(request):
     if str(Sudoku.objects.all()) == str([]):
@@ -278,7 +280,7 @@ def genSudoku(request):
 
 def addSudokus():
     file_names = []
-    for path, subdirs, files in os.walk('puzzles_sols'):
+    for path, subdirs, files in os.walk(settings.BASE_DIR + '/puzzles_sols'):
         for filename in files:
             f = os.path.join(filename)
             if f != ".DS_Store":
@@ -287,7 +289,7 @@ def addSudokus():
                 num_solutions = int(f[0:location1])
                 numEmpty = f[location1+1:location2]
                 i = 0
-                with open("puzzles_sols/" + f, "r") as myfile:
+                with open(settings.BASE_DIR+"/puzzles_sols/" + f, "r") as myfile:
                     boards = myfile.readlines()
                     while i < len(boards):
                         solutions = []
