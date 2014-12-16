@@ -2,6 +2,7 @@
 
 import os
 import sys
+import socket
 
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
@@ -14,6 +15,11 @@ ADMINS = (
 
 MANAGERS = ADMINS
 
+sql = '/tmp/mysql.sock'
+hn = socket.gethostname()
+if hn.startswith('ip-'):
+  sql = ''   # on EC2 uses TCP
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
@@ -21,7 +27,7 @@ DATABASES = {
         # The following settings are not used with sqlite3:
         'USER': 'JKaashoek',
         'PASSWORD': 'cRaCk',
-        'HOST': '/tmp/mysql.sock',                      # Empty for localhost through domain sockets or '127.0.0.1' for localhost through TCP.
+        'HOST': sql,                      # Empty for localhost through domain sockets or '127.0.0.1' for localhost through TCP.
         'PORT': '',                      # Set to empty string for default.
     }
 }
@@ -79,8 +85,8 @@ STATICFILES_DIRS = (
 # List of finder classes that know how to find static files in
 # various locations.
 STATICFILES_FINDERS = (
-    'django.contrib.staticfiles.finders.FileSystemFinder',
-    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    # 'django.contrib.staticfiles.finders.FileSystemFinder',
+    # 'django.contrib.staticfiles.finders.AppDirectoriesFinder',
 #    'django.contrib.staticfiles.finders.DefaultStorageFinder',
 )
 
@@ -158,9 +164,3 @@ LOGGING = {
         },
     }
 }
-STATIC_ROOT = 'staticfiles'
-STATIC_URL = '/static/'
-
-STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, '/static'),
-)
