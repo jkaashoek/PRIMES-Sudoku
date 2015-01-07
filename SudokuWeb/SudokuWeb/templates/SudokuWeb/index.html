@@ -9,7 +9,11 @@
 </head>
 
 <body>
-<h1>Welcome to Puzzle Web!</h1>
+<div class="jumbotron">
+  <a href="about/" class="cutout">About Us</a>
+  <h1>Welcome to Puzzle Web!</h1> 
+  <p> Please select a puzzle from below </p>
+</div>
 
 
 <div>
@@ -23,11 +27,40 @@ Click to add puzzles to database: <input class="btn btn-xs btn-primary"type="sub
 </div>
 
 {% if show_form %}
- <a href="SudokuHome/">Sudoku Puzzles</a><br>
-<a href="FillominoHome/">Fillomino Puzzles</a>
+<div class='row-'>
+  
+<div class='col-sm-1'>
+</div>
+
+<div class='col-sm-4'>
+<div class="jumbotron puzzlejumbo">
+  <div class="container">
+   <h4>Sudoku Puzzles</p>
+   <a href="/SudokuHome" class="btn btn-success active" role="button">Play</a>
+  </div>
+</div>
+</div>
+
+<div class='col-sm-1'>
+</div>
+
+<div class='col-sm-4'>
+<div class="jumbotron puzzlejumbo">
+  <div class="container">
+    <h4>Fillomino Puzzles</p>
+   <a href="/FillominoHome" class="btn btn-success active" role="button">Play</a>
+  </div>
+</div>
+
+<div class='col-sm-1'>
+</div>
+  
+</div>
+
+
+
+
 {% endif %}
 
- <p algin="center">Want to learn more about the program? <a
-href="about/">About Us</a></p>
 
 </body> </html>

@@ -31,7 +31,6 @@ tr{
     font-color: white;
     color: #F0F0F0 ;
 }
-h1 {color:black;}
 
 .td {color:black;}
 
@@ -49,4 +48,23 @@ h1 {color:black;}
     width: 60px;
     height: 60px;
     text-align: center;
+}
+
+.jumbotron{
+    text-align: center;
+    background-color: #333399;
+}
+
+.puzzlejumbo{
+    background-color: #333399;
+    text-shadow: 0px 1px 3px rgba(0, 0, 0, 0.4), 0px 0px 30px rgba(0, 0, 0, 0.075);
+
+}
+
+.cutout{
+    border-width: 1px;
+    border-style: solid;
+    border-color: white; 
+    align: left;
+    color: white;
 }

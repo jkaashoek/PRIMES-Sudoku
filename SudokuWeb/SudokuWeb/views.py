@@ -142,8 +142,16 @@ def ratingFillomino(request, board_id):
 ## ---------------------- SUDOKU PUZZLE CODE ----------------------
 
 def Sudoku_Home(request):
+    emptytosolutions = {}
     request.session["num_click"] = 0
-    return render(request, 'SudokuWeb/SudokuHome.html', {'board':[]})
+    for i in range(55):
+        numsolutions = []
+        filteredboards = Sudoku.objects.get(numEmpty=i)
+        for board in filteredboards:
+            numsolutions.append(board.numSolutions)
+        emptytosolutions[i] = numsolutions
+        
+    return render(request, 'SudokuWeb/SudokuHome.html', {'board':[], 'emptytosolutions':emptytosolutions})
 
 def about(request):
     return render(request, 'SudokuWeb/about.html', {})
