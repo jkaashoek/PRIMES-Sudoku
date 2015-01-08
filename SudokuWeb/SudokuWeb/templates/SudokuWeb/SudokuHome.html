@@ -24,9 +24,9 @@
       <div class="caption">
 	<h3 align="center">Choose a puzzle</h3>
 
-            <div class="btn-group">
-                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">Number Empty Squares <span class="caret"></span></button>
-                <ul class="dropdown-menu scrollable-menu" role="menu">
+            <div class="dropdown">
+                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aira-expanded="true">Number Empty Squares <span class="caret"></span></button>
+                <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
                     {% for squaresempty in emptytosolutions %}
 		  <li role="presentation"><a value="{{ forloop.counter }}"role="menuitem"tabindex="-1"href="#">{{ forloop.counter }}</a></li>
 		  {% endfor %}
