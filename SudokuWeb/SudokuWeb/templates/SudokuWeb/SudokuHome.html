@@ -23,32 +23,47 @@
     <div class="thumbnail">
       <div class="caption">
 	<h3 align="center">Choose a puzzle</h3>
-	
+
+            <div class="btn-group">
+                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">Number Empty Squares <span class="caret"></span></button>
+                <ul class="dropdown-menu scrollable-menu" role="menu">
+                    {% for squaresempty in emptytosolutions %}
+		  <li role="presentation"><a value="{{ forloop.counter }}"role="menuitem"tabindex="-1"href="#">{{ forloop.counter }}</a></li>
+		  {% endfor %}
+                </ul>
+            </div>
+            
+	      
+
+	{% for solutions in emptytosolutions %}
 	<div class="dropdown">
-	  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
-	  Number Empty Squares
+	  <button class="hidden btn btn-default dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-expanded="true">
+	  Number of Solutions
 	  <span class="caret"></span>
 	  </button>
-	  <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-	    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Action</a></li>
-	    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Another action</a></li>
-	    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Something else here</a></li>
-	    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Separated link</a></li>
+	  
+	  <ul class="dropdown-menu"role="menu"aria-labelledby="dropdownMenu2">
+	    {% for solution in solutions %}
+	    <li role="presentation"><a value="{{ solution }}"role="menuitem"tabindex="-1"href="#">{{ solution }}</a></li>
+	    {% endfor %}
 	  </ul>
 	</div>
+	{% endfor %}
 
-	<a href="http://jquery.com/">jQuery</a>
+
+
 	<script src="jquery.js"></script>
 	<script>
 	
-	$("#select1").change(function() {
+	$("#dropdownMenu1").change(function() {
+	console.log("menu 1 changed");
 	if(typeof $(this).data('options') === "undefined"){
 	/*Taking an array of all options-2 and kind of embedding it on the select1*/
-	$(this).data('options',$('#select2 option').clone());
+	$(this).data('options',$('#dropdownMenu2 option').clone());
 	}
 	var id = $(this).val();
 	var options = $(this).data('options').filter('[value=' + id + ']');
-	$('#select2').html(options);
+	$('#dropdownMenu2').html(options);
 	});
 
 	</script>
