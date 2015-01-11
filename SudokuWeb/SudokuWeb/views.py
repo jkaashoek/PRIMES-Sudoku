@@ -35,7 +35,7 @@ def Fillomino_Home(request):
     return render(request, 'SudokuWeb/FillominoHome.html', {'sizes':sizes})
 
 def addFillomino():
-    for path, subdirs, files in os.walk('fillomino_puzzles'):
+    for path, subdirs, files in os.walk(settings.BASE_DIR + '/fillomino_puzzles'):
         for filename in files:
             f = os.path.join(filename)
             if f != ".DS_Store":
@@ -45,7 +45,7 @@ def addFillomino():
                 size = int(f[0:location1])
                 numSolutions = int(f[location1+1:location2])
                 numEmpty = int(f[location2+1:location3])
-                with open("fillomino_puzzles/" + f, "r") as myfile:
+                with open(settings.BASE_DIR+"/fillomino_puzzles/" + f, "r") as myfile:
                     count = 0
                     boards = myfile.readlines()
                     for board in boards:
