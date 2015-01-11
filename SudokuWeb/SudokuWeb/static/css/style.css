@@ -26,11 +26,6 @@ tr{
 .warning {
     background: #A00000  ;
 }
-.jumbotron{
-    background: #202020;
-    font-color: white;
-    color: #F0F0F0 ;
-}
 
 .td {color:black;}
 
@@ -50,14 +45,17 @@ tr{
     text-align: center;
 }
 
-.jumbotron{
+.homejumbo{
     text-align: center;
+    color: white;
     background-color: #333399;
 }
 
 .puzzlejumbo{
     background-color: #333399;
     text-shadow: 0px 1px 3px rgba(0, 0, 0, 0.4), 0px 0px 30px rgba(0, 0, 0, 0.075);
+    color: white;
+    text-align: center;
 
 }
 
@@ -72,7 +70,6 @@ tr{
 
 .Sudokujumbo{
     background-color: white;
-    color: #003399;
 }
 
 .SudokuHead{
@@ -84,7 +81,6 @@ tr{
 }
 
 .jumbominiheading{
-    color: #003399;
     font-size: 20px;
 }
 
@@ -114,4 +110,38 @@ tr{
 
 .checkedjumbo{
     backgrond-color: white;
+}
+
+.fillojumbo{
+    background-color: white;
+}
+
+.fillhome{
+    background-color: #333399;
+}
+
+.selectjumbo{
+    background-color: white;
+    align: center;
+}
+
+.selectcontainer{
+    align: center;
+}
+
+.displayfillo{
+    background-color: #333399;
+}
+
+.aboutjumbo{
+    background-color: white;
+    text-align: center;
+}
+
+.about{
+    background-color: #333399
+}
+
+.aboutpar{
+    color: white;
 }

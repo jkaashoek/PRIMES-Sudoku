@@ -9,6 +9,7 @@
 </head>
 
 <body class="checkbod">
+<a href="/" class="btn btn-sm home" role="button">Home</a>
 <div>
 <form role="form" action="" method="post" id="genSudoku" name="genSudoku" enctype="multipart/form-data"> {% csrf_token %}
 
@@ -46,25 +47,35 @@
       {% endfor %}
     </tr>
 {% endfor %}
-</table>
-{% if not correct %}
+  </table>
+ 
+  {% if not correct %}
+  <br>
 <p align="center">Incorrect squares are shown as placeholders</p>
 </div>
 </div>
-<input class="btn btn-block btn-success" type="submit" id="check" name="check" value="Check answers">
+<div class="row">
+  <div class="col-xs-3"></div>
+    <div class="col-xs-6">
+    <input class="btn btn-block btn-success" type="submit" id="check" name="check" value="Check answers">
+    </div>
+    </div>
+<p class="time">
 Time since last check: <span id="timer"></span> <br>
-Total time before last check: {{ timesofar }} seconds
+    Total time before last check: {{ timesofar }} seconds
+    </p>
+<p class="time">Want to try another puzzle? Click <a href="/">here</a> </p>
 {% endif %}
 
 </form>
 <br><br>
 {% if correct %}
-<p>Nice job! You finished the puzzle!
+<p>Nice job! You finished the puzzle in {{ timesofar }} seconds!
 Please fill out the form below so that we can get your input on how
       hard the puzzle was.</p>
 <form role="form" action="ratingSudoku/" method="post" id="rating"
       name="rating" enctype="multipart/form-data"> {% csrf_token %}
-On a scale of 1-5, how hard did you find this puzzle?
+<p> On a scale of 1-5, how hard did you find this puzzle? </p>
 <div class="radio-inline">
   <label>
     <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
@@ -97,9 +108,9 @@ On a scale of 1-5, how hard did you find this puzzle?
 </div>
 <input class="btn btn-xs btn-default" type="submit" id="submit" name="submit" value="Submit">
 </form>
+<p>Want to try another puzzle? Click <a href="/">here</a> </p>
 {% endif %}
 
-<p>Want to try another puzzle? Click <a href="/">here</a> </p>
 
 </div>
 

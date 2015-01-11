@@ -7,10 +7,12 @@
 <script type="text/javascript" src="../../static/Javascripts/timer.js"></script>
 </head>
 
-<body>
- <a href="/">Home</a><break>
+<body class="displayfillo">
+ <a href="/" class="home">Home</a><break>
 <h1></h1>
-<form role="form" action="checkFillomino/" method="post" id="genSudoku" name="genSudoku" enctype="multipart/form-data"> {% csrf_token %}
+
+<form role="form" action="checkFillomino/" method="post" id="genSudoku" name="genSudoku" enctype="multipart/form-data"> {%csrf_token %}
+<div class="jumbotron displayjumbo">
 <table align="center" class="filloboard">
 {% for row in board %}
   <tr>
@@ -51,9 +53,18 @@
 {% endfor %}
 </table>
 <br>
-<input class="btn btn-block btn-success" type="submit" id="check" name="check" value="Check answers">
+</div>
+<div class="row">
+  <div class="col-xs-3"></div>
+    <div class="col-xs-6">
+    <input class="btn btn-block btn-success" type="submit" id="check" name="check" value="Check answers">
+    </div>
+    </div>
 </form>
-Time since started: <span id="timer"></span>
- <a href="/FillominoHome/">Choose Another Fillomino</a><break>
+
+<p class="time">
+Time since started: <span id="timer"></span><br>
+<a href="/FillominoHome/">Choose Another Fillomino</a><break>
+</p>
 
 </body> </html>

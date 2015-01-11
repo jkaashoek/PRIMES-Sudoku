@@ -8,10 +8,11 @@
 <title></title>
 </head>
 
-<body>
-<h1></h1>
+<body class="displayfillo">
+<a href="/" class="home">Home</a><break>
 
 <form role="form" action="" method="post" id="checkFillomino" name="checkFillomino" enctype="multipart/form-data"> {% csrf_token %}
+<div class="jumbotron displayjumbo">
 <table align="center" class="filloboard">
 {% for row in board %}
   <tr>
@@ -60,10 +61,18 @@
 <br>
 {% if not correct %}
 <p align="center">Incorrect squares are shown as placeholders</p>
-<input class="btn btn-block btn-success" type="submit" id="check" name="check" value="Check answers">
-Time since last check: <span id="timer"></span> <br>
-Total time before last check: {{ time_so_far }} seconds
-{% endif %}
+ </div>
+<div class="row">
+  <div class="col-xs-3"></div>
+    <div class="col-xs-6">
+    <input class="btn btn-block btn-success" type="submit" id="check" name="check" value="Check answers">
+    </div>
+    </div>
+    <p class="time">
+    Time since last check: <span id="timer"></span> <br>
+    Total time before last check: {{ time_so_far }} seconds
+    </p>
+    {% endif %}
 </form>
 
 {% if correct %}
@@ -103,7 +112,7 @@ On a scale of 1-5, how hard did you find this puzzle?
     5
   </label>
 </div>
-<input class="btn btn-xs btn-default" type="submit" id="submit" name="submit" value="Submit">
+<input class="btn btn-xs btn-success" type="submit" id="submit" name="submit" value="Submit">
 </form>
 {% endif %}
 

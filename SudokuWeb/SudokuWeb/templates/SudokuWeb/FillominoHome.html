@@ -8,23 +8,56 @@
 <title>Sudoku Website</title>
 </head>
 
-<body>
-<a href="/">Home</a>
-<h1 align="center">Welcome to Fillomino!</h1>
-
-<div class="btn-group">
-  <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
-    Choose Puzzle Size
-    <span class="caret"></span>
-  </a>
-  <ul class="dropdown-menu">
-    {% for size in sizes %}
-    <li>
-    <a href="{% url 'genFillomino' size %}">{{size}} x {{size}}</a>
-    </li>
-    {% endfor %}
-  </ul>
+<body class="fillhome">
+<a href="/" class="home">Home</a>
+<div class="jumbotron fillojumbo">
+  <h1 align="center">Welcome to Fillomino!</h1>
 </div>
-or: <a href="genRandFillomino/" type = "button">Generate Random Puzzle</a>
+<br><br>
 
-</body> </html>
+  <div class="row">
+    
+  <div class="col-xs-1"></div>
+  
+   <div class="col-xs-4">
+   <div class="jumbotron selectjumbo">
+   <div class="container selectcontainer">
+     <h3 align="center">Select puzzle size</h3><br>
+   <div class="btn-group">
+     <a class="btn btn-success dropdown-toggle" data-toggle="dropdown" href="#" align="center">
+     Size
+     <span class="caret"></span>
+     </a>
+     <ul class="dropdown-menu">
+       {% for size in sizes %}
+       <li>
+       <a href="{% url 'genFillomino' size %}">{{size}} x {{size}}</a>
+       </li>
+       {% endfor %}
+     </ul>
+   </div>
+   <br><br>
+   </div>
+   </div>
+   </div>
+
+   <div class="col-xs-2"></div>
+   
+   <div class="col-xs-4">
+     <form class="form-horizontal" role="form" action="genRandFillomino/" method="post" id="genRandFillomino" name="genRandFillomino" enctype="multipart/form-data"> {% csrf_token %}
+   <div class="jumbotron selectjumbo">
+   <div class="container selectcontainer">
+      <h3 align="center">Generate a random puzzle</h3>
+	<br>
+    <p><button type="submit" class="btn btn-success" align="center">Generate</button></p>
+   </div>
+   </div>
+   </form>
+   </div>
+
+   
+   </div>
+   
+   </body>
+   </html>
+   
