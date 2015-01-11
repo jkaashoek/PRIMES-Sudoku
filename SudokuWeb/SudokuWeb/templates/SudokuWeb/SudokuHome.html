@@ -9,41 +9,41 @@
 <title>Sudoku Website</title>
 </head>
 
-<body>
-<br>
-<a href="/" class="btn btn-large" role="button">Home</a>
-<h1 align="center" class="heading">Welcome to Sudoku!</h1><br>
+<body class="SudokuBod">
+<a href="/" class="btn btn-sm home" role="button">Home</a>
+<div class="jumbotron Sudokujumbo">
+  <h2 align="center" class="heading Sudokuhead">Welcome to Sudoku!</h2>
+  </div>
   
-<br><br>
-<div>
 
- <div class="jumbotron">
   <div class="row">
     <form class="form-horizontal" role="form" action="genSudoku/" method="post" id="genSudoku" name="genSudoku" enctype="multipart/form-data"> {% csrf_token %}
-  <div class="col-sm-6 col-md-6">
-    <div class="thumbnail">
-      <div class="caption">
-	<h3 align="center">Choose a puzzle</h3>
-
-            <div class="dropdown">
-                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aira-expanded="true" id="dropdownMenu11">Number Empty Squares <span class="caret"></span></button>
+    <div class="col-xs-1"></div>
+  <div class="col-sm-4">
+    <div class="jumbotron sudokujumbomini">
+    <div class="container">
+	<h3 align="center" class="jumbominiheading">Choose a puzzle</h3>
+    <div class="dropdown">
+      <input type="hidden" name="numSquares">
+                <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aira-expanded="true" id="dropdownMenu11">Number Empty Squares <span class="caret"></span></button>
                 <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu11" id="dropdownMenu1">
                     {% for squaresempty in emptytosolutions %}
 		  <li role="presentation"><a value="{{ forloop.counter }}"role="menuitem"tabindex="-1"href="#">{{ forloop.counter }}</a></li>
 		  {% endfor %}
                 </ul>
-            </div>
+	      </div>
             
 	      
 
 	{% for solutions in emptytosolutions %}
-	<div class="dropdown">
-	  <button class="hidden btn btn-default dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-expanded="true">
+	      <div class="hidden dropdown" id="hiddenmenu-{{ forloop.counter }}">
+		<input type="hidden" name="numSolutions">
+	  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu22" data-toggle="dropdown" aria-expanded="true">
 	  Number of Solutions
 	  <span class="caret"></span>
 	  </button>
 	  
-	  <ul class="dropdown-menu"role="menu"aria-labelledby="dropdownMenu2">
+	  <ul class="dropdown-menu"role="menu"aria-labelledby="dropdownMenu22" id="dropdownmenu2">
 	    {% for solution in solutions %}
 	    <li role="presentation"><a value="{{ solution }}"role="menuitem"tabindex="-1"href="#">{{ solution }}</a></li>
 	    {% endfor %}
@@ -53,29 +53,33 @@
 
 	
          <br>
-        <p> <button type="submit" class="btn btn-default">Generate</button></p>
+	<p> <button type="submit" class="btn btn-success">Generate</button></p>
+
       </div>
-    </div>
+      </div>
   </div>
   </form>
   <form class="form-horizontal" role="form" action="genRandSudoku/" method="post" id="genRandSudoku" name="genRandSudoku" enctype="multipart/form-data"> {% csrf_token %}
-  <div class="col-sm-6 col-md-6">
-    <div class="thumbnail">
-      <div class="caption">
-        <h3 align="center">Generate a random puzzle</h3>
-	<br><br>
-        <p><button type="submit" class="btn btn-default">Generate</button></p>
-	<br><br><br>
+  <div class="col-sm-2"> </div>
+  <div class="col-sm-4">
+    <div class="jumbotron sudokujumbomini">
+  <div class="container">
+        <h3 align="center" class="jumbominiheading">Generate a random puzzle</h3>
+	<br>
+    <p><button type="submit" class="btn btn-success" align="center">Generate</button></p>
+    <br>
       </div>
     </div>
   </div>
   </form>
 </div>
-</div>
-</div>
 <br><br>
-  <p algin="center">Don't know how to play? Click <a
-href="howtoplaySudoku/">here</a></p><break>
+<div class="row">
+  <div class="col-xs-5"></div>
+  <div class="col">
+    <p algin="center" class="howtoplay">Don't know how to play? Click <a href="howtoplaySudoku/">here</a></p><break>
+  </div>
+</div>
 
 
 <address></address>

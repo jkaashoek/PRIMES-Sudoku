@@ -5,64 +5,72 @@
 <link rel="stylesheet" href="../../../static/css/style.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 <script type="text/javascript" src="../../../static/Javascripts/timer.js"></script>
-<title>Sudoku Website</title>
+<title></title>
 </head>
 
-<body class="checkbod">
-<div>
-<form role="form" action="" method="post" id="genSudoku" name="genSudoku" enctype="multipart/form-data"> {% csrf_token %}
+<body>
+<h1></h1>
 
-<div class="jumbotron checkedjumbo">
-  <div class="container">
-
-<table align="center" class="sudokutable">
+<form role="form" action="" method="post" id="checkFillomino" name="checkFillomino" enctype="multipart/form-data"> {% csrf_token %}
+<table align="center" class="filloboard">
 {% for row in board %}
-  {% if forloop.counter|divisibleby:3 %}
-  <tr class="rowline">
-  {% else %}
-    <tr class="normal">
-    {% endif %}  
-      {% for val, col, row, wrong in row %}
-      {% if col and wrong %}
-	<td class="warning colline">
-	  <input class="tinput" type="text" name="{{forloop.parentloop.counter}}{{forloop.counter}}" placeholder="{{val}}">
-	  </td>
-	  {% elif not col and wrong %}
-	<td class="warning normal">
-	  <input class="tinput" type="text" name="{{forloop.parentloop.counter}}{{forloop.counter}}" placeholder="{{val}}">
-	  </td>
-	  {% elif not col and not wrong %}
-	<td class="normal">
-	  {% elif col and not wrong %}
-	  <td class="colline">
-	  {% endif %}
-	 
-      {% if val == 0 %}
-      <input class="tinput" type="text" name="{{forloop.parentloop.counter}}{{forloop.counter}}">
-      {% elif val != 0 and not wrong %}
-      <b>{{val}}</b>
+  <tr>
+  {% for cell in row %}
+    {% if cell.1 == 0 %}
+    <td><input class="finput" type="text" name="{{forloop.parentloop.counter}}{{forloop.counter}}" placeholder="{{ cell.0 }}">
+
+      {% else %}
+      
+    {% if cell.0 == 1 %}
+    <td class = "one">{{ cell.0 }}
+      
+    {% elif cell.0 == 2 %}
+    <td class = "two">{{ cell.0 }}
+      
+      {% elif cell.0 == 3 %}
+    <td class = "three">{{ cell.0 }}
+      
+      {% elif cell.0 == 4 %}
+    <td class = "four">{{ cell.0 }}
+      
+      {% elif cell.0 == 5 %}
+    <td class = "five">{{ cell.0 }}
+      
+      {% elif cell.0 == 6 %}
+    <td class = "six">{{ cell.0 }}
+      
+      {% elif cell.0 == 7 %}
+    <td class = "seven">{{ cell.0 }}
+      
+      {% elif cell.0 == 8 %}
+    <td class = "eight">{{ cell.0 }}
+      
+      {% elif cell.0 == 9 %}
+    <td class = "nine">{{ cell.0 }}
+
+      {% elif cell.0 == 0 %}
+      <td><input class="finput" type="text" name="{{forloop.parentloop.counter}}{{forloop.counter}}">
+      
       {% endif %}
-      </td>
-      {% endfor %}
-    </tr>
+	{% endif %}
+  {% endfor %}
+  </tr>
 {% endfor %}
 </table>
+<br>
 {% if not correct %}
 <p align="center">Incorrect squares are shown as placeholders</p>
-</div>
-</div>
 <input class="btn btn-block btn-success" type="submit" id="check" name="check" value="Check answers">
 Time since last check: <span id="timer"></span> <br>
-Total time before last check: {{ timesofar }} seconds
+Total time before last check: {{ time_so_far }} seconds
 {% endif %}
-
 </form>
-<br><br>
+
 {% if correct %}
-<p>Nice job! You finished the puzzle!
+<p>Nice job! You finished the puzzle in {{ time_so_far }} seconds!<br>
 Please fill out the form below so that we can get your input on how
       hard the puzzle was.</p>
-<form role="form" action="ratingSudoku/" method="post" id="rating"
+<form role="form" action="ratingFillomino/" method="post" id="rating"
       name="rating" enctype="multipart/form-data"> {% csrf_token %}
 On a scale of 1-5, how hard did you find this puzzle?
 <div class="radio-inline">
@@ -99,10 +107,7 @@ On a scale of 1-5, how hard did you find this puzzle?
 </form>
 {% endif %}
 
-<p>Want to try another puzzle? Click <a href="/">here</a> </p>
-
-</div>
-
+ <a href="/FillominoHome/">Choose Another Fillomino</a><break>
 
 
 </body> </html>

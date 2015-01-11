@@ -61,10 +61,57 @@ tr{
 
 }
 
-.cutout{
-    border-width: 1px;
-    border-style: solid;
-    border-color: white; 
-    align: left;
+.cutout{ 
+    align: right;
     color: white;
+}
+
+.SudokuBod{
+    background-color: #333399;
+}
+
+.Sudokujumbo{
+    background-color: white;
+    color: #003399;
+}
+
+.SudokuHead{
+    font-size: 50px;
+}
+
+.sudokujumbomini{
+    background-color: white;
+}
+
+.jumbominiheading{
+    color: #003399;
+    font-size: 20px;
+}
+
+.howtoplay{
+    color: white;
+}
+
+.home{
+    color: white;
+}
+
+.displaybod{
+    background-color: #333399;
+}
+
+.displayjumbo{
+    background-color: white;
+}
+
+.time{
+    color: #E8E8E8;
+}
+
+.checkbod{
+    background-color: #333399;
+}
+
+.checkedjumbo{
+    backgrond-color: white;
 }

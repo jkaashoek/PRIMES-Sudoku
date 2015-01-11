@@ -8,10 +8,14 @@
 <title></title>
 </head>
 
-<body>
-<h1></h1>
+<body class="displaybod">
+<a href="/" class="btn btn-sm home" role="button">Home</a>
 <div>
 <form role="form" action="checkSudoku/" method="post" id="genSudoku" name="genSudoku" enctype="multipart/form-data"> {% csrf_token %}
+
+<div class="jumbotron displayjumbo">
+  <div class="container">
+
 <table align="center" class="sudokutable">
 {% for row in board %}
     {% if forloop.counter|divisibleby:3 %}
@@ -34,14 +38,23 @@
       </td>
       {% endfor %}
     </tr>
-{% endfor %}
-</table>
-<br><br>
-<input class="btn btn-block btn-success" type="submit" id="check" name="check" value="Check answers">
-</form>
+    {% endfor %}
+    
+  </table>
 </div>
-Time since started: <span id="timer"></span>
-<p>Want to try a different puzzle? Click <a href="/">here</a> </p>
+</div>
+<div class="row">
+  <div class="col-xs-3"></div>
+    <div class="col-xs-6">
+    <input class="btn btn-block btn-success" type="submit" id="check" name="check" value="Check answers">
+    </div>
+    </div>
+</form>
+    </div>
+<p class="time">
+    Time since started: <span id="timer"></span><br>
+    Want to try a different puzzle? Click <a href="/">here</a>
+</p>
 
 <address></address>
 </body> </html>
