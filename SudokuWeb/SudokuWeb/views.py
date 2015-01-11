@@ -76,7 +76,7 @@ def displayFillomino(request, board_id):
 def genRandFillomino(request):
     num_rows = Fillomino.objects.all().count()
     rand_id = random.randint(0, num_rows) 
-    final_puzzle_id = makeList(Fillomino.objects.get(id = rand_id).id)
+    final_puzzle_id = Fillomino.objects.get(id = rand_id).id
     return redirect('displayFillomino', board_id=final_puzzle_id)
 
 def checkFillomino(request, board_id):
